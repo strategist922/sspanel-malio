@@ -1,0 +1,2595 @@
+const csKdOsOtLF = [];
+
+function GD4vwp4l() {
+    return !![];
+}
+
+function w4jCiGvDtw() {
+    const _0x366640 = "TRUE";
+    if (_0x366640 != "TRUE") {
+        $('[class="navbar-nav navbar-right"] li:first')["remove"]();
+        if (i18n["lang"] != "zh-cn") {
+            $["ajax"]({
+                'type': "POST",
+                'url': "/user/api/change-lang",
+                'dataType': "json",
+                'data': {
+                    'lang': "zh-cn"
+                },
+                'success': function (_0x460a98) {
+                    location["reload"]();
+                }
+            });
+        }
+        return ![];
+    }
+    return !![];
+}
+
+function hideFeedback(_0x8669bc) {
+    
+    $('#' + _0x8669bc)["hide"]();
+}
+
+function changeLang(_0x1c4f32) {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/api/change-lang",
+        'dataType': "json",
+        'data': {
+            'lang': _0x1c4f32
+        },
+        'success': function (_0x2e2b51) {
+            location["reload"]();
+        }
+    });
+}
+
+function checkin() {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/checkin",
+        'dataType': "json",
+        'success': function (_0x2d066d) {
+            $("#checkin-div")["html"]('<a href="#" class="btn btn-icon disabled icon-left btn-primary"><i class="far fa-edit"></i> ' + i18n["alredy-got-daily-bonus"] + "</a>");
+            swal(i18n["success-got-daily-bonus"], _0x2d066d["msg"], "success");
+        },
+        'error': function (_0x582251) {
+            swal("签到失败", "发送请求失败", "error");
+        }
+    });
+}
+
+function loadTrafficChart() {
+    
+    $("#loadTrafficChart-div")["html"]('<a id="loadTrafficChart" href="#" class="btn disabled btn-primary btn-progress">Progress</a>');
+    $["ajax"]({
+        'type': "GET",
+        'url': "/user/trafficlog",
+        'dataType': "html",
+        'success': function (_0x2683c2) {
+            $("#chartCardbox")["html"](function () {
+                return '<div class="col-12">' + _0x2683c2 + "</div>";
+            });
+            $("#loadTrafficChart")["hide"]();
+            $("#chartCardbox")["show"]();
+        }
+    });
+}
+
+function trafficDountChat(_0x24ab55, _0x51f749, _0x5d4ee5, _0x26a266, _0xb958bc, _0xb49e79) {
+    
+    ! function (_0x15c928) {
+        'use strict';
+        var _0x2d819c = function () {};
+        _0x2d819c["prototype"]["init"] = function () {
+            c3["generate"]({
+                'bindto': "#pie-chart",
+                'data': {
+                    'columns': [
+                        [i18n["used"] + _0x24ab55, _0x26a266],
+                        [i18n["used-today"] + _0x51f749, _0xb958bc],
+                        [i18n["available"] + _0x5d4ee5, _0xb49e79]
+                    ],
+                    'type': "donut"
+                },
+                'color': {
+                    'pattern': ["#dce6fb", "#ABC6FF", "#6777ef"]
+                },
+                'donut': {
+                    'label': {
+                        'show': ![]
+                    }
+                }
+            });
+        }, _0x15c928["ChartC3"] = new _0x2d819c(), _0x15c928["ChartC3"]["Constructor"] = _0x2d819c;
+    }(window["jQuery"]),
+    function (_0xe4f2e6) {
+        'use strict';
+        _0xe4f2e6["ChartC3"]["init"]();
+    }(window["jQuery"]);
+}
+$("#ss-random-password")["click"](function () {
+    
+    $("#ss-password")["val"](Math["random"]()["toString"](0x24)["substr"](0x2));
+});
+$("#ss-password-confirm")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "sspwd",
+        'dataType': "json",
+        'data': {
+            'sspwd': $("#ss-password")["val"]()
+        },
+        'success': function (_0x45136b) {
+            if (_0x45136b["ret"]) {
+                $("#ss-current-password")["text"]($("#ss-password")["val"]());
+                swal({
+                    'type': "success",
+                    'title': i18n["server-password-changed-successfully"],
+                    'showCloseButton': !![]
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'showCloseButton': !![],
+                    'text': _0x45136b["msg"]
+                });
+            }
+        }
+    });
+});
+$("#method-confirm")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "method",
+        'dataType': "json",
+        'data': {
+            'method': $("#method-select")["val"]()
+        },
+        'success': function (_0x202775) {
+            $("#current-method")["html"]($("#method-select")["val"]());
+            if (_0x202775["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["encryption-changed-successfully"],
+                    'showCloseButton': !![]
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'showCloseButton': !![],
+                    'text': _0x202775["msg"]
+                });
+            }
+        }
+    });
+});
+$("#protocol-obfs-confirm")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "ssr",
+        'dataType': "json",
+        'data': {
+            'protocol': $("#protocol-selection")["val"](),
+            'obfs': $("#obfs")["val"](),
+            'obfs_param': $("#obfs-param")["val"]()
+        },
+        'success': function (_0x9bd2ee) {
+            if (_0x9bd2ee["ret"]) {
+                $("#current-protocol")["html"]($("#protocol-selection")["val"]());
+                $("#current-obfs")["html"]($("#obfs")["val"]());
+                $("#current-obfs-param")["html"]($("#obfs-param")["val"]());
+                swal({
+                    'type': "success",
+                    'title': i18n["protocol-and-obfs-changed-successfully"],
+                    'showCloseButton': !![],
+                    'text': _0x9bd2ee["msg"]
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'showCloseButton': !![],
+                    'text': _0x9bd2ee["msg"]
+                });
+            }
+        }
+    });
+});
+$("#reset-sub-link")["click"](function () {
+    
+    Swal["fire"]({
+        'title': i18n["reset-config-url-confirm-modal-title"],
+        'text': i18n["reset-config-url-confirm-modal-desc"],
+        'type': "warning",
+        'showCancelButton': !![],
+        'confirmButtonColor': "#d33",
+        'cancelButtonColor': "#3085d6",
+        'confirmButtonText': i18n["confirm"],
+        'cancelButtonText': i18n["cancel"]
+    })["then"](_0x434d30 => {
+        if (_0x434d30["value"]) {
+            Swal["fire"]({
+                'title': i18n["config-url-has-been-reseted"],
+                'text': i18n["config-url-reset-modal-desc"],
+                'type': "success",
+                'onClose': () => {
+                    window["location"]["assign"]("/user/url_reset");
+                }
+            });
+        }
+    });
+});
+$("#reset-port-confirm")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "resetport",
+        'dataType': "json",
+        'data': {},
+        'success': function (_0x466e00) {
+            if (_0x466e00["ret"]) {
+                $("#current-port")["html"](_0x466e00["msg"]);
+                swal({
+                    'type': "success",
+                    'title': i18n["port-reseted-successfully"],
+                    'text': i18n["new-port"] + _0x466e00["msg"],
+                    'showCloseButton': !![]
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'showCloseButton': !![],
+                    'text': _0x466e00["msg"]
+                });
+            }
+        }
+    });
+});
+$("#portspecify")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "specifyport",
+        'dataType': "json",
+        'data': {
+            'port': $("#port-specify")["val"]()
+        },
+        'success': function (_0x3563ae) {
+            if (_0x3563ae["ret"]) {
+                $("#current-port-2")["html"]($("#port-specify")["val"]());
+                swal({
+                    'type': "success",
+                    'title': i18n["customize-port-successfully"],
+                    'showCloseButton': !![]
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'showCloseButton': !![],
+                    'text': _0x3563ae["msg"]
+                });
+            }
+        }
+    });
+});
+
+function buyInvite() {
+    
+    if (!$("#buy-invite-num")["val"]()) {
+        $("#invite-times-warn")["show"]();
+        return ![];
+    } else {
+        $["ajax"]({
+            'type': "POST",
+            'url': "/user/buy_invite",
+            'dataType': "json",
+            'data': {
+                'num': $("#buy-invite-num")["val"]()
+            },
+            'success': function (_0x134fbe) {
+                if (_0x134fbe["ret"]) {
+                    swal({
+                        'type': "success",
+                        'title': i18n["successful-purchase"],
+                        'onClose': () => {
+                            window["location"]["assign"]("/user/invite");
+                        }
+                    });
+                } else {
+                    swal({
+                        'type': "error",
+                        'title': i18n["failed"],
+                        'text': _0x134fbe["msg"],
+                        'footer': '<a href="/user/code">' + i18n["go-to-wallet"] + "</a>"
+                    });
+                }
+            },
+            'error': function (_0x3c01c1) {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'text': "发送请求失败，请联系客服。"
+                });
+            }
+        });
+    }
+}
+
+function customInviteConfirm() {
+    
+    if (!$("#custom-invite-link")["val"]()) {
+        $("#custom-invite-feedback")["show"]();
+        return ![];
+    } else {
+        $["ajax"]({
+            'type': "POST",
+            'url': "/user/custom_invite",
+            'dataType': "json",
+            'data': {
+                'customcode': $("#custom-invite-link")["val"]()
+            },
+            'success': function (_0x10e088) {
+                if (_0x10e088["ret"]) {
+                    swal({
+                        'type': "success",
+                        'title': i18n["customize-inivitation-link-successfully"],
+                        'onClose': () => {
+                            window["location"]["assign"]("/user/invite");
+                        }
+                    });
+                } else {
+                    swal({
+                        'type': "error",
+                        'title': i18n["failed"],
+                        'text': _0x10e088["msg"],
+                        'footer': '<a href="/user/code">' + i18n["go-to-wallet"] + "</a>"
+                    });
+                }
+            },
+            'error': function (_0x4824e5) {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'text': "发送请求失败，请联系客服。"
+                });
+            }
+        });
+    }
+}
+
+function twofaNext() {
+    
+    $("#ga-modal")["modal"]("hide");
+    $("#ga-setp-2-modal")["modal"]("show");
+}
+
+function twofaConfirm() {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "gacheck",
+        'dataType': "json",
+        'data': {
+            'code': $("#ga-code")["val"]()
+        },
+        'success': function (_0x2bd2de) {
+            if (_0x2bd2de["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': _0x2bd2de["msg"],
+                    'showCloseButton': !![],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/profile");
+                    }
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': _0x2bd2de["msg"],
+                    'showCloseButton': !![]
+                });
+            }
+        },
+        'error': function (_0x6a641d) {
+            swal({
+                'type': "error",
+                'title': i18n["failed"],
+                'text': data["msg"] + "，请联系客服。"
+            });
+        }
+    });
+}
+$("#2fa-off")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "gaset",
+        'dataType': "json",
+        'data': {
+            'enable': 0x0
+        },
+        'success': function (_0x2e60eb) {
+            if (_0x2e60eb["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["2fa-has-been-disabled"],
+                    'showCloseButton': !![],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/profile");
+                    }
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': _0x2e60eb["msg"],
+                    'showCloseButton': !![]
+                });
+            }
+        },
+        'error': function (_0x42ccea) {
+            swal({
+                'type': "error",
+                'title': i18n["failed"],
+                'text': data["msg"] + "，请联系客服。"
+            });
+        }
+    });
+});
+
+function passwordConfirm() {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "password",
+        'dataType': "json",
+        'data': {
+            'oldpwd': $("#oldpwd")["val"](),
+            'pwd': $("#pwd")["val"](),
+            'repwd': $("#repwd")["val"]()
+        },
+        'success': function (_0x164197) {
+            if (_0x164197["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["password-changed-successfully"],
+                    'showCloseButton': !![],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/logout");
+                    }
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'text': _0x164197["msg"],
+                    'showCloseButton': !![]
+                });
+            }
+        },
+        'error': function (_0x27a809) {
+            swal({
+                'type': "error",
+                'title': i18n["failed"],
+                'text': data["msg"] + "，请联系客服。"
+            });
+        }
+    });
+}
+
+function killConfirm() {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "kill",
+        'dataType': "json",
+        'data': {
+            'passwd': $("#passwd")["val"]()
+        },
+        'success': function (_0x4b3b2b) {
+            console["log"](_0x4b3b2b["ret"]);
+            if (_0x4b3b2b["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["your-account-has-been-deleted"],
+                    'showCloseButton': !![],
+                    'onClose': () => {
+                        window["location"]["assign"]('/');
+                    }
+                });
+            } else {
+                swal({
+                    'type': "error",
+                    'title': i18n["failed"],
+                    'showCloseButton': !![],
+                    'text': _0x4b3b2b["msg"]
+                });
+            }
+        },
+        'error': function (_0xb1ddd5) {
+            swal({
+                'type': "error",
+                'title': i18n["failed"],
+                'text': data["msg"] + "，请联系客服。"
+            });
+        }
+    });
+}
+
+function urlChange(_0x4282ab, _0x18a83c, _0x4b03fc) {
+    
+    var _0x5e7729 = "./node/" + _0x4282ab + "?ismu=" + _0x18a83c + "&relay_rule=" + _0x4b03fc;
+    document["getElementById"]("infoifram")["src"] = _0x5e7729;
+    $("#nodeinfo")["modal"]();
+}
+
+function createTicket() {
+    
+    $("#create-ticket")["attr"]("disabled", "disabled");
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/ticket",
+        'dataType': "json",
+        'data': {
+            'content': $("#ticket-content")["val"](),
+            'markdown': $("#ticket-content")["val"](),
+            'title': $("#title")["val"]()
+        },
+        'success': function (_0x12caf5) {
+            if (_0x12caf5["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["submitted"],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/ticket");
+                    }
+                });
+            } else {
+                Swal["fire"](i18n["failed"], _0x12caf5["msg"], "error");
+                $("#create-ticket")["removeAttr"]("disabled");
+            }
+        },
+        'error': function (_0x5e010a) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+            $("#create-ticket")["removeAttr"]("disabled");
+        }
+    });
+}
+
+function replyTicket(_0xfaed65) {
+    
+    $("#ticket-reply")["attr"]("disabled", "disabled");
+    if ($("#ticket-content")["val"]() == '') {
+        Swal["fire"]("请填写工单内容", data["msg"], "error");
+        $("#ticket-reply")["removeAttr"]("disabled");
+        return ![];
+    }
+    $["ajax"]({
+        'type': "PUT",
+        'url': "/user/ticket/" + _0xfaed65,
+        'dataType': "json",
+        'data': {
+            'content': $("#ticket-content")["val"](),
+            'markdown': '',
+            'title': '',
+            'status': 0x1
+        },
+        'success': function (_0x453523) {
+            if (_0x453523["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["submitted"],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/ticket/" + _0xfaed65 + "/view");
+                    }
+                });
+            } else {
+                Swal["fire"](i18n["failed"], _0x453523["msg"], "error");
+                $("#ticket-reply")["removeAttr"]("disabled");
+            }
+        },
+        'error': function (_0x53b346) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+            $("#ticket-reply")["removeAttr"]("disabled");
+        }
+    });
+}
+
+function closeTicket(_0x4b03d2) {
+    
+    $["ajax"]({
+        'type': "PUT",
+        'url': "/user/ticket/" + _0x4b03d2,
+        'dataType': "json",
+        'data': {
+            'content': i18n["this-ticket-has-been-closed"],
+            'title': '',
+            'status': 0x0
+        },
+        'success': function (_0x45f6ec) {
+            if (_0x45f6ec["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["this-ticket-has-been-closed"],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/ticket");
+                    }
+                });
+            } else {
+                Swal["fire"](i18n["failed"], _0x45f6ec["msg"], "error");
+            }
+        },
+        'error': function (_0x39af65) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+        }
+    });
+}
+
+function createQRCode(_0x392fb5, _0x409a91, _0x1159b7) {
+    
+    $('#' + _0x392fb5)["popover"]({
+        'html': !![],
+        'trigger': "hover",
+        'placement': "right",
+        'title': _0x1159b7,
+        'content': kjua({
+            'text': _0x409a91,
+            'render': "image",
+            'size': 0xe0
+        })
+    });
+}
+
+function oneclickImport(_0x244ea9, _0x424ba0) {
+    
+
+    function _0x2953e3() {
+        if (bowser["osname"] == "iOS" || bowser["osname"] == "Android") {
+            return !![];
+        }
+    }
+    var _0x507dbb = {};
+    _0x507dbb["surfboard"] = "surfboard:///install-config?url=" + encodeURIComponent(_0x424ba0);
+    _0x507dbb["quantumult"] = "quantumult://configuration?server=" + btoa(_0x424ba0).replace(/=/g, '') + "&filter=YUhSMGNITTZMeTl0ZVM1dmMyOWxZMjh1ZUhsNkwzSjFiR1Z6TDNGMVlXNTBkVzExYkhRdVkyOXVaZw";
+    _0x507dbb["shadowrocket"] = "shadowrocket://add/sub://" + btoa(_0x424ba0) + "?remarks=" + appName;
+    _0x507dbb["surge"] = "surge:///install-config?url=" + encodeURIComponent(_0x424ba0);
+    _0x507dbb["surge3"] = "surge3:///install-config?url=" + encodeURIComponent(_0x424ba0);
+    _0x507dbb["clash"] = "clash://install-config?url=" + encodeURIComponent(_0x424ba0);
+    _0x507dbb["ssr"] = "sub://" + btoa(_0x424ba0);
+    if (!_0x2953e3() && _0x244ea9 != "clash" & _0x244ea9 != "ssr") {
+        Swal["fire"]({
+            'title': i18n["notice"],
+            'html': i18n["unable-import-config-on-computer-modal"],
+            'type': "warning",
+            'showCancelButton': !![],
+            'confirmButtonText': i18n["proceed"],
+            'cancelButtonText': i18n["cancel"],
+            'focusClose': ![],
+            'focusConfirm': ![]
+        })["then"](_0x20a8bc => {
+            if (_0x20a8bc["value"]) {
+                window["location"]["href"] = _0x507dbb[_0x244ea9];
+            }
+        });
+    } else {
+        window["location"]["href"] = _0x507dbb[_0x244ea9];
+    }
+}
+
+function walletTopup(_0xe41305) {
+    
+    var _0x27f5f1 = parseFloat($("#amount")["val"]());
+    if (Number["isNaN"](_0x27f5f1) == !![] || _0x27f5f1 == 0x0 || _0x27f5f1 == null) {
+        $("#no-amount-warn")["show"]();
+        return ![];
+    }
+    if (paymentSystem == "bitpayx") {
+        bitpay(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "f2fpay") {
+        f2fpay(_0x27f5f1);
+    }
+    if (paymentSystem == "spay") {
+        spay(_0x27f5f1);
+    }
+    if (paymentSystem == "codepay") {
+        codepay(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "tomatopay") {
+        tmtpay(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "flyfoxpay") {
+        flyfox(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "payjs") {
+        payjs(_0x27f5f1);
+    }
+    if (paymentSystem == "f2fpay_payjs") {
+        f2fpay_payjs(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "stripe") {
+        stripe(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "payssion") {
+        payssion(_0xe41305, _0x27f5f1);
+    }
+    if (paymentSystem == "yftpay") {
+        yft(_0x27f5f1);
+    }
+    if (paymentSystem == "malio") {
+        malioPay(_0xe41305, _0x27f5f1);
+    }
+}
+
+function codeTopup() {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "code",
+        'dataType': "json",
+        'data': {
+            'code': $("#topup-code")["val"]()
+        },
+        'success': function (_0x221cbf) {
+            if (_0x221cbf["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["top-up-successful"],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/code");
+                    }
+                });
+            } else {
+                Swal["fire"](i18n["failed"], _0x221cbf["msg"], "error");
+            }
+        }
+    });
+}
+
+function stopAutorenew(_0x43817a) {
+    
+    $["ajax"]({
+        'type': "DELETE",
+        'url': "/user/bought",
+        'dataType': "json",
+        'data': {
+            'id': _0x43817a
+        },
+        'success': function (_0x5e9b71) {
+            if (_0x5e9b71["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': i18n["disabled"],
+                    'text': _0x5e9b71["msg"],
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/code");
+                    }
+                });
+            } else {
+                Swal["fire"](i18n["failed"], _0x5e9b71["msg"], "error");
+            }
+        }
+    });
+}
+
+function bitpay(_0x431a23, _0x3f91a5) {
+    
+    if (_0x431a23 == "alipay") {
+        _0x431a23 = "ALIPAY";
+    } else if (_0x431a23 == "wechat") {
+        _0x431a23 = "WECHAT";
+    } else if (_0x431a23 == "crypto") {
+        _0x431a23 = "CRYPTO";
+    }
+    console["log"]("将要使用 " + _0x431a23 + " 充值" + _0x3f91a5 + '元');
+    if (isNaN(_0x3f91a5) || _0x3f91a5 < 0x1 || _0x3f91a5 >= 0x3E00) {
+        if (isNaN(_0x3f91a5)) {
+            Swal["fire"]("金额不能为空", "请输入正确的金额", "error");
+        } else if (_0x3f91a5 < 0x1) {
+            Swal["fire"]("金额不能低于1元", "请输入正确的金额", "error");
+        } else if (_0x3f91a5 > 0x3E00) {
+            Swal["fire"]("金额不能超过15872元", "请输入正确的金额", "error");
+        }
+    } else {
+        var _0x567318 = /Android|webOS|iPhone|iPod|BlackBerry/i ["test"](navigator["userAgent"]);
+        $["ajax"]({
+            'url': "/user/payment/purchase",
+            'data': {
+                'price': _0x3f91a5,
+                'type': _0x431a23,
+                'mobile': _0x567318
+            },
+            'dataType': "json",
+            'type': "POST",
+            'success': function (_0x287e34) {
+                if (_0x287e34["errcode"] == 0x0) {
+                    var _0x5eb507 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                    var _0x43292d = _0x5eb507["split"]('//')[0x1]["split"]('/')[0x2];
+                    if (_0x43292d == "code") {
+                        window["location"]["href"] = _0x287e34["url"];
+                    } else {
+                        $("#bitpayx-modal")["modal"]({
+                            'backdrop': "static",
+                            'keyboard': ![]
+                        });
+                        $("#bitpayx-modal")["modal"]("show");
+                        $("#to-bitpayx")["attr"]("href", _0x287e34["url"]);
+                    }
+                } else {
+                    Swal["fire"]("发生错误", _0x287e34["errmsg"], "error");
+                }
+            }
+        });
+    }
+}
+
+function f2fpay(_0x24d196) {
+    
+    $("#f2fpay-modal")["modal"]({
+        'backdrop': "static",
+        'keyboard': ![]
+    });
+    $("#f2fpay-modal")["modal"]("show");
+    var _0x587edc = 0x0;
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/payment/purchase",
+        'dataType': "json",
+        'data': {
+            'amount': _0x24d196
+        },
+        'success': function (_0x5d4a72) {
+            if (_0x5d4a72["ret"]) {
+                console["log"](_0x5d4a72);
+                _0x587edc = _0x5d4a72["pid"];
+                $("#f2fpay-qr")["html"](kjua({
+                    'text': _0x5d4a72["qrcode"],
+                    'render': "image",
+                    'size': 0x100
+                }));
+                $("#f2fpay-qr")["attr"]("href", _0x5d4a72["qrcode"]);
+                $("#to-alipay-app")["attr"]("href", _0x5d4a72["qrcode"]);
+                var _0x4c2761 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x51f48d = _0x4c2761["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x51f48d == "code") {
+                    setTimeout(_0x5c61a6, 0x3e8);
+                }
+            } else {
+                Swal["fire"]("发生错误", _0x5d4a72["msg"], "error");
+            }
+        },
+        'error': function (_0x1134fb) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+        }
+    });
+
+    function _0x5c61a6() {
+        $["ajax"]({
+            'type': "POST",
+            'url': "/payment/status",
+            'dataType': "json",
+            'data': {
+                'pid': _0x587edc
+            },
+            'success': function (_0x58c46a) {
+                if (_0x58c46a["result"]) {
+                    clearTimeout(tid);
+                    swal({
+                        'type': "success",
+                        'title': "充值成功",
+                        'onClose': () => {
+                            window["location"]["assign"]("/user/code");
+                        }
+                    });
+                }
+            },
+            'error': function (_0x282fde) {
+                console["log"](_0x282fde);
+            }
+        });
+        tid = setTimeout(_0x5c61a6, 0x3e8);
+    }
+}
+
+function spay(_0x2a3fc1) {
+    
+    $["ajax"]({
+        'url': "/user/payment/purchase",
+        'data': {
+            'price': _0x2a3fc1
+        },
+        'dataType': "json",
+        'type': "POST",
+        'success': function (_0x6c8836) {
+            if (_0x6c8836["code"] == 0x0) {
+                var _0x2d394b = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x13be1f = _0x2d394b["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x13be1f == "code") {
+                    window["location"]["href"] = _0x6c8836["url"];
+                } else {
+                    $("#spay-modal")["modal"]({
+                        'backdrop': "static",
+                        'keyboard': ![]
+                    });
+                    $("#spay-modal")["modal"]("show");
+                    $("#to-spay")["attr"]("href", _0x6c8836["url"]);
+                }
+            } else {
+                Swal["fire"]("发生错误", _0x6c8836["msg"], "error");
+            }
+        }
+    });
+}
+
+function codepay(_0x20c9c5, _0x1620a3) {
+    
+    if (_0x20c9c5 == "alipay") {
+        _0x20c9c5 = 0x1;
+    } else if (_0x20c9c5 == "wechat") {
+        _0x20c9c5 = 0x3;
+    } else if (_0x20c9c5 == "qqpay") {
+        _0x20c9c5 = 0x2;
+    }
+    $["ajax"]({
+        'url': "/user/code/codepay",
+        'data': {
+            'price': _0x1620a3,
+            'type': _0x20c9c5
+        },
+        'dataType': "json",
+        'type': "GET",
+        'success': function (_0x440655) {
+            if (_0x440655["code"] == 0x0) {
+                var _0x2a60cc = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x18cbf0 = _0x2a60cc["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x18cbf0 == "code") {
+                    window["location"]["href"] = _0x440655["url"];
+                } else {
+                    $("#codepay-modal")["modal"]({
+                        'backdrop': "static",
+                        'keyboard': ![]
+                    });
+                    $("#codepay-modal")["modal"]("show");
+                    $("#to-codepay")["attr"]("href", _0x440655["url"]);
+                }
+            } else {
+                Swal["fire"]("发生错误", _0x440655["msg"], "error");
+            }
+        }
+    });
+}
+
+function tmtpay(_0x482614, _0x10f08e) {
+    
+    if (_0x482614 == "wechat") {
+        _0x482614 = "wxpay";
+    }
+    $["ajax"]({
+        'url': "/user/payment/purchase",
+        'data': {
+            'price': _0x10f08e,
+            'type': _0x482614
+        },
+        'dataType': "json",
+        'type': "POST",
+        'success': function (_0x121573) {
+            console["log"](_0x121573);
+            if (_0x121573["errcode"] == -0x1) {
+                Swal["fire"]("发生错误", _0x121573["errmsg"], "error");
+            }
+            if (_0x121573["errcode"] == 0x0) {
+                var _0x5f37c6 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x32b593 = _0x5f37c6["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x32b593 == "code") {
+                    pid = _0x121573["pid"];
+                    if (_0x482614 == "wxpay") {
+                        window["location"]["href"] = _0x121573["code"];
+                    } else if (_0x482614 == "alipay") {
+                        window["location"]["href"] = _0x121573["code"];
+                    }
+                } else {
+                    $("#tmtpay-modal")["modal"]({
+                        'backdrop': "static",
+                        'keyboard': ![]
+                    });
+                    $("#tmtpay-modal")["modal"]("show");
+                    $("#to-tmtpay")["attr"]("href", _0x121573["code"]);
+                }
+            }
+        }
+    });
+}
+
+function flyfox(_0xfc59f7, _0x58aeb0) {
+    
+    $["ajax"]({
+        'url': "/user/payment/purchase",
+        'data': {
+            'price': _0x58aeb0,
+            'type': _0xfc59f7
+        },
+        'dataType': "json",
+        'type': "POST",
+        'success': function (_0x3f79be) {
+            console["log"](_0x3f79be);
+            if (_0x3f79be["errcode"] == -0x1) {
+                Swal["fire"]("发生错误", _0x3f79be["errmsg"], "error");
+            }
+            if (_0x3f79be["errcode"] == 0x0) {
+                var _0x251b5a = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x5d6410 = _0x251b5a["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x5d6410 == "code") {
+                    pid = _0x3f79be["pid"];
+                    window["location"]["href"] = _0x3f79be["code"];
+                } else {
+                    $("#flyfox-modal")["modal"]({
+                        'backdrop': "static",
+                        'keyboard': ![]
+                    });
+                    $("#flyfox-modal")["modal"]("show");
+                    $("#to-flyfox")["attr"]("href", _0x3f79be["code"]);
+                }
+            }
+        }
+    });
+}
+
+function payjs(_0x11a264) {
+    
+    $("#payjs-modal")["modal"]({
+        'backdrop': "static",
+        'keyboard': ![]
+    });
+    $("#payjs-modal")["modal"]("show");
+    var _0x14b61b = 0x0;
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/payment/purchase",
+        'dataType': "json",
+        'data': {
+            'price': _0x11a264,
+            'type': "wechat"
+        },
+        'success': function (_0x463ec4) {
+            if (_0x463ec4["code"] == 0x0) {
+                console["log"](_0x463ec4);
+                _0x14b61b = _0x463ec4["pid"];
+                $("#payjs-qr")["html"](kjua({
+                    'text': _0x463ec4["url"],
+                    'render': "image",
+                    'size': 0x100
+                }));
+                var _0x407823 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x559d6d = _0x407823["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x559d6d == "code") {
+                    setTimeout(_0x5ae921, 0x3e8);
+                }
+            } else {
+                Swal["fire"]("发生错误", _0x463ec4["msg"], "error");
+            }
+        },
+        'error': function (_0x3fdbe4) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+        }
+    });
+
+    function _0x5ae921() {
+        $["ajax"]({
+            'type': "POST",
+            'url': "/payment/status",
+            'dataType': "json",
+            'data': {
+                'pid': _0x14b61b
+            },
+            'success': function (_0x1a3fc0) {
+                if (_0x1a3fc0["result"]) {
+                    clearTimeout(tid);
+                    swal({
+                        'type': "success",
+                        'title': "充值成功",
+                        'onClose': () => {
+                            window["location"]["assign"]("/user/code");
+                        }
+                    });
+                }
+            },
+            'error': function (_0x41f2db) {
+                console["log"](_0x41f2db);
+            }
+        });
+        tid = setTimeout(_0x5ae921, 0x3e8);
+    }
+}
+
+function f2fpay_payjs(_0x337c6f, _0xf22758) {
+    
+    var _0x282a5c = 0x0;
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/payment/purchase",
+        'dataType': "json",
+        'data': {
+            'amount': _0xf22758,
+            'payment': _0x337c6f
+        },
+        'success': function (_0x2279e3) {
+            if (_0x2279e3["ret"]) {
+                console["log"](_0x2279e3);
+                if (_0x337c6f == "alipay") {
+                    $("#f2fpay-modal")["modal"]("show");
+                    _0x282a5c = _0x2279e3["pid"];
+                    $("#f2fpay-qr")["html"](kjua({
+                        'text': _0x2279e3["qrcode"],
+                        'render': "image",
+                        'size': 0x100
+                    }));
+                    $("#f2fpay-qr")["attr"]("href", _0x2279e3["qrcode"]);
+                    $("#to-alipay-app")["attr"]("href", _0x2279e3["qrcode"]);
+                } else {
+                    $("#payjs-modal")["modal"]("show");
+                    _0x282a5c = _0x2279e3["pid"];
+                    $("#payjs-qr")["html"](kjua({
+                        'text': _0x2279e3["qrcode"],
+                        'render': "image",
+                        'size': 0x100
+                    }));
+                }
+                var _0x9e941c = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x292389 = _0x9e941c["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x292389 == "code") {
+                    setTimeout(_0x16e9db, 0x3e8);
+                }
+            } else {
+                Swal["fire"]("发生错误", _0x2279e3["msg"], "error");
+            }
+        },
+        'error': function (_0x586776) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+        }
+    });
+
+    function _0x16e9db() {
+        $["ajax"]({
+            'type': "POST",
+            'url': "/payment/status",
+            'dataType': "json",
+            'data': {
+                'pid': _0x282a5c
+            },
+            'success': function (_0xb5fcb7) {
+                if (_0xb5fcb7["result"]) {
+                    clearTimeout(tid);
+                    swal({
+                        'type': "success",
+                        'title': "充值成功",
+                        'onClose': () => {
+                            window["location"]["assign"]("/user/code");
+                        }
+                    });
+                }
+            },
+            'error': function (_0x49ce27) {
+                console["log"](_0x49ce27);
+            }
+        });
+        tid = setTimeout(_0x16e9db, 0x3e8);
+    }
+}
+
+function stripe(_0x2e6459, _0x13ee32) {
+    
+    console["log"]("---------Stripe 函数 Start--------");
+    var _0x2cee7e = 0x0;
+    if (isNaN(_0x13ee32) || _0x13ee32 <= 0x0) {
+        if (isNaN(_0x13ee32)) {
+            Swal["fire"]("金额不能为空", "请输入正确的金额", "error");
+        } else if (_0x13ee32 <= 0x0) {
+            Swal["fire"]("金额不能是0元或负数", "请输入正确的金额", "error");
+        }
+    } else {
+        $["ajax"]({
+            'url': "/user/payment/purchase",
+            'data': {
+                'price': _0x13ee32,
+                'type': _0x2e6459
+            },
+            'dataType': "json",
+            'type': "POST",
+            'success': function (_0x4048ff) {
+                if (_0x4048ff["errcode"] == 0x0) {
+                    var _0x1eca7c = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                    var _0x61b2c7 = _0x1eca7c["split"]('//')[0x1]["split"]('/')[0x2];
+                    if (_0x2e6459 == "alipay") {
+                        if (_0x61b2c7 == "code") {
+                            window["location"]["href"] = _0x4048ff["url"];
+                        } else {
+                            $("#stripe-alipay-modal")["modal"]({
+                                'backdrop': "static",
+                                'keyboard': ![]
+                            });
+                            $("#stripe-alipay-modal")["modal"]("show");
+                            $("#to-stripe")["attr"]("href", _0x4048ff["url"]);
+                        }
+                    } else if (_0x2e6459 == "wechat") {
+                        _0x2cee7e = _0x4048ff["pid"];
+                        $("#stripe-qr")["html"](kjua({
+                            'text': _0x4048ff["url"],
+                            'render': "image",
+                            'size': 0x100
+                        }));
+                        $("#stripe-wechat-modal")["modal"]({
+                            'backdrop': "static",
+                            'keyboard': ![]
+                        });
+                        $("#stripe-wechat-modal")["modal"]("show");
+                        if (_0x61b2c7 == "code") {
+                            setTimeout(_0x521811, 0x3e8);
+                        }
+                    } else if (_0x2e6459 == "creditCard") {
+                        stripejs["redirectToCheckout"]({
+                            'sessionId': _0x4048ff["checkoutSessionId"]
+                        })["then"](function (_0x3973f3) {
+                            console["log"]("Failed to process payment.");
+                        });
+                    }
+                } else {
+                    Swal["fire"]("发生错误", _0x4048ff["errmsg"], "error");
+                }
+            }
+        });
+    }
+
+    function _0x521811() {
+        $["ajax"]({
+            'type': "POST",
+            'url': "/payment/status",
+            'dataType': "json",
+            'data': {
+                'pid': _0x2cee7e
+            },
+            'success': function (_0xd0672c) {
+                if (_0xd0672c["result"]) {
+                    clearTimeout(tid);
+                    swal({
+                        'type': "success",
+                        'title': "充值成功",
+                        'onClose': () => {
+                            window["location"]["assign"]("/user/code");
+                        }
+                    });
+                }
+            },
+            'error': function (_0x26d926) {
+                console["log"](_0x26d926);
+            }
+        });
+        tid = setTimeout(_0x521811, 0x3e8);
+    }
+}
+
+function payssion(_0x3b6e60, _0x1a072d) {
+    
+    $["ajax"]({
+        'url': "/user/payment/purchase",
+        'data': {
+            'price': _0x1a072d,
+            'type': _0x3b6e60
+        },
+        'dataType': "json",
+        'type': "POST",
+        'success': function (_0x1b8141) {
+            if (_0x1b8141["ret"] == 0x1) {
+                var _0x128459 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                var _0x406b51 = _0x128459["split"]('//')[0x1]["split"]('/')[0x2];
+                if (_0x406b51 == "code") {
+                    window["location"]["href"] = _0x1b8141["url"];
+                } else {
+                    $("#payssion-modal")["modal"]({
+                        'backdrop': "static",
+                        'keyboard': ![]
+                    });
+                    $("#payssion-modal")["modal"]("show");
+                    $("#to-payssion")["attr"]("href", _0x1b8141["url"]);
+                }
+            } else {
+                Swal["fire"]("发生错误", _0x1b8141["msg"], "error");
+            }
+        }
+    });
+}
+
+function yft(_0x12e8ac) {
+    
+    console["log"]("---------yft 函数 Start--------");
+    var _0x34472e = 0x0;
+    if (isNaN(_0x12e8ac) || _0x12e8ac <= 0x0) {
+        if (isNaN(_0x12e8ac)) {
+            Swal["fire"]("金额不能为空", "请输入正确的金额", "error");
+        } else if (_0x12e8ac <= 0x0) {
+            Swal["fire"]("金额不能是0元或负数", "请输入正确的金额", "error");
+        }
+    } else {
+        $["ajax"]({
+            'url': "/user/payment/purchase",
+            'data': {
+                'total_fee': _0x12e8ac
+            },
+            'dataType': "json",
+            'type': "POST",
+            'success': function (_0x3ef980) {
+                if (_0x3ef980["errcode"] == 0x0) {
+                    var _0x4a2968 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                    var _0x183917 = _0x4a2968["split"]('//')[0x1]["split"]('/')[0x2];
+                    if (_0x183917 == "code") {
+                        window["location"]["href"] = _0x3ef980["url"];
+                    } else {
+                        $("#yftpay-modal")["modal"]({
+                            'backdrop': "static",
+                            'keyboard': ![]
+                        });
+                        $("#yftpay-modal")["modal"]("show");
+                        $("#to-yftpay")["attr"]("href", _0x3ef980["url"]);
+                    }
+                } else {
+                    Swal["fire"]("发生错误", _0x3ef980["errmsg"], "error");
+                }
+            }
+        });
+    }
+}
+
+function malioPay(_0x4ac78a, _0x2a48da) {
+    
+    console["log"]("---------malioPay func start--------");
+    if (isNaN(_0x2a48da) || _0x2a48da <= 0x0) {
+        if (isNaN(_0x2a48da)) {
+            Swal["fire"]("金额不能为空", "请输入正确的金额", "error");
+        } else if (_0x2a48da <= 0x0) {
+            Swal["fire"]("金额不能是0元或负数", "请输入正确的金额", "error");
+        }
+    } else {
+        $["ajax"]({
+            'url': "/user/payment/purchase",
+            'data': {
+                'price': _0x2a48da,
+                'type': _0x4ac78a
+            },
+            'dataType': "json",
+            'type': "POST",
+            'success': function (_0x1f132f) {
+                if (_0x1f132f["ret"]) {
+                    var _0x36e2c1 = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+                    var _0x5bfd04 = _0x36e2c1["split"]('//')[0x1]["split"]('/')[0x2];
+                    if (_0x1f132f["type"] == "url") {
+                        if (_0x5bfd04 == "code") {
+                            window["location"]["href"] = _0x1f132f["url"];
+                        } else {
+                            $("#maliopay-modal")["modal"]({
+                                'backdrop': "static",
+                                'keyboard': ![]
+                            });
+                            $("#maliopay-modal")["modal"]("show");
+                            $("#to-maliopay")["attr"]("href", _0x1f132f["url"]);
+                        }
+                    } else if (_0x1f132f["type"] == "qrcode") {
+                        var _0x36e2c1 = encodeURIComponent(_0x1f132f["url"]);
+                        var _0x472aae = "/user/qrcode?type=" + _0x4ac78a + "&qrcode=" + _0x36e2c1 + "&tradeno=" + _0x1f132f["tradeno"] + "&price=" + _0x2a48da;
+                        if (_0x5bfd04 == "code") {
+                            window["location"]["href"] = _0x472aae;
+                        } else {
+                            $("#maliopay-modal")["modal"]({
+                                'backdrop': "static",
+                                'keyboard': ![]
+                            });
+                            $("#maliopay-modal")["modal"]("show");
+                            $("#to-maliopay")["attr"]("href", _0x472aae);
+                        }
+                    }
+                } else {
+                    Swal["fire"]("发生错误", _0x1f132f["errmsg"], "error");
+                }
+            }
+        });
+    }
+}
+var shop = {};
+shop['id'] = '1';
+var coupon = {};
+coupon["code"] = '';
+coupon["onetime"] = 0x1;
+coupon["shop"] = [''];
+coupon["credit"] = 0x0;
+var confirmShop = {};
+confirmShop['id'] = '';
+confirmShop["price"] = 0x0;
+confirmShop["autorenew"] = 0x0;
+$(".go-to-buy-page")["click"](function () {
+    
+    $("#main-page")["hide"]();
+    $("#buy-page")["show"]();
+});
+
+function subscribePlan(_0x54179d) {
+    
+    $("#main-page")["hide"]();
+    $("#buy-page")["show"]();
+    selectItem("plan", _0x54179d);
+}
+
+function backToShop() {
+    
+    $("#buy-page")["hide"]();
+    $("#main-page")["show"]();
+}
+
+function updateCoupon() {
+    
+    if ($("#coupon-code")["val"]() == '') {
+        $("#coupon-feedback")["text"]("请输入优惠码");
+        $("#coupon-feedback")["show"]();
+        return ![];
+    }
+    $["ajax"]({
+        'type': "POST",
+        'url': "coupon_check",
+        'dataType': "json",
+        'data': {
+            'coupon': $("#coupon-code")["val"](),
+            'shop': shop['id']
+        },
+        'success': _0xdb4c4e => {
+            if (_0xdb4c4e["ret"]) {
+                coupon = {};
+                coupon["code"] = $("#coupon-code").val();
+                coupon["onetime"] = _0xdb4c4e.onetime;
+                coupon["shop"] = _0xdb4c4e.shop.split(',');
+                coupon["credit"] = _0xdb4c4e.credit;
+                $("#coupon-btn")["html"]('<i class="fas fa-tag"></i> 当前优惠码: ' + coupon["code"]);
+                $("#coupon-modal")["modal"]("hide");
+                updateCheckoutInfo();
+            } else {
+                $("#coupon-feedback")["text"](_0xdb4c4e["msg"]);
+                $("#coupon-feedback")["show"]();
+            }
+        }
+    });
+};
+
+function cancelCoupon() {
+    
+    coupon = {};
+    coupon["code"] = '';
+    coupon["onetime"] = 0x1;
+    coupon["shop"] = [''];
+    coupon["credit"] = 0x0;
+    $("#coupon-code")["val"]('');
+    $("#coupon-btn")["html"]('<i class="fas fa-tag"></i> 使用优惠码');
+    $("#coupon-feedback")["hide"]();
+}
+
+function updateCheckoutInfo() {
+    
+    console["log"]("############## 更新商品信息  ##############");
+    var _0x260cc9 = $("#plan-selection .active")["attr"]('id');
+    var _0x43541c = $("#time-selection .active")["attr"]('id');
+    var _0x9cfc0 = $("#payment-selection .active")["attr"]('id');
+    $["ajax"]({
+        'type': "GET",
+        'url': "shop/getplaninfo",
+        'dataType': "json",
+        'data': {
+            'num': _0x260cc9,
+            'time': _0x43541c
+        },
+        'success': function (_0x175073) {
+            if (_0x175073["ret"]) {
+                shop = {};
+                shop['id'] = _0x175073.id;
+                shop["name"] = _0x175073.name;
+                shop["price"] = _0x175073.price;
+                var _0x5b1f76 = ["1month", "3month", "6month", "12month"];
+                if (_0x175073['id'] == 0x0 || _0x175073['id'] == '0') {
+                    console["log"]("id=0, active next plan time", _0x5b1f76["indexOf"](_0x43541c));
+                    selectItem("time", _0x5b1f76[_0x5b1f76["indexOf"](_0x43541c) + 0x1]);
+                    updateCheckoutInfo();
+                    return 0x0;
+                }
+                console["log"]("商品信息", _0x175073);
+                var _0x1dbea9 = (coupon["credit"] / 0x64 * shop["price"])["toFixed"](0x2);
+                var _0x16fa50 = (_0x175073["price"] - _0x1dbea9)["toFixed"](0x2);
+                console["log"]("打折的金额：", _0x1dbea9);
+                console["log"]("打折后的总价", _0x16fa50);
+                if (coupon["code"] != '') {
+                    if (coupon["shop"]["indexOf"](_0x175073['id']["toString"]()) == -0x1 && coupon["shop"][0x0] != '') {
+                        _0x16fa50 = _0x175073["price"];
+                        console["log"]("优惠码不适用：", coupon["code"]);
+                    }
+                }
+                console["log"]("用户余额：", userMoney);
+                var _0xc9b7d7 = 0x0;
+                if (_0x16fa50 - userMoney > 0x0) {
+                    _0xc9b7d7 = (_0x16fa50 - userMoney)["toFixed"](0x2);
+                    $("#account-money")["text"]("¥ -" + userMoney);
+                } else {
+                    $("#account-money")["text"]("¥ -" + _0x16fa50);
+                }
+                console["log"]("还需要支付的金额：", _0xc9b7d7);
+                if (coupon["code"] != '') {
+                    $("#coupon-row")["show"]();
+                    $("#coupon-money")["text"]("¥ -" + _0x1dbea9);
+                    shop["price"] = _0x16fa50;
+                    if (coupon["shop"]["indexOf"](_0x175073['id']["toString"]()) == -0x1 && coupon["shop"][0x0] != '') {
+                        $("#coupon-money")["text"]("不适用于此商品");
+                    }
+                }
+                $("#shop-name")["text"](shop["name"]);
+                $("#total")["text"]('¥\x20' + _0x175073["price"]);
+                $("#pay-amount")["text"]('¥\x20' + _0xc9b7d7);
+            }
+            console["log"]("############## 更新商品信息 END  ##############");
+        }
+    });
+}
+
+function selectItem(_0x4ef115, _0x53ca0b) {
+    
+    $('#' + _0x4ef115 + "-selection .active")["removeClass"]("active");
+    $('#' + _0x53ca0b)["addClass"]("active");
+    if (_0x4ef115 == "plan") {
+        $["ajax"]({
+            'type': "GET",
+            'url': "shop/getplantime",
+            'dataType': "json",
+            'data': {
+                'num': _0x53ca0b
+            },
+            'success': function (_0x3dd9a1) {
+                if (_0x3dd9a1["ret"]) {
+                    plan_time = _0x3dd9a1["plan_time"];
+                    if (!plan_time["includes"]("1month")) {
+                        $("#1month")["hide"]();
+                    } else {
+                        $("#1month")["show"]();
+                    }
+                    if (!plan_time["includes"]("3month")) {
+                        $("#3month")["hide"]();
+                    } else {
+                        $("#3month")["show"]();
+                    }
+                    if (!plan_time["includes"]("6month")) {
+                        $("#6month")["hide"]();
+                    } else {
+                        $("#6month")["show"]();
+                    }
+                    if (!plan_time["includes"]("12month")) {
+                        $("#12month")["hide"]();
+                    } else {
+                        $("#12month")["show"]();
+                    }
+                }
+            }
+        });
+    }
+    updateCheckoutInfo();
+}
+
+function buyConfirm(_0x3dab48) {
+    
+    console["log"](confirmShop);
+    $["ajax"]({
+        'type': "POST",
+        'url': "buy",
+        'dataType': "json",
+        'data': {
+            'coupon': coupon["code"],
+            'shop': _0x3dab48,
+            'autorenew': confirmShop["autorenew"],
+            'disableothers': 0x1
+        },
+        'success': function (_0x1e85c7) {
+            if (_0x1e85c7["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': "购买成功",
+                    'onClose': () => {
+                        window["location"]["assign"]("/user");
+                    }
+                });
+            } else {
+                Swal["fire"]("发生错误", _0x1e85c7["msg"], "error");
+            }
+        },
+        'error': function (_0x154855) {
+            Swal["fire"]("发生错误", "请联系客服", "error");
+        }
+    });
+}
+
+function topUp(_0x12c1fb, _0x202486) {
+    
+    if (paymentSystem == "bitpayx") {
+        bitpay(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "f2fpay") {
+        f2fpay(_0x12c1fb);
+    }
+    if (paymentSystem == "spay") {
+        spay(_0x12c1fb);
+    }
+    if (paymentSystem == "codepay") {
+        codepay(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "tomatopay") {
+        tmtpay(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "flyfoxpay") {
+        flyfox(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "payjs") {
+        payjs(_0x12c1fb);
+    }
+    if (paymentSystem == "f2fpay_payjs") {
+        f2fpay_payjs(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "stripe") {
+        stripe(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "payssion") {
+        payssion(_0x202486, _0x12c1fb);
+    }
+    if (paymentSystem == "yftpay") {
+        yft(_0x12c1fb);
+    }
+    if (paymentSystem == "malio") {
+        malioPay(_0x202486, _0x12c1fb);
+    }
+    //tid = setTimeout(_0x4b9482, 0x3e8);
+
+    function _0x4b9482() {
+        $["ajax"]({
+            'type': "GET",
+            'url': "/user/money",
+            'dataType': "json",
+            'async': ![],
+            'success': function (_0x316aea) {
+                if (_0x316aea["ret"]) {
+                    console["log"](confirmShop);
+                    if (parseFloat(_0x316aea["money"]) >= parseFloat(confirmShop["price"])) {
+                        clearTimeout(tid);
+                        buyConfirm(confirmShop['id']);
+                    }
+                }
+            },
+            'error': function (_0x59f7cc) {
+                console["log"](_0x59f7cc);
+            }
+        });
+        tid = setTimeout(_0x4b9482, 0x3e8);
+    }
+}
+$("#pay-confirm")["click"](function () {
+    
+    console["log"]("############## 按下立即支付按钮  ##############");
+    $("#pay-confirm")["attr"]("disabled", "disabled");
+    $["ajax"]({
+        'type': "GET",
+        'url': "shop/getplaninfo",
+        'dataType': "json",
+        'data': {
+            'num': $("#plan-selection .active")["attr"]('id'),
+            'time': $("#time-selection .active")["attr"]('id')
+        },
+        'success': function (_0x3870fd) {
+            if (_0x3870fd["ret"]) {
+                console["log"]("当前coupon为：", coupon);
+                if (coupon["code"] != '' && coupon["shop"][0x0] != '' && coupon["shop"]["indexOf"](_0x3870fd['id']["toString"]()) == -0x1) {
+                    Swal["fire"]("发生错误", "此优惠码不适用于此商品", "error");
+                    $("#pay-confirm")["removeAttr"]("disabled");
+                    return ![];
+                }
+                console["log"]("planinfo：", _0x3870fd);
+                confirmShop['id'] = _0x3870fd['id'];
+                confirmShop["price"] = _0x3870fd["price"];
+                if (coupon["code"] != '') {
+                    var _0x1a7fcf = (coupon["credit"] / 0x64 * _0x3870fd["price"])["toFixed"](0x2);
+                    console["log"]("打折的金额为：", _0x1a7fcf);
+                    var _0x3eafaa = (_0x3870fd["price"] - _0x1a7fcf)["toFixed"](0x2);
+                    console["log"]("折后总价为：", _0x3eafaa);
+                    confirmShop["price"] = _0x3eafaa;
+                }
+                if ($("#autorenew-selection .active")["attr"]('id') == "autorenew-on") {
+                    confirmShop["autorenew"] = 0x1;
+                };
+                shop = {};
+                shop['id'] = _0x3870fd.id;
+                shop["name"] = _0x3870fd.name;
+                shop["price"] = _0x3870fd.price;
+                var _0x2afb98 = $("#payment-selection .active")["attr"]('id');
+                var _0x330bbf = (confirmShop["price"] - userMoney)["toFixed"](0x2);
+                console["log"]("confirShop的值为：", confirmShop);
+                console["log"]("用户余额为：", userMoney);
+                console["log"]("need_to_pay_price的值为：", _0x330bbf);
+                if (_0x330bbf <= 0x0) {
+                    buyConfirm(confirmShop['id']);
+                } else {
+                    topUp(_0x330bbf, _0x2afb98);
+                }
+                console["log"]("############## 按下立即支付按钮 END  ##############");
+            } else {
+                return;
+            }
+        }
+    });
+});
+
+function buyTrafficPackage() {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "shop/buytrafficpackage",
+        'dataType': "json",
+        'data': {
+            'shopid': $("input[name=traffic-package-radio]:checked")["val"]()
+        },
+        'success': function (_0x50a0c4) {
+            if (_0x50a0c4["ret"]) {
+                swal({
+                    'type': "success",
+                    'title': "请求成功",
+                    'text': _0x50a0c4["msg"]
+                });
+            } else {
+                Swal["fire"]("发生错误", _0x50a0c4["msg"], "error");
+            }
+        }
+    });
+}
+
+function legacySelect(_0x2f0268) {
+    
+    confirmShop['id'] = _0x2f0268;
+}
+
+function legacyBuy() {
+    
+    if ($("#legacy-autorenew")['is'](":checked")) {
+        confirmShop["autorenew"] = 0x1;
+    }
+    buyConfirm(confirmShop['id']);
+}
+
+function legacyModalNext() {
+    
+    var _0x3f4702 = $("#legacy-coupon")["val"]();
+    if (_0x3f4702 != '') {
+        $["ajax"]({
+            'type': "POST",
+            'url': "coupon_check",
+            'dataType': "json",
+            'data': {
+                'coupon': _0x3f4702,
+                'shop': confirmShop['id']
+            },
+            'success': _0x1c0f01 => {
+                if (_0x1c0f01["ret"]) {
+                    coupon = {};
+                    coupon["code"] = $("#legacy-coupon").val();
+                    coupon["onetime"] = _0x1c0f01.onetime;
+                    coupon["shop"] = _0x1c0f01.shop.split(',');
+                    coupon["credit"] = _0x1c0f01.credit;
+                    console["log"]("成功获取legacy-coupon");
+                    $("#legacy-modal-1")["modal"]("hide");
+                    $("#legacy-shop-name")["show"]();
+                    $("#legacy-discount")["show"]();
+                    $("#legacy-total")["show"]();
+                    $("#legacy-shop-name")["text"]("商品名称: " + _0x1c0f01["name"]);
+                    $("#legacy-discount")["text"]("优惠额度: " + _0x1c0f01["credit"] + '%');
+                    $("#legacy-total")["text"]("折后总价: " + _0x1c0f01["total"]);
+                    $("#legacy-modal-2")["modal"]("show");
+                } else {
+                    $("#legacy-coupon-feedback")["text"](_0x1c0f01["msg"]);
+                    $("#legacy-coupon-feedback")["show"]();
+                }
+            }
+        });
+    } else {
+        $("#legacy-modal-1")["modal"]("hide");
+        $("#legacy-modal-2")["modal"]("show");
+    }
+}
+$("#add-relay-rule")["click"](function () {
+    
+    $["ajax"]({
+        'type': "POST",
+        'url': "/user/relay",
+        'dataType': "json",
+        'data': {
+            'source_node': $("#source_node")["val"](),
+            'dist_node': $("#dist_node")["val"](),
+            'port': $("#port")["val"](),
+            'priority': $("#priority")["val"]()
+        },
+        'success': _0xe9a59b => {
+            if (_0xe9a59b["ret"]) {
+                Swal["fire"]({
+                    'title': "成功添加中转规则",
+                    'type': "success",
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/relay");
+                    }
+                });
+            } else {
+                Swal["fire"]("发生错误", _0xe9a59b["msg"], "error");
+            }
+        }
+    });
+});
+
+function updateRelayRule(_0x2f16ec) {
+    
+    $["ajax"]({
+        'type': "PUT",
+        'url': "/user/relay/" + _0x2f16ec,
+        'dataType': "json",
+        'data': {
+            'source_node': $("#source_node")["val"](),
+            'dist_node': $("#dist_node")["val"](),
+            'port': $("#port")["val"](),
+            'priority': $("#priority")["val"]()
+        },
+        'success': _0x27c86e => {
+            if (_0x27c86e["ret"]) {
+                Swal["fire"]({
+                    'title': "已更新中转规则",
+                    'type': "success",
+                    'onClose': () => {
+                        window["location"]["assign"]("/user/relay");
+                    }
+                });
+            } else {
+                Swal["fire"]("发生错误", _0x27c86e["msg"], "error");
+            }
+        }
+    });
+}
+
+function deleteRelayRule(_0x174a51) {
+    
+    Swal["fire"]({
+        'title': "确定删除此中转规则?",
+        'type': "info",
+        'showCancelButton': !![],
+        'confirmButtonColor': "#3085d6",
+        'cancelButtonColor': "#d33",
+        'cancelButtonText': '取消',
+        'confirmButtonText': "确定删除"
+    })["then"](_0x1d07f2 => {
+        if (_0x1d07f2["value"]) {
+            $["ajax"]({
+                'type': "DELETE",
+                'url': "/user/relay",
+                'dataType': "json",
+                'data': {
+                    'id': _0x174a51
+                },
+                'success': _0x4728b3 => {
+                    if (_0x4728b3["ret"]) {
+                        Swal["fire"]({
+                            'title': "已删除中转规则",
+                            'type': "success",
+                            'onClose': () => {
+                                window["location"]["assign"]("/user/relay");
+                            }
+                        });
+                    } else {
+                        Swal["fire"]("发生错误", _0x4728b3["msg"], "error");
+                    }
+                }
+            });
+        }
+    });
+}
+"use strict";
+if (window["Chart"]) {
+    Chart["defaults"]["global"]["defaultFontFamily"] = "'Nunito', 'Segoe UI', 'Arial'";
+    Chart["defaults"]["global"]["defaultFontSize"] = 0xc;
+    Chart["defaults"]["global"]["defaultFontStyle"] = 0x1f4;
+    Chart["defaults"]["global"]["defaultFontColor"] = "#999";
+    Chart["defaults"]["global"]["tooltips"]["backgroundColor"] = "#000";
+    Chart["defaults"]["global"]["tooltips"]["bodyFontColor"] = "rgba(255,255,255,.7)";
+    Chart["defaults"]["global"]["tooltips"]["titleMarginBottom"] = 0xa;
+    Chart["defaults"]["global"]["tooltips"]["titleFontSize"] = 0xe;
+    Chart["defaults"]["global"]["tooltips"]["titleFontFamily"] = "'Nunito', 'Segoe UI', 'Arial'";
+    Chart["defaults"]["global"]["tooltips"]["titleFontColor"] = "#fff";
+    Chart["defaults"]["global"]["tooltips"]["xPadding"] = 0xf;
+    Chart["defaults"]["global"]["tooltips"]["yPadding"] = 0xf;
+    Chart["defaults"]["global"]["tooltips"]["displayColors"] = ![];
+    Chart["defaults"]["global"]["tooltips"]["intersect"] = ![];
+    Chart["defaults"]["global"]["tooltips"]["mode"] = "nearest";
+}
+if (window["Dropzone"]) {
+    Dropzone["autoDiscover"] = ![];
+}
+$("[data-confirm]")["each"](function () {
+    var _0x3c5493 = $(this),
+        _0x412cea = _0x3c5493["data"]("confirm");
+    _0x412cea = _0x412cea["split"]('|');
+    _0x3c5493["fireModal"]({
+        'title': _0x412cea[0x0],
+        'body': _0x412cea[0x1],
+        'footerClass': "bg-whitesmoke br",
+        'buttons': [{
+            'text': _0x3c5493["data"]("confirm-text-yes") || '确定',
+            'class': "btn btn-danger btn-shadow",
+            'handler': function () {
+                eval(_0x3c5493["data"]("confirm-yes"));
+            }
+        }, {
+            'text': _0x3c5493["data"]("confirm-text-cancel") || '取消',
+            'class': "btn btn-secondary",
+            'handler': function (_0x441cf7) {
+                $["destroyModal"](_0x441cf7);
+                eval(_0x3c5493["data"]("confirm-no"));
+            }
+        }]
+    });
+});
+$(function () {
+    w4jCiGvDtw();
+    var _0x1fd4cb = document["location"]["toString"]()["split"]('#')[0x0]["split"]('?')[0x0];
+    var _0x55ce18 = _0x1fd4cb["split"]('//')[0x1]["split"]('/');
+    var _0x2626ad = '';
+    if (_0x55ce18["length"] == 0x2) {
+        _0x2626ad = $(".sidebar-menu a[href$='/user']");
+    } else if (_0x55ce18["length"] >= 0x3) {
+        if (_0x55ce18[0x2] == "ticket") {
+            _0x2626ad = $(".sidebar-menu a[href$='#ticket']");
+            _0x2626ad["addClass"]("has-dropdown");
+        } else if (_0x55ce18[0x2] == "detect") {
+            _0x2626ad = $(".sidebar-menu a[href$='#detect']");
+            _0x2626ad["addClass"]("has-dropdown");
+        } else if (_0x55ce18[0x2] == "relay" || _0x55ce18[0x2] == "edit") {
+            _0x2626ad = $(".sidebar-menu a[href$='#node-settings']");
+            _0x2626ad["addClass"]("has-dropdown");
+        } else {
+            var _0x35c259 = ".sidebar-menu a[href$='/user/" + _0x55ce18[0x2] + '\x27]';
+            _0x2626ad = $(_0x35c259);
+        }
+    }
+    _0x2626ad["parent"]()["addClass"]("active");
+    let _0x171d56 = {},
+        _0x1040a1 = null;
+    _0x171d56["cursoropacitymin"] = 0x0;
+    _0x171d56["cursoropacitymax"] = 0.8;
+    _0x171d56["zindex"] = 0x37c;
+    var _0x2e3471 = function () {
+        if ($("body")["hasClass"]("layout-2")) {
+            $("body.layout-2 #sidebar-wrapper")["stick_in_parent"]({
+                'parent': $("body")
+            });
+            $("body.layout-2 #sidebar-wrapper")["stick_in_parent"]({
+                'recalc_every': 0x1
+            });
+        }
+    };
+    _0x2e3471();
+    var _0x326bff;
+    var _0x8de2b9 = function () {
+        let _0x54961e = setInterval(function () {
+            if (_0x326bff != null) _0x326bff["resize"]();
+        }, 0xa);
+        setTimeout(function () {
+            clearInterval(_0x54961e);
+        }, 0x258);
+    };
+    var _0x562c62 = function () {
+        if ($(".main-sidebar")["length"]) {
+            $(".main-sidebar")["niceScroll"](_0x171d56);
+            _0x326bff = $(".main-sidebar")["getNiceScroll"]();
+            $(".main-sidebar .sidebar-menu li a.has-dropdown")["off"]("click")['on']("click", function () {
+                var _0x582d2f = $(this);
+                var _0x3a9c78 = ![];
+                if (_0x582d2f["parent"]()["hasClass"]("active")) {
+                    _0x3a9c78 = !![];
+                }
+                $(".main-sidebar .sidebar-menu li.active > .dropdown-menu")["slideUp"](0x1f4, function () {
+                    _0x8de2b9();
+                    return ![];
+                });
+                $(".main-sidebar .sidebar-menu li.active")["removeClass"]("active");
+                if (_0x3a9c78 == !![]) {
+                    _0x582d2f["parent"]()["removeClass"]("active");
+                    _0x582d2f["parent"]()["find"]("> .dropdown-menu")["slideUp"](0x1f4, function () {
+                        _0x8de2b9();
+                        return ![];
+                    });
+                } else {
+                    _0x582d2f["parent"]()["addClass"]("active");
+                    _0x582d2f["parent"]()["find"]("> .dropdown-menu")["slideDown"](0x1f4, function () {
+                        _0x8de2b9();
+                        return ![];
+                    });
+                }
+                return ![];
+            });
+            $(".main-sidebar .sidebar-menu li.active > .dropdown-menu")["slideDown"](0x1f4, function () {
+                _0x8de2b9();
+                return ![];
+            });
+        }
+    };
+    _0x562c62();
+    if ($("#top-5-scroll")["length"]) {
+        $("#top-5-scroll")["css"]({
+            'height': 0x13b
+        })["niceScroll"]();
+    }
+    $(".main-content")["css"]({
+        'minHeight': $(window)["outerHeight"]() - 0x6c
+    });
+    $(".nav-collapse-toggle")["click"](function () {
+        $(this)["parent"]()["find"](".navbar-nav")["toggleClass"]("show");
+        return ![];
+    });
+    $(document)['on']("click", function (_0x430c0a) {
+        $(".nav-collapse .navbar-nav")["removeClass"]("show");
+    });
+    var _0x263f8e = function (_0x4133cd) {
+        let _0x7a36e6 = $("body");
+        if (!_0x4133cd) {
+            _0x7a36e6["removeClass"]("sidebar-mini");
+            $(".main-sidebar")["css"]({
+                'overflow': "hidden"
+            });
+            setTimeout(function () {
+                $(".main-sidebar")["niceScroll"](_0x171d56);
+                _0x326bff = $(".main-sidebar")["getNiceScroll"]();
+            }, 0x1f4);
+            $(".main-sidebar .sidebar-menu > li > ul .dropdown-title")["remove"]();
+            $(".main-sidebar .sidebar-menu > li > a")["removeAttr"]("data-toggle");
+            $(".main-sidebar .sidebar-menu > li > a")["removeAttr"]("data-original-title");
+            $(".main-sidebar .sidebar-menu > li > a")["removeAttr"]("title");
+        } else {
+            _0x7a36e6["addClass"]("sidebar-mini");
+            _0x7a36e6["removeClass"]("sidebar-show");
+            _0x326bff["remove"]();
+            _0x326bff = null;
+            $(".main-sidebar .sidebar-menu > li")["each"](function () {
+                let _0x577619 = $(this);
+                if (_0x577619["find"]("> .dropdown-menu")["length"]) {
+                    _0x577619["find"]("> .dropdown-menu")["hide"]();
+                    _0x577619["find"]("> .dropdown-menu")["prepend"]('<li class="dropdown-title pt-3">' + _0x577619["find"]("> a")["text"]() + "</li>");
+                } else {
+                    _0x577619["find"]("> a")["attr"]("data-toggle", "tooltip");
+                    _0x577619["find"]("> a")["attr"]("data-original-title", _0x577619["find"]("> a")["text"]());
+                    $("[data-toggle='tooltip']")["tooltip"]({
+                        'placement': "right"
+                    });
+                }
+            });
+        }
+    };
+    $("[data-toggle='sidebar']")["click"](function () {
+        var _0x35830d = $("body"),
+            _0x565318 = $(window);
+        if (_0x565318["outerWidth"]() <= 0x400) {
+            _0x35830d["removeClass"]("search-show search-gone");
+            if (_0x35830d["hasClass"]("sidebar-gone")) {
+                _0x35830d["removeClass"]("sidebar-gone");
+                _0x35830d["addClass"]("sidebar-show");
+            } else {
+                _0x35830d["addClass"]("sidebar-gone");
+                _0x35830d["removeClass"]("sidebar-show");
+            }
+            _0x8de2b9();
+        } else {
+            _0x35830d["removeClass"]("search-show search-gone");
+            if (_0x35830d["hasClass"]("sidebar-mini")) {
+                _0x263f8e(![]);
+            } else {
+                _0x263f8e(!![]);
+            }
+        }
+        return ![];
+    });
+    var _0x3dcb43 = function () {
+        var _0x494578 = $(window),
+            _0x512f6c = $("body")["attr"]("class") || '',
+            _0x204721 = _0x512f6c["trim"]()["length"] > 0x0 ? _0x512f6c["split"]('\x20') : '';
+        if (_0x204721["length"] > 0x0) {
+            _0x204721["forEach"](function (_0x11c094) {
+                if (_0x11c094["indexOf"]("layout-") != -0x1) {
+                    _0x1040a1 = _0x11c094;
+                }
+            });
+        }
+        if (_0x494578["outerWidth"]() <= 0x400) {
+            if ($("body")["hasClass"]("sidebar-mini")) {
+                _0x263f8e(![]);
+                $(".main-sidebar")["niceScroll"](_0x171d56);
+                _0x326bff = $(".main-sidebar")["getNiceScroll"]();
+            }
+            $("body")["addClass"]("sidebar-gone");
+            $("body")["removeClass"]("layout-2 layout-3 sidebar-mini sidebar-show");
+            $("body")["off"]("click touchend")['on']("click touchend", function (_0x387992) {
+                if ($(_0x387992["target"])["hasClass"]("sidebar-show") || $(_0x387992["target"])["hasClass"]("search-show")) {
+                    $("body")["removeClass"]("sidebar-show");
+                    $("body")["addClass"]("sidebar-gone");
+                    $("body")["removeClass"]("search-show");
+                    _0x8de2b9();
+                }
+            });
+            _0x8de2b9();
+            if (_0x1040a1 == "layout-3") {
+                let _0x5e8eb7 = $(".navbar-secondary")["attr"]("class"),
+                    _0x2bce3f = $(".navbar-secondary");
+                _0x2bce3f["attr"]("data-nav-classes", _0x5e8eb7);
+                _0x2bce3f["removeAttr"]("class");
+                _0x2bce3f["addClass"]("main-sidebar");
+                let _0x362713 = $(".main-sidebar");
+                _0x362713["find"](".container")["addClass"]("sidebar-wrapper")["removeClass"]("container");
+                _0x362713["find"](".navbar-nav")["addClass"]("sidebar-menu")["removeClass"]("navbar-nav");
+                _0x362713["find"](".sidebar-menu .nav-item.dropdown.show a")["click"]();
+                _0x362713["find"](".sidebar-brand")["remove"]();
+                _0x362713["find"](".sidebar-menu")["before"]($("<div>", {
+                    'class': "sidebar-brand"
+                })["append"]($("<a>", {
+                    'href': $(".navbar-brand")["attr"]("href")
+                })["html"]($(".navbar-brand")["html"]())));
+                setTimeout(function () {
+                    _0x326bff = _0x362713["niceScroll"](_0x171d56);
+                    _0x326bff = _0x362713["getNiceScroll"]();
+                }, 0x2bc);
+                _0x562c62();
+                $(".main-wrapper")["removeClass"]("container");
+            }
+        } else {
+            $("body")["removeClass"]("sidebar-gone sidebar-show");
+            if (_0x1040a1) $("body")["addClass"](_0x1040a1);
+            let _0x156899 = $(".main-sidebar")["attr"]("data-nav-classes"),
+                _0x142b79 = $(".main-sidebar");
+            if (_0x1040a1 == "layout-3" && _0x142b79["hasClass"]("main-sidebar")) {
+                _0x142b79["find"](".sidebar-menu li a.has-dropdown")["off"]("click");
+                _0x142b79["find"](".sidebar-brand")["remove"]();
+                _0x142b79["removeAttr"]("class");
+                _0x142b79["addClass"](_0x156899);
+                let _0x362713 = $(".navbar-secondary");
+                _0x362713["find"](".sidebar-wrapper")["addClass"]("container")["removeClass"]("sidebar-wrapper");
+                _0x362713["find"](".sidebar-menu")["addClass"]("navbar-nav")["removeClass"]("sidebar-menu");
+                _0x362713["find"](".dropdown-menu")["hide"]();
+                _0x362713["removeAttr"]("style");
+                _0x362713["removeAttr"]("tabindex");
+                _0x362713["removeAttr"]("data-nav-classes");
+                $(".main-wrapper")["addClass"]("container");
+            } else if (_0x1040a1 == "layout-2") {
+                $("body")["addClass"]("layout-2");
+            } else {
+                _0x8de2b9();
+            }
+        }
+    };
+    _0x3dcb43();
+    $(window)["resize"](_0x3dcb43);
+    $("[data-toggle='search']")["click"](function () {
+        var _0x5bcf87 = $("body");
+        if (_0x5bcf87["hasClass"]("search-gone")) {
+            _0x5bcf87["addClass"]("search-gone");
+            _0x5bcf87["removeClass"]("search-show");
+        } else {
+            _0x5bcf87["removeClass"]("search-gone");
+            _0x5bcf87["addClass"]("search-show");
+        }
+    });
+    $("[data-toggle='tooltip']")["tooltip"]();
+    $('[data-toggle="popover"]')["popover"]({
+        'container': "body"
+    });
+    if (jQuery()["select2"]) {
+        $(".select2")["select2"]();
+    }
+    if (jQuery()["selectric"]) {
+        $(".selectric")["selectric"]({
+            'disableOnMobile': ![],
+            'nativeOnMobile': ![]
+        });
+    }
+    $(".notification-toggle")["dropdown"]();
+    $(".notification-toggle")["parent"]()['on']("shown.bs.dropdown", function () {
+        $(".dropdown-list-icons")["niceScroll"]({
+            'cursoropacitymin': 0.3,
+            'cursoropacitymax': 0.8,
+            'cursorwidth': 0x7
+        });
+    });
+    $(".message-toggle")["dropdown"]();
+    $(".message-toggle")["parent"]()['on']("shown.bs.dropdown", function () {
+        $(".dropdown-list-message")["niceScroll"]({
+            'cursoropacitymin': 0.3,
+            'cursoropacitymax': 0.8,
+            'cursorwidth': 0x7
+        });
+    });
+    if ($(".chat-content")["length"]) {
+        $(".chat-content")["niceScroll"]({
+            'cursoropacitymin': 0.3,
+            'cursoropacitymax': 0.8
+        });
+        $(".chat-content")["getNiceScroll"](0x0)["doScrollTop"]($(".chat-content")["height"]());
+    }
+    if (jQuery()["summernote"]) {
+        $(".summernote")["summernote"]({
+            'dialogsInBody': !![],
+            'minHeight': 0xfa
+        });
+        $(".summernote-simple")["summernote"]({
+            'dialogsInBody': !![],
+            'minHeight': 0x96,
+            'toolbar': [
+                ["style", ["bold", "italic", "underline", "clear"]],
+                ["font", ["strikethrough"]],
+                ["para", ["paragraph"]]
+            ]
+        });
+    }
+    if (window["CodeMirror"]) {
+        $(".codeeditor")["each"](function () {
+            let _0x277256 = CodeMirror["fromTextArea"](this, {
+                'lineNumbers': !![],
+                'theme': "duotone-dark",
+                'mode': "javascript",
+                'height': 0xc8
+            });
+            _0x277256["setSize"]("100%", 0xc8);
+        });
+    }
+    $(".follow-btn, .following-btn")["each"](function () {
+        var _0x2a7956 = $(this),
+            _0x1e3712 = "Follow",
+            _0x2a16a0 = "Following";
+        _0x2a7956["click"](function () {
+            if (_0x2a7956["hasClass"]("following-btn")) {
+                _0x2a7956["removeClass"]("btn-danger");
+                _0x2a7956["removeClass"]("following-btn");
+                _0x2a7956["addClass"]("btn-primary");
+                _0x2a7956["html"](_0x1e3712);
+                eval(_0x2a7956["data"]("unfollow-action"));
+            } else {
+                _0x2a7956["removeClass"]("btn-primary");
+                _0x2a7956["addClass"]("btn-danger");
+                _0x2a7956["addClass"]("following-btn");
+                _0x2a7956["html"](_0x2a16a0);
+                eval(_0x2a7956["data"]("follow-action"));
+            }
+            return ![];
+        });
+    });
+    $("[data-dismiss]")["each"](function () {
+        var _0x1a65be = $(this),
+            _0x35d490 = _0x1a65be["data"]("dismiss");
+        _0x1a65be["click"](function () {
+            $(_0x35d490)["fadeOut"](function () {
+                $(_0x35d490)["remove"]();
+            });
+            return ![];
+        });
+    });
+    $("[data-collapse]")["each"](function () {
+        var _0x32b7af = $(this),
+            _0x5c32c0 = _0x32b7af["data"]("collapse");
+        _0x32b7af["click"](function () {
+            $(_0x5c32c0)["collapse"]("toggle");
+            $(_0x5c32c0)['on']("shown.bs.collapse", function (_0x4ad996) {
+                _0x4ad996["stopPropagation"]();
+                _0x32b7af["html"]('<i class="fas fa-minus"></i>');
+            });
+            $(_0x5c32c0)['on']("hidden.bs.collapse", function (_0xd43757) {
+                _0xd43757["stopPropagation"]();
+                _0x32b7af["html"]('<i class="fas fa-plus"></i>');
+            });
+            return ![];
+        });
+    });
+    $(".gallery .gallery-item")["each"](function () {
+        var _0x3b2915 = $(this);
+        _0x3b2915["attr"]("href", _0x3b2915["data"]("image"));
+        _0x3b2915["attr"]("title", _0x3b2915["data"]("title"));
+        if (_0x3b2915["parent"]()["hasClass"]("gallery-fw")) {
+            _0x3b2915["css"]({
+                'height': _0x3b2915["parent"]()["data"]("item-height")
+            });
+            _0x3b2915["find"]("div")["css"]({
+                'lineHeight': _0x3b2915["parent"]()["data"]("item-height") + 'px'
+            });
+        }
+        _0x3b2915["css"]({
+            'backgroundImage': 'url("' + _0x3b2915["data"]("image") + '\x22)'
+        });
+    });
+    if (jQuery()["Chocolat"]) {
+        $(".gallery")["Chocolat"]({
+            'className': "gallery",
+            'imageSelector': ".gallery-item"
+        });
+    }
+    $("[data-background]")["each"](function () {
+        var _0x2e02dd = $(this);
+        _0x2e02dd["css"]({
+            'backgroundImage': "url(" + _0x2e02dd["data"]("background") + ')'
+        });
+    });
+    $("[data-tab]")["each"](function () {
+        var _0x51cbf3 = $(this);
+        _0x51cbf3["click"](function () {
+            if (!_0x51cbf3["hasClass"]("active")) {
+                var _0x4545e9 = $('[data-tab-group="' + _0x51cbf3["data"]("tab") + '\x22]'),
+                    _0x3be253 = $('[data-tab-group="' + _0x51cbf3["data"]("tab") + '"].active'),
+                    _0x4cacaf = $(_0x51cbf3["attr"]("href")),
+                    _0xeaa51b = $('[data-tab="' + _0x51cbf3["data"]("tab") + '\x22]');
+                _0xeaa51b["removeClass"]("active");
+                _0x51cbf3["addClass"]("active");
+                _0x4cacaf["addClass"]("active");
+                _0x3be253["removeClass"]("active");
+            }
+            return ![];
+        });
+    });
+    $(".needs-validation")["submit"](function () {
+        var _0x4cb329 = $(this);
+        if (_0x4cb329[0x0]["checkValidity"]() === ![]) {
+            event["preventDefault"]();
+            event["stopPropagation"]();
+        }
+        _0x4cb329["addClass"]("was-validated");
+    });
+    $(".alert-dismissible")["each"](function () {
+        var _0x55c91a = $(this);
+        _0x55c91a["find"](".close")["click"](function () {
+            _0x55c91a["alert"]("close");
+        });
+    });
+    if ($(".main-navbar")["length"]) {}
+    $("[data-crop-image]")["each"](function (_0x58d85d) {
+        $(this)["css"]({
+            'overflow': "hidden",
+            'position': "relative",
+            'height': $(this)["data"]("crop-image")
+        });
+    });
+    $("[data-toggle-slide]")["click"](function () {
+        let _0x4ea69d = $(this)["data"]("toggle-slide");
+        $(_0x4ea69d)["slideToggle"]();
+        return ![];
+    });
+    $("[data-dismiss=modal]")["click"](function () {
+        $(this)["closest"](".modal")["modal"]("hide");
+        return ![];
+    });
+    $("[data-width]")["each"](function () {
+        $(this)["css"]({
+            'width': $(this)["data"]("width")
+        });
+    });
+    $("[data-height]")["each"](function () {
+        $(this)["css"]({
+            'height': $(this)["data"]("height")
+        });
+    });
+    if ($(".chocolat-parent")["length"] && jQuery()["Chocolat"]) {
+        $(".chocolat-parent")["Chocolat"]();
+    }
+    if ($(".sortable-card")["length"] && jQuery()["sortable"]) {
+        $(".sortable-card")["sortable"]({
+            'handle': ".card-header",
+            'opacity': 0.8,
+            'tolerance': "pointer"
+        });
+    }
+    if (jQuery()["daterangepicker"]) {
+        if ($(".datepicker")["length"]) {
+            $(".datepicker")["daterangepicker"]({
+                'locale': {
+                    'format': "YYYY-MM-DD"
+                },
+                'singleDatePicker': !![]
+            });
+        }
+        if ($(".datetimepicker")["length"]) {
+            $(".datetimepicker")["daterangepicker"]({
+                'locale': {
+                    'format': "YYYY-MM-DD hh:mm"
+                },
+                'singleDatePicker': !![],
+                'timePicker': !![],
+                'timePicker24Hour': !![]
+            });
+        }
+        if ($(".daterange")["length"]) {
+            $(".daterange")["daterangepicker"]({
+                'locale': {
+                    'format': "YYYY-MM-DD"
+                },
+                'drops': "down",
+                'opens': "right"
+            });
+        }
+    }
+    if (jQuery()["timepicker"] && $(".timepicker")["length"]) {
+        $(".timepicker")["timepicker"]({
+            'icons': {
+                'up': "fas fa-chevron-up",
+                'down': "fas fa-chevron-down"
+            }
+        });
+    }
+});
+"use strict";
+(function (_0x3e6a8c, _0x326191, _0x3c2159) {
+    _0x3e6a8c['fn']["fireModal"] = function (_0x362f41) {
+        var _0x362f41 = _0x3e6a8c["extend"]({
+            'size': "modal-md",
+            'center': ![],
+            'animation': !![],
+            'title': "Modal Title",
+            'closeButton': !![],
+            'header': !![],
+            'bodyClass': '',
+            'footerClass': '',
+            'body': '',
+            'buttons': [],
+            'autoFocus': !![],
+            'removeOnDismiss': ![],
+            'created': function () {},
+            'appended': function () {},
+            'onFormSubmit': function () {},
+            'modal': {}
+        }, _0x362f41);
+        this["each"](function () {
+            _0x3c2159++;
+            var _0x163921 = "fire-modal-" + _0x3c2159,
+                _0x4b6a36 = "trigger--" + _0x163921,
+                _0x249902 = _0x3e6a8c('.' + _0x4b6a36);
+            _0x3e6a8c(this)["addClass"](_0x4b6a36);
+            let _0x21198e = _0x362f41["body"];
+            if (typeof _0x21198e == "object") {
+                if (_0x21198e["length"]) {
+                    let _0x209547 = _0x21198e;
+                    _0x21198e = _0x21198e["removeAttr"]('id')["clone"]()["removeClass"]("modal-part");
+                    _0x209547["remove"]();
+                } else {
+                    _0x21198e = '<div class="text-danger">Modal part element not found!</div>';
+                }
+            }
+            var _0x1fe63e = '   <div class="modal' + (_0x362f41["animation"] == !![] ? " fade" : '') + '" tabindex="-1" role="dialog" id="' + _0x163921 + '">  ' + '     <div class="modal-dialog ' + _0x362f41["size"] + (_0x362f41["center"] ? " modal-dialog-centered" : '') + '" role="document">  ' + '       <div class="modal-content">  ' + (_0x362f41["header"] == !![] ? '         <div class="modal-header">  ' + '           <h5 class="modal-title">' + _0x362f41["title"] + "</h5>  " + (_0x362f41["closeButton"] == !![] ? '           <button type="button" class="close" data-dismiss="modal" aria-label="Close">  ' + '             <span aria-hidden="true">&times;</span>  ' + "           </button>  " : '') + "         </div>  " : '') + '         <div class="modal-body">  ' + "         </div>  " + (_0x362f41["buttons"]["length"] > 0x0 ? '         <div class="modal-footer">  ' + "         </div>  " : '') + "       </div>  " + "     </div>  " + "  </div>  ";
+            var _0x1fe63e = _0x3e6a8c(_0x1fe63e);
+            var _0x4828c6;
+            _0x362f41["buttons"]["forEach"](function (_0x350c2a) {
+                let _0x163921 = 'id' in _0x350c2a ? _0x350c2a['id'] : '';
+                _0x4828c6 = '<button type="' + ("submit" in _0x350c2a && _0x350c2a["submit"] == !![] ? "submit" : "button") + '" class="' + _0x350c2a["class"] + '" id="' + _0x163921 + '\x22>' + _0x350c2a["text"] + "</button>";
+                _0x4828c6 = _0x3e6a8c(_0x4828c6)["off"]("click")['on']("click", function () {
+                    _0x350c2a["handler"]["call"](this, _0x1fe63e);
+                });
+                _0x3e6a8c(_0x1fe63e)["find"](".modal-footer")["append"](_0x4828c6);
+            });
+            _0x3e6a8c(_0x1fe63e)["find"](".modal-body")["append"](_0x21198e);
+            if (_0x362f41["bodyClass"]) _0x3e6a8c(_0x1fe63e)["find"](".modal-body")["addClass"](_0x362f41["bodyClass"]);
+            if (_0x362f41["footerClass"]) _0x3e6a8c(_0x1fe63e)["find"](".modal-footer")["addClass"](_0x362f41["footerClass"]);
+            _0x362f41["created"]["call"](this, _0x1fe63e, _0x362f41);
+            let _0x5b2eef = _0x3e6a8c(_0x1fe63e)["find"](".modal-body form"),
+                _0x3a08b3 = _0x1fe63e["find"]("button[type=submit]");
+            _0x3e6a8c("body")["append"](_0x1fe63e);
+            _0x362f41["appended"]["call"](this, _0x3e6a8c('#' + _0x163921), _0x5b2eef, _0x362f41);
+            if (_0x5b2eef["length"]) {
+                if (_0x362f41["autoFocus"]) {
+                    _0x3e6a8c(_0x1fe63e)['on']("shown.bs.modal", function () {
+                        if (typeof _0x362f41["autoFocus"] == "boolean") _0x5b2eef["find"]("input:eq(0)")["focus"]();
+                        else if (typeof _0x362f41["autoFocus"] == "string" && _0x5b2eef["find"](_0x362f41["autoFocus"])["length"]) _0x5b2eef["find"](_0x362f41["autoFocus"])["focus"]();
+                    });
+                }
+                let _0x4b72fe = {};
+                _0x4b72fe["startProgress"] = function () {
+                    _0x1fe63e.addClass("modal-progress");
+                };
+                _0x4b72fe["stopProgress"] = function () {
+                    _0x1fe63e.removeClass("modal-progress");
+                };
+                if (!_0x5b2eef["find"]("button")["length"]) _0x3e6a8c(_0x5b2eef)["append"]('<button class="d-none" id="' + _0x163921 + '-submit"></button>');
+                _0x3a08b3["click"](function () {
+                    _0x5b2eef["submit"]();
+                });
+                _0x5b2eef["submit"](function (_0x59febf) {
+                    _0x4b72fe["startProgress"]();
+                    _0x362f41["onFormSubmit"]["call"](this, _0x1fe63e, _0x59febf, _0x4b72fe);
+                });
+            }
+            _0x3e6a8c(document)['on']("click", '.' + _0x4b6a36, function () {
+                let _0x7f0848 = _0x3e6a8c('#' + _0x163921)["modal"](_0x362f41["modal"]);
+                if (_0x362f41["removeOnDismiss"]) {
+                    _0x7f0848['on']("hidden.bs.modal", function () {
+                        _0x7f0848["remove"]();
+                    });
+                }
+                return ![];
+            });
+        });
+    };
+    _0x3e6a8c["destroyModal"] = function (_0xe1950d) {
+        _0xe1950d["modal"]("hide");
+        _0xe1950d['on']("hidden.bs.modal", function () {});
+    };
+    _0x3e6a8c["cardProgress"] = function (_0x1b59f6, _0x4cd38d) {
+        var _0x4cd38d = _0x3e6a8c["extend"]({
+            'dismiss': ![],
+            'dismissText': "Cancel",
+            'spinner': !![],
+            'onDismiss': function () {}
+        }, _0x4cd38d);
+        var _0x3881a7 = _0x3e6a8c(_0x1b59f6);
+        _0x3881a7["addClass"]("card-progress");
+        if (_0x4cd38d["spinner"] == ![]) {
+            _0x3881a7["addClass"]("remove-spinner");
+        }
+        if (_0x4cd38d["dismiss"] == !![]) {
+            var _0x1f3d81 = '<a class="btn btn-danger card-progress-dismiss">' + _0x4cd38d["dismissText"] + "</a>";
+            _0x1f3d81 = _0x3e6a8c(_0x1f3d81)["off"]("click")['on']("click", function () {
+                _0x3881a7["removeClass"]("card-progress");
+                _0x3881a7["find"](".card-progress-dismiss")["remove"]();
+                _0x4cd38d["onDismiss"]["call"](this, _0x3881a7);
+            });
+            _0x3881a7["append"](_0x1f3d81);
+        }
+        return {
+            'dismiss': function (_0x9ada9b) {
+                _0x3e6a8c["cardProgressDismiss"](_0x3881a7, _0x9ada9b);
+            }
+        };
+    };
+    _0x3e6a8c["cardProgressDismiss"] = function (_0x5629cf, _0x23edcf) {
+        var _0x2d8294 = _0x3e6a8c(_0x5629cf);
+        _0x2d8294["removeClass"]("card-progress");
+        _0x2d8294["find"](".card-progress-dismiss")["remove"]();
+        if (_0x23edcf) _0x23edcf["call"](this, _0x2d8294);
+    };
+    _0x3e6a8c["chatCtrl"] = function (_0x3693cd, _0x5dc9be) {
+        var _0x5dc9be = _0x3e6a8c["extend"]({
+            'position': "chat-right",
+            'text': '',
+            'time': moment(new Date()["toISOString"]())["format"]("hh:mm"),
+            'picture': '',
+            'type': "text",
+            'timeout': 0x0,
+            'onShow': function () {}
+        }, _0x5dc9be);
+        var _0xaf13c6 = _0x3e6a8c(_0x3693cd),
+            _0x3693cd = '<div class="chat-item ' + _0x5dc9be["position"] + '" style="display:none">' + '<img src="' + _0x5dc9be["picture"] + '\x22>' + '<div class="chat-details">' + '<div class="chat-text">' + _0x5dc9be["text"] + "</div>" + '<div class="chat-time">' + _0x5dc9be["time"] + "</div>" + "</div>" + "</div>",
+            _0x2a26ff = '<div class="chat-item chat-left chat-typing" style="display:none">' + '<img src="' + _0x5dc9be["picture"] + '\x22>' + '<div class="chat-details">' + '<div class="chat-text"></div>' + "</div>" + "</div>";
+        var _0x225bd8 = _0x3693cd;
+        if (_0x5dc9be["type"] == "typing") {
+            _0x225bd8 = _0x2a26ff;
+        }
+        if (_0x5dc9be["timeout"] > 0x0) {
+            setTimeout(function () {
+                _0xaf13c6["find"](".chat-content")["append"](_0x3e6a8c(_0x225bd8)["fadeIn"]());
+            }, _0x5dc9be["timeout"]);
+        } else {
+            _0xaf13c6["find"](".chat-content")["append"](_0x3e6a8c(_0x225bd8)["fadeIn"]());
+        }
+        var _0x17345e = 0x0;
+        _0xaf13c6["find"](".chat-content .chat-item")["each"](function () {
+            _0x17345e += _0x3e6a8c(this)["outerHeight"]();
+        });
+        setTimeout(function () {
+            _0xaf13c6["find"](".chat-content")["scrollTop"](_0x17345e, -0x1);
+        }, 0x64);
+        _0x5dc9be["onShow"]["call"](this, _0x225bd8);
+    };
+}(jQuery, this, 0x0));
