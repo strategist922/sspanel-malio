@@ -170,11 +170,10 @@ class Job
             Telegram::Send(Config::getdb('Telegram.msg.DailyJob'));
         }
 
-        //auto reset只重置最后购买的
-	//$boughts = Bought::all();
+     //auto reset只重置最后购买的
 	$shopid  = Shop::where('content->reset', '<>', 0)->where('content->reset_value', '<>', 0)->where('content->reset_exp', '<>', 0)->pluck('id')->toArray();
 	 // 用 UserID 分组倒序取最新一条包含周期重置商品的购买记录
-	$boughts = Bought::whereIn('shopid', $shopid)->orderBy('id', 'desc')->groupBy('userid')->get();
+	$boughts = Bought::whereIn('shopid', $shopid)->orderBy('id', 'desc')->get()->unique('userid');
 	$boughted_users = array();
         foreach ($boughts as $bought) {
 		$user = $bought->user();
@@ -190,12 +189,8 @@ class Job
                 $bought->delete();
                 continue;
             }
-
-            if ($shop->reset() != 0 && $shop->reset_value() != 0 && $shop->reset_exp() != 0) {
 		$boughted_users[] = $bought->userid;
-		//根据用户等级时间来重置流量，方便叠加
-                if ((strtotime($user->class_expire) > time()) && (int)((time() - $bought->datetime) / 86400) % $shop->reset() == 0 && (int)((time() - $bought->datetime) / 86400) != 0) {
-                //if ((time() - $shop->reset_exp() * 86400 < $bought->datetime) && (int)((time() - $bought->datetime) / 86400) % $shop->reset() == 0 && (int)((time() - $bought->datetime) / 86400) != 0) {
+                if ((int)((time() - $bought->datetime) / 86400) % $shop->reset() == 0 && (int)((time() - $bought->datetime) / 86400) != 0) {
                     echo('流量重置-' . $user->id . "\n");
                     $user->transfer_enable = Tools::toGB($shop->reset_value());
                     $user->u = 0;
@@ -217,7 +212,7 @@ class Job
                     }
                 }
             }
-        }
+        
 
 
         $users = User::all();
