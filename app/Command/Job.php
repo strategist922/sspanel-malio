@@ -191,7 +191,7 @@ class Job
             }
 		$boughted_users[] = $bought->userid;
                 if ((int)((time() - $bought->datetime) / 86400) % $shop->reset() == 0 && (int)((time() - $bought->datetime) / 86400) != 0) {
-                    echo('流量重置-' . $user->id . "\n");
+                    echo("订单".$bought->id.'-流量重置-' . $user->id . "\n");
                     $user->transfer_enable = Tools::toGB($shop->reset_value());
                     $user->u = 0;
                     $user->d = 0;
