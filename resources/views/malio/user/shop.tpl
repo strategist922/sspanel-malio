@@ -153,6 +153,7 @@
 </head>
 
 <body>
+
 <div id="app">
     <div class="main-wrapper">
         {include file='user/navbar.tpl'}
@@ -160,6 +161,7 @@
         {if $malio_config['shop_style'] == 'plans'}
             <!-- Main Content -->
             <div id="main-page" class="main-content">
+
                 <section class="section">
                     <div class="section-header">
                         <h1>{$i18n->get('store')}</h1>
@@ -175,7 +177,9 @@
                     </div>
                     <div class="section-body">
                         <h2 class="section-title">{$i18n->get('store-title')}</h2>
-                        <p class="section-lead">{$i18n->get('store-sub-title')}</p>
+                        <div class="alert alert-info">
+                            {$i18n->get('store-sub-title')}
+                        </div>
 
                         <div class="row">
                             {if $malio_config['shop_enable_trail_plan'] == true && $user->class < 0}
@@ -450,8 +454,11 @@
                         </div>
                     </div>
                     <div class="section-body">
+
                         <h2 class="section-title">{$i18n->get('store-title')}</h2>
-                        <p class="section-lead">{$i18n->get('store-sub-title')}</p>
+                        <div class="alert alert-info">
+                            {$i18n->get('store-sub-title')}
+                        </div>
 
                         <div class="row">
                             {foreach $shops as $shop}
@@ -524,7 +531,7 @@
                                             <div class="pricing-cta">
                                                 <a href="##" data-toggle="modal" data-target="#legacy-modal-1"
                                                    onclick="legacySelect({$shop->id})">
-                                                  {$i18n->get('Repurchase')}
+                                                    {$i18n->get('Repurchase')}
                                                     <i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         {/if}

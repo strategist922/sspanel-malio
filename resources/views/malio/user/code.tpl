@@ -44,6 +44,9 @@
             <section class="section">
                 <div class="section-header">
                     <h1>{$i18n->get('wallet')}</h1>
+
+                </div>
+                <div class="alert alert-success">
                     <span>充值未到账提交工单</span>
                 </div>
                 <div class="section-body">

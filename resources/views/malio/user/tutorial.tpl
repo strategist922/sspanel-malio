@@ -62,8 +62,8 @@
           <div class="section-header">
             <h1>{$i18n->get('apps-and-tutorial')}</h1>
 </div>
-<div class="alert alert-warning">
-下方为简易版教程，<a href="https://docs.cafecat.club/" target="_blank">跳转进阶教程</a>
+<div class="alert alert-success">
+下方為簡易版教程，<a href="https://docs.cafecat.club/" target="_blank">跳轉進階教程</a>
 </div>          
           <div class="section-body">
             <div class="row mt-sm-4">
