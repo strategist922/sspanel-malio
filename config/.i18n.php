@@ -965,7 +965,7 @@ $I18N['data-used-today'] = array(
 );
 $I18N['quick-import'] = array(
     'en' => 'Quick Import',
-    'zh-cn' => '便捷導入(更多訂閱請前往tgbot查詢)'
+    'zh-cn' => '便捷導入(更多訂閱請前往<a href="https://t.me/spccat_bot" target="_blank">tg機器人</a>查詢)'
 );
 $I18N['import-clash-config'] = array(
     'en' => 'Import ClashX / CFW / CFA Config',
@@ -977,7 +977,7 @@ $I18N['import-quantumult-config'] = array(
 );
 $I18N['import-quantumultx-config'] = array(
 	'en' => 'Copy QuantumultX Config URL',
-	'zh-cn' => '复制 QuantumultX 订阅'
+	'zh-cn' => '複製 QuantumultX 訂閲'
 );
 $I18N['import-shadowrocket-config'] = array(
     'en' => 'Import Shadowrocket Config',
