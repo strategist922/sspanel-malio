@@ -120,14 +120,14 @@
               <a href="/user/tutorial" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
             <h1>iOS 使用教程</h1>
-            {if $malio_config['display_more_app_buttokn'] == true}
+            {if $malio_config['display_more_app_button'] == true}
             <div class="section-header-breadcrumb">
               <div class="btn-group dropleft">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 其他客户端
                 </button>
                 <div class="dropdown-menu dropleft">
-                  <a class="dropdown-item has-icon" href="/user/tutorial?os=ios&client=quantumult"><i class="malio-quantumult"></i>Quantumult</a>
+                  <a class="dropdown-item has-icon" href="/user/tutorial?os=ios&client=quantumultx"><i class="malio-atom"></i>QuantumultX</a>
                 </div>
               </div>
             </div>

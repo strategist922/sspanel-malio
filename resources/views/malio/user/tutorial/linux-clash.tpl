@@ -129,7 +129,7 @@
                             <p>执行 <code>cd && mkdir clash</code> 在用户目录下创建 clash 文件夹。</p>
                             <p>下载适合的 Clash 二进制文件并解压重命名为 <code>clash</code></p>
                             <p>一般个人的64位电脑下载 clash-linux-amd64.tar.gz 即可。</p>
-                            <a href="https://ghproxy.com/https://github.com/Dreamacro/clash/releases" class="btn btn-icon icon-left btn-primary btn-app btn-lg btn-round" target="blank"><i class="fab fa-github"></i> 下载客户端</a>
+                            <a href="https://github.com/Dreamacro/clash/releases" class="btn btn-icon icon-left btn-primary btn-app btn-lg btn-round" target="blank"><i class="fab fa-github"></i> 下载客户端</a>
                           </div>
                           <div class="right-pic col-xs-12 col-md-6 col-lg-6">
                             <div class="tutorial-pic hide-on-mobie">

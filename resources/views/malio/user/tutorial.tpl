@@ -140,13 +140,13 @@
                 {if $malio_config['linux_client'] == 'clash'}
                 <div class="card card-hero" onclick="location='/user/tutorial?os=linux&client=clash'">
                 {else if $malio_config['linux_client'] == 'electron-ssr'}
-                <div class="card card-hero" onclick="location='/user/tutorial?os=ios&client=quantumultx'">
+                <div class="card card-hero" onclick="location='/user/tutorial?os=linux&client=clash'">
                 {/if}
                   <div class="card-header os-card linux-card">
                     <div class="card-icon">
                       <i class="fab fa-apple"></i>
                     </div>
-                    <h4>QuantumultX</h4>
+                    <h4>Linux</h4>
                     <div class="card-description">{$i18n->get('linux-minimal-version')}</div>
                   </div>
                 </div>

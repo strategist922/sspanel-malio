@@ -975,6 +975,10 @@ $I18N['import-quantumult-config'] = array(
     'en' => 'Import Quantumult Config',
     'zh-cn' => '壹鍵導入 Quantumult 配置'
 );
+$I18N['import-quantumultx-config'] = array(
+	'en' => 'Copy QuantumultX Config URL',
+	'zh-cn' => '复制 QuantumultX 订阅'
+);
 $I18N['import-shadowrocket-config'] = array(
     'en' => 'Import Shadowrocket Config',
     'zh-cn' => '壹鍵導入 Shadowrocket 配置'
