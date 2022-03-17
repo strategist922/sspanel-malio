@@ -475,7 +475,7 @@
                                           <a href="##"
                                              class="btn btn-icon icon-left btn-primary btn-quantumultx copy-text btn-lg btn-round"
                                              data-clipboard-text="https://dove.589669.xyz/profiles?type=QuanX&sub={$subInfo['quantumultx']}&emoji=0&sort=0"><i
-                                                    class="malio-quantumult"></i> 复制Quantumultx订阅</a>
+                                                    class="malio-quantumult"></i> {$i18n->get('import-quantumultx-config')}</a>
                                             {if (in_array("v2ray",$malio_config['support_sub_type']))}
                                                 {if (!in_array("v2ray",$malio_config['index_hidden_import_buttons']))}
                                                     <a href="##"
