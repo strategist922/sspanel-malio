@@ -258,8 +258,8 @@ class AdminController extends UserController
 		
 		$today_income = $stats->getIncome($date_in_timestamp, $date_in_timestamp + 86400);
 		$yesterday_income = $stats->getIncome($date_in_timestamp - 86400, $date_in_timestamp);
-		$to_the_account_income = $stats->getIncome($date_in_timestamp - 345600, $date_in_timestamp - 86400);
-		$threedaysincome_income = $stats->getIncome($date_in_timestamp - 172800, $date_in_timestamp + 86400);
+		$to_the_account_income = $stats->getIncome($date_in_timestamp - 345600, $date_in_timestamp - 172800);
+		$threedaysincome_income = $stats->getIncome($date_in_timestamp - 259200, $date_in_timestamp + 86400);
 		$first_day_of_this_week_timestamp = strtotime("last monday midnight", $date_in_timestamp);
 		$first_day_of_next_week_timestamp = strtotime("next monday midnight", $date_in_timestamp);
 		$this_week_income = $stats->getIncome($first_day_of_this_week_timestamp, $first_day_of_next_week_timestamp);
