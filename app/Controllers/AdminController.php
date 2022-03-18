@@ -265,7 +265,6 @@ class AdminController extends UserController
 		$this_week_income = $stats->getIncome($first_day_of_this_week_timestamp, $first_day_of_next_week_timestamp);
 		$first_day_of_last_week_timestamp = strtotime("last monday midnight", $date_in_timestamp - 604800);
 		$last_week_income = $stats->getIncome($first_day_of_last_week_timestamp, $first_day_of_this_week_timestamp);
-		
 		$first_day_of_this_month_timestamp = strtotime("first day of this month", $date_in_timestamp);
 		$first_day_of_next_month_timestamp = strtotime("first day of next month", $date_in_timestamp);
 		$this_month_income = $stats->getIncome($first_day_of_this_month_timestamp, $first_day_of_next_month_timestamp);
