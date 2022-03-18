@@ -375,6 +375,10 @@ $I18N['join-telegram-group'] = array(
     'en' => 'Join Telegram Group',
     'zh-cn' => '加入 Telegram 群組'
 );
+$I18N['access-faqs'] = array(
+	'en' => 'access faq',
+	'zh-cn' => '查看常見問題'
+);
 $I18N['alipay'] = array(
     'en' => 'Alipay',
     'zh-cn' => '支付寶'
@@ -2012,6 +2016,10 @@ $I18N['audit-logs-notice'] = array(
 );
 
 ## Other Modals ##
+$I18N['purchase_info'] = array(
+	'en' => '您當前等級無法購買此訂閱，詳情查看<a href="/user/tutorial?os=faq" target="_blank">常見問題</a>',
+	'zh-cn' => '您當前等級無法購買此訂閱，詳情查看<a href="/user/tutorial?os=faq" target="_blank">常見問題</a>'
+);
 $I18N['failed'] = array(
     'en' => 'Failed',
     'zh-cn' => '失敗'

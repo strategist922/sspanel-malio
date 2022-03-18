@@ -79,6 +79,20 @@
     })
   });
 
+  function purchaseinfo() {
+    Swal.fire({
+      title: "{$i18n->get('notice')}",
+      html: '{$i18n->get("purchase_info")}',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: "{$i18n->get('access-faqs')}",
+      cancelButtonText: "{$i18n->get('confirm')}"
+    }).then((result) => {
+      if (result.value) {
+        window.open("/user/tutorial?os=faq")
+      }
+    })
+  }
   function joinTelegramGroup() {
     {if $malio_config['force_user_to_bind_tg_when_join_group'] == true && $user->telegram_id == 0}
     Swal.fire({
