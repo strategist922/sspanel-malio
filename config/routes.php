@@ -119,7 +119,7 @@ $app->group('/user', function () {
     $this->post('/hide', App\Controllers\UserController::class . ':updateHide');
     $this->get('/sys', App\Controllers\UserController::class . ':sys');
     $this->get('/trafficlog', App\Controllers\UserController::class . ':trafficLog');
-    $this->get('/kill', App\Controllers\UserController::class . ':kill');
+	$this->get('/kill', App\Controllers\UserController::class . ':kill');
     $this->post('/kill', App\Controllers\UserController::class . ':handleKill');
     $this->get('/logout', App\Controllers\UserController::class . ':logout');
     $this->get('/backtoadmin', App\Controllers\UserController::class . ':backtoadmin');

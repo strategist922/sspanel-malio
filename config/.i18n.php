@@ -1672,9 +1672,25 @@ $I18N['config-history'] = array(
     'en' => 'Config History',
     'zh-cn' => '訂閱記錄'
 );
+$I18N['traffic-history'] = array(
+	'en' => 'traffic History',
+	'zh-cn' => '流量記錄'
+);
+$I18N['traffic-used-node'] = array(
+	'en' => 'used node',
+	'zh-cn' => '使用節點'
+);
+$I18N['trafficlog'] = array(
+	'en' => 'trafficlog',
+	'zh-cn' => '流量记录'
+);
 $I18N['config-history-notice'] = array(
     'en' => 'You can look up all your server config sub log on this page to make sure your account is not compromised',
     'zh-cn' => '您可在此查詢您賬戶所有的訂閱記錄，確保您的賬戶沒有被盜用'
+);
+$I18N['traffic-history-notice'] = array(
+	'en' => 'You can look up all your server config traffic used log on this page to make sure your account is not compromised',
+	'zh-cn' => '您可在此查詢您賬戶3天内的流量記錄，確保您的賬戶沒有被盜用'
 );
 $I18N['no-config-history-yet'] = array(
     'en' => 'No config history yet',
@@ -1711,6 +1727,18 @@ $I18N['new-ticket'] = array(
 $I18N['notice'] = array(
     'en' => 'Notice',
     'zh-cn' => '提示'
+);
+$I18N['username'] = array(
+	'en' => 'username',
+	'zh-cn' => '用戶名'
+);
+$I18N['nodename'] = array(
+	'en' => 'nodename',
+	'zh-cn' => '節點名'
+);
+$I18N['useredtarffic'] = array(
+	'en' => 'useredtarffic',
+	'zh-cn' => '使用流量'
 );
 $I18N['new-ticket-notice'] = array(
     'en' => 'Make sure you check the FAQ page before creating a new ticket',

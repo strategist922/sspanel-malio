@@ -1,84 +1,82 @@
-<div id="scatter-plot"></div>
-<script>
-    ! function ($) {
-        "use strict";
+<!DOCTYPE html>
+<html lang="en">
 
-        var ChartC3 = function () {};
+<head>
+    {include file='user/head.tpl'}
 
-        ChartC3.prototype.init = function () {
-            var xs_data = {};
-            var columns_data = [];
-            {foreach $logs as $single_log}
-                var log_traffic = {number_format($single_log->totalUsedRaw()/1024,2,'.', '')};
-                if ( log_traffic > 0.5) {
-                    var node_name = '{$single_log->node()->name}'.split(" - ")[0];
-                    var node_name_x = '{$single_log->node()->name}'.split(" - ")[0]+'_x';
-                    if (!xs_data.hasOwnProperty(node_name)) {
-                        xs_data[node_name] = node_name_x;
-                        columns_data[node_name] = [node_name];
-                        columns_data[node_name_x] = [node_name_x];
-                    };
-                    columns_data[node_name].push(log_traffic);
-                    columns_data[node_name_x].push((new Date({$single_log->log_time*1000})));
-                };
-            {/foreach}
-            var columns_data_edit = [];
-            for (var column in columns_data) {
-                columns_data_edit.push(
-                    columns_data[column]
-                )
-            };
-            //Scatter Plot
-            c3.generate({
-                bindto: '#scatter-plot',
-                data: {
-                    xs:xs_data,
-                    columns: columns_data_edit,
-                    type: 'scatter'
-                },
-                color: {
-                    pattern: ["#1bb99a", "#f1b53d", "#007bff", "#6610f2", "#e83e8c", "#fd7e14", "#ffc107", "#6f42c1", "#28a745", "#20c997", "#17a2b8"]
-                },
-                tooltip: {
-                    format: {
-                        value: function (value) {
-                            return value+'MB';
-                        },
-                        title: function (title) {
-                            return title.toLocaleString('chinese',
-                            {
-                                hour12:false
-                            }
-                            )
-                        }
-                    }
-                },
-                axis: {
-                    x: {
-                        label: '时间',
-                        type: 'timeseries',
-                        tick: {
-                            fit: false,
-                            format: '%d日 %H:%M',
-                            multiline: true,
-                        }
-                        
-                    },
-                    y: {
-                        label: '流量/MB',
-                    }
-                }
-                
-            });
+    <title>{$i18n->get('traffic-history')} &mdash; {$config["appName"]}</title>
+
+</head>
+
+<body>
+<div id="app">
+    <div class="main-wrapper">
+        {include file='user/navbar.tpl'}
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="section-header">
+                    <h1>{$i18n->get('traffic-history')}</h1>
+                </div>
+                <div class="section-body">
+                    <h2 class="section-title">{$i18n->get('notice')}</h2>
+                    <p class="section-lead">{$i18n->get('traffic-history-notice')}</p>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-md">
+                                            <tbody>
+                                            <tr>
+                                                <th>{$i18n->get('username')}</th>
+                                                <th>{$i18n->get('useredtarffic')}</th>
+                                                <th>{$i18n->get('traffic-used-node')}</th>
+                                                <th>{$i18n->get('date')}</th>
+
+                                            </tr>
+                                            {if count($logs) == 0}
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <strong>{$i18n->get('no-config-history-yet')}</strong></td>
+                                                </tr>
+                                            {else}
+                                                {foreach $logs as $log}
+                                                    <tr>
+                                                        <td>{$name->user_name}</td>
+                                                        <td>{(($log->u+$log->d)/1048576)|number_format:2}MB
+                                                        <td>{foreach $nodes as $node}
+                                                                {if $node->id==$log->node_id}
+                                                                    {$node->name}
+                                                                {/if}
+                                                            {/foreach}
+                                                        </td>
+                                                        <td>{date("Y-m-d H:i:s",{$log->log_time})}</td>
 
 
-        },
-        $.ChartC3 = new ChartC3, $.ChartC3.Constructor = ChartC3
-    }(window.jQuery),
+                                                    </tr>
+                                                {/foreach}
+                                            {/if}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="pagination-render float-right">
+                                        {$logs->render()}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {include file='user/footer.tpl'}
+    </div>
+</div>
 
-    //initializing 
-    function ($) {
-        "use strict";
-        $.ChartC3.init()
-    }(window.jQuery);
-</script>
+{include file='user/scripts.tpl'}
+
+</body>
+
+</html>

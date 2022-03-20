@@ -96,7 +96,8 @@
      {if $malio_config['enable_user_sub_log'] == true && $user->class >=0}
       <li><a class="nav-link" href="/user/subscribe_log"><i class="fas fa-stream"></i> <span>{$i18n->get('config-history')}</span></a></li>
       {/if}
-      {if $malio_config['enable_share_account_page'] == true && $user->class >=0}
+        <li><a class="nav-link" href="/user/trafficlog"><i class="fas fa-paper-plane"></i> <span>{$i18n->get('trafficlog')}</span></a></li>
+        {if $malio_config['enable_share_account_page'] == true && $user->class >=0}
       <li><a class="nav-link" href="/user/share-account"><i class="fas fa-share"></i> <span>{$i18n->get('shared-account')}</span></a></li>
       {/if}
       {if $malio_config['enable_ticket'] == true}
