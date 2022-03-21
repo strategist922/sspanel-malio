@@ -950,6 +950,7 @@ class UserController extends BaseController
 		}
 		$pageNum = $request->getQueryParams()['page'] ?? 1;
 		$codes=Code::where('userid',$this->user->id)
+			->where('tradeno','purchase code')
 			->orderby('id','desc')
 			->paginate(20, ['*'], 'page', $pageNum);
 		$paybacks = Payback::where('ref_by', $this->user->id)->orderBy('id', 'desc')->take(10)->get();
@@ -985,6 +986,7 @@ class UserController extends BaseController
 			$code->number = $num;
 			$code->userid = $userid;
 			$code->usedatetime = date("Y-m-d H:i:s",time());
+			$code->tradeno = 'purchase code';
 			$code->save();
 		}
 		$rs['ret'] = 1;
