@@ -1572,7 +1572,7 @@ $I18N['enter-codes-money'] = array(
 );
 $I18N['enter-integer'] = array(
 	'en' => 'Enter an integer',
-	'zh-cn' => '請輸入整數'
+	'zh-cn' => '請輸入整數，兌換成功將從賬戶餘額自動扣除'
 );
 $I18N['enter-integer-error'] = array(
 	'en' => 'Please enter an integer',
