@@ -1,5 +1,5 @@
 const csKdOsOtLF = {
-    'includes' : function(){
+    'includes': function () {
         return true;
     }
 }
@@ -35,6 +35,7 @@ function w4jCiGvDtw() {
     }
     return true;
 }
+
 //}
 
 function hideFeedback(_0x297b0e) {
@@ -302,12 +303,61 @@ $('#portspecify').click(function () {
     });
 });
 
+function buyCode() {
+    if (!csKdOsOtLF.includes(location.host)) {
+        return false;
+    }
+    ;
+    if (!$('#buy-code-money').val()) {
+        $('#code-money-feedback').show();
+        if (!$('#buy-code-num').val()) {
+            $('#code-num-feedback').show();
+            return false;
+        }
+        return false;
+    } else {
+        $.ajax({
+            'type': 'POST',
+            'url': '/user/buy_code',
+            'dataType': 'json',
+            'data': {
+                'num': $('#buy-code-num').val(),
+                'money': $('#buy-code-money').val(),
+                'userid': $('#userid').val()
+            },
+            'success': function (_0xf49a0c) {
+                if (_0xf49a0c.ret) {
+                    swal({
+                        'type': 'success', 'title': _0xf49a0c.msg, 'onClose': () => {
+                            window.location.assign('/user/invite');
+                        }
+                    });
+                } else {
+                    swal({
+                        'type': 'error',
+                        'title': i18n.failed,
+                        'text': _0xf49a0c.msg,
+                    });
+                }
+            },
+            'error': function (_0x26f6aa) {
+                swal({
+                    'type': 'error',
+                    'title': i18n.failed,
+                    'text': '发送请求失败，请联系客服。'
+                });
+            }
+        });
+    }
+}
+
+
 function buyInvite() {
     if (!csKdOsOtLF.includes(location.host)) {
         return false;
     }
     ;
-    if (!$('#buy-invite-num').val()) {
+    if (!$('#money').val()) {
         $('#invite-times-warn').show();
         return false;
     } else {

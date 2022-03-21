@@ -1532,6 +1532,7 @@ $I18N['affiliation-history'] = array(
     'en' => 'Affiliation History',
     'zh-cn' => '返利記錄'
 );
+
 $I18N['invitee-id'] = array(
     'en' => 'Invitee ID',
     'zh-cn' => '被邀請用戶ID'
@@ -1540,9 +1541,55 @@ $I18N['reward'] = array(
     'en' => 'Reward',
     'zh-cn' => '獲得返利'
 );
+$I18N['codes-list'] = array(
+	'en' => 'codes-list',
+	'zh-cn' => '充值碼列表'
+);
+$I18N['codes-content'] = array(
+	'en' => 'content',
+	'zh-cn' => '内容'
+);
+
+$I18N['if-codes-used'] = array(
+	'en' => 'if used',
+	'zh-cn' => '是否使用'
+);
+$I18N['codes-used'] = array(
+	'en' => 'Used',
+	'zh-cn' => '已使用'
+);
+$I18N['codes-notused'] = array(
+	'en' => 'NOt Used',
+	'zh-cn' => '未使用'
+);
+$I18N['enter-codes-num'] = array(
+	'en' => 'Enter codes num',
+	'zh-cn' => '兌換數量'
+);
+$I18N['enter-codes-money'] = array(
+	'en' => 'Enter codes money',
+	'zh-cn' => '單張面值'
+);
+$I18N['enter-integer'] = array(
+	'en' => 'Enter an integer',
+	'zh-cn' => '請輸入整數'
+);
+$I18N['enter-integer-error'] = array(
+	'en' => 'Please enter an integer',
+	'zh-cn' => '請輸入正確内容'
+);
 $I18N['no-affiliation-history'] = array(
     'en' => 'No Affiliation History',
     'zh-cn' => '無返利記錄'
+);
+$I18N['no-codes-history'] = array(
+	'en' => 'No Codes History',
+	'zh-cn' => '無兌換記錄'
+);
+
+$I18N['purchase-codes'] = array(
+	'en' => 'Purchase Codes',
+	'zh-cn' => '兌換充值碼'
 );
 $I18N['purchase-invitation-chances'] = array(
     'en' => 'Purchase Invitation Chances',

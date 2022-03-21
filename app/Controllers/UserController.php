@@ -948,15 +948,50 @@ class UserController extends BaseController
 			$this->user->addInviteCode();
 			$code = InviteCode::where('user_id', $this->user->id)->first();
 		}
-		
 		$pageNum = $request->getQueryParams()['page'] ?? 1;
-		$paybacks = Payback::where('ref_by', $this->user->id)->orderBy('id', 'desc')->paginate(15, ['*'], 'page', $pageNum);
+		$codes=Code::where('userid',$this->user->id)
+			->orderby('id','desc')
+			->paginate(20, ['*'], 'page', $pageNum);
+		$paybacks = Payback::where('ref_by', $this->user->id)->orderBy('id', 'desc')->take(10)->get();
 		if (!$paybacks_sum = Payback::where('ref_by', $this->user->id)->sum('ref_get')) {
 			$paybacks_sum = 0;
 		}
-		$paybacks->setPath('/user/invite');
+		$codes->setPath('/user/invite');
 		
-		return $this->view()->assign('code', $code)->assign('paybacks', $paybacks)->assign('paybacks_sum', $paybacks_sum)->display('user/invite.tpl');
+		return $this->view()
+			->assign('code', $code)
+			->assign('codes', $codes)
+			->assign('paybacks', $paybacks)
+			->assign('paybacks_sum', $paybacks_sum)
+			->display('user/invite.tpl');
+	}
+	
+	public function buyCode($request, $response, $args){
+		$n = $request->getParam('num');
+		$num = $request->getParam('money');
+		$userid=$request->getParam('userid');
+		$user=User::where('id',$userid)->first();
+		$used_money=$n*$num;
+		if (Tools::isInt($n) == false || $user->money<$used_money || $used_money<='0') {
+			$rs['ret'] = 0;
+			$rs['msg'] = '輸入錯誤或餘額不足';
+			return $response->getBody()->write(json_encode($rs));
+		}
+		for ($i = 0; $i < $n; $i++) {
+			$char = Tools::genRandomChar(12);
+			$code = new Code();
+			$code->code = time() . $char;
+			$code->type = -1;
+			$code->number = $num;
+			$code->userid = $userid;
+			$code->usedatetime = date("Y-m-d H:i:s",time());
+			$code->save();
+		}
+		$rs['ret'] = 1;
+		$rs['msg'] = '充值码添加成功';
+		$user->money = $user->money-$used_money;
+		$user->save();
+		return $response->getBody()->write(json_encode($rs));
 	}
 	
 	public function buyInvite($request, $response, $args)

@@ -105,7 +105,7 @@ $app->group('/user', function () {
     $this->post('/ticket', App\Controllers\UserController::class . ':ticket_add');
     $this->get('/ticket/{id}/view', App\Controllers\UserController::class . ':ticket_view');
     $this->put('/ticket/{id}', App\Controllers\UserController::class . ':ticket_update');
-
+	$this->post('/buy_code', App\Controllers\UserController::class . ':buyCode');
     $this->post('/buy_invite', App\Controllers\UserController::class . ':buyInvite');
     $this->post('/custom_invite', App\Controllers\UserController::class . ':customInvite');
     $this->get('/edit', App\Controllers\UserController::class . ':edit');
