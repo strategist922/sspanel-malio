@@ -1396,7 +1396,7 @@ $I18N['redeem'] = array(
 );
 $I18N['top-up-history'] = array(
     'en' => 'Top-up History',
-    'zh-cn' => '充值記錄'
+    'zh-cn' => '充值&兌換記錄'
 );
 $I18N['no-top-up-history'] = array(
     'en' => 'No Top-up History',
