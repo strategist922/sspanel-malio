@@ -149,7 +149,7 @@ class Tools
 
     public static function is_ip($a)
     {
-        return preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $a);
+	    return preg_match("/^((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}$/", $a);
     }
 
 

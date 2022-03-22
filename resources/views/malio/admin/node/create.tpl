@@ -15,13 +15,13 @@
                             <div class="card-inner">
                                 <div class="form-group form-group-label">
                                     <label class="floating-label" for="name">节点名称</label>
-                                    <input class="form-control maxwidth-edit" id="name" type="text" name="name">
+                                    <input class="form-control maxwidth-edit" id="name" type="text" name="name" value="{$node->name}">
                                 </div>
 
 
                                 <div class="form-group form-group-label">
                                     <label class="floating-label" for="server">节点地址</label>
-                                    <input class="form-control maxwidth-edit" id="server" type="text" name="server">
+                                    <input class="form-control maxwidth-edit" id="server" type="text" name="server" value="{$node->server}">
                                     <p class="form-control-guide"><i class="material-icons">info</i>如果填写为域名，“节点IP”会自动设置为解析的IP
                                     </p>
                                 </div>
@@ -96,7 +96,7 @@
                                 <div class="form-group form-group-label">
                                     <label class="floating-label" for="status">节点状态</label>
                                     <input class="form-control maxwidth-edit" id="status" type="text" name="status"
-                                           value="可用">
+                                           value="{$node->status}">
                                 </div>
 
                                 <div class="form-group form-group-label">
@@ -109,7 +109,7 @@
                                             <option value="5">Anyconnect</option>
                                             <option value="9">Shadowsocks 单端口多用户</option>
                                             <option value="10">Shadowsocks 中转</option>
-                                            <option value="11">V2Ray</option>
+                                            <option value="11" selected>V2Ray</option>
                                             <option value="12">V2Ray 中转</option>
                                             <option value="13">Shadowsocks V2Ray-Plugin</option>
                                             <option value="14">Trojan</option>
@@ -120,7 +120,7 @@
                                 <div class="form-group form-group-label">
                                     <label class="floating-label" for="info">节点描述</label>
                                     <input class="form-control maxwidth-edit" id="info" type="text" name="info"
-                                           value="无描述">
+                                           value="{$node->info}">
                                 </div>
 
                                 <div class="form-group form-group-label">
