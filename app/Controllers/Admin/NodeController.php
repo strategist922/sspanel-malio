@@ -64,7 +64,7 @@ class NodeController extends AdminController
 		
 		if (in_array($node->sort, array(0, 1, 10, 11, 12, 13))) {
 			$server_list = explode(';', $node->server);
-			if (!Tools::is_ip($server_list[0])) {
+			if (!Tools::is_ip($server_list[0]) || $node->sort==11) {
 				$node->node_ip = gethostbyname($server_list[0]);
 				if ($node->node_ip == "127.0.0.1") {
 					$node->node_ip = DNSoverHTTPS::gethostbyName($server_list[0]);
@@ -149,7 +149,7 @@ class NodeController extends AdminController
 		$success = true;
 		if (in_array($node->sort, array(0, 1, 10, 11, 12, 13))) {
 			$server_list = explode(';', $node->server);
-			if (!Tools::is_ip($server_list[0])) {
+			if (!Tools::is_ip($server_list[0]) || $node->sort==11) {
 				$success = $node->changeNodeIp($server_list[0]);
 			} else {
 				$success = $node->changeNodeIp($req_node_ip);
