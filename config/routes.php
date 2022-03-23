@@ -363,7 +363,7 @@ $app->group('/mod_mu', function () {
     $this->post('/users/aliveip', App\Controllers\Mod_Mu\UserController::class . ':addAliveIp');
     $this->post('/users/detectlog', App\Controllers\Mod_Mu\UserController::class . ':addDetectLog');
     $this->post('/nodes/{id}/info', App\Controllers\Mod_Mu\NodeController::class . ':info');
-
+	$this->get('/get/node/id',App\Controllers\Mod_Mu\NodeController::class . ':getNodeId');
     $this->get('/nodes', App\Controllers\Mod_Mu\NodeController::class . ':get_all_info');
     $this->post('/nodes/config', App\Controllers\Mod_Mu\NodeController::class . ':getConfig');
 
