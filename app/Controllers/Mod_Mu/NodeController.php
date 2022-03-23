@@ -169,7 +169,7 @@ class NodeController extends BaseController
 	
 	public function getNodeId($request, $response, $args)
 	{
-		$ip = $request->getParam('ip');
+		$ip = $_SERVER["REMOTE_ADDR"];
 		if ($ip == null) {
 			$node_id = 'null';
 		} else {
