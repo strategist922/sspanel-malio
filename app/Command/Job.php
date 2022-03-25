@@ -281,46 +281,46 @@ class Job
 			if (($ticket->datetime + 604800) < time()) {
 				$ticket->status = 0;
 				$ticket->save();
-			}
-			$title=$ticket->title;
-			$content=$ticket->content;
-			if (Config::get('enable_telegram') == true) {
-				$messageText = 'Hi，管理员' . PHP_EOL . '工单已超过7天被关闭了' . PHP_EOL . PHP_EOL . $ticket->User()->user_name . ': ' . $title . PHP_EOL . $content;
-				$bot = new BotApi(Config::get('telegram_token'));
-				$adminUser = User::where('is_admin', '=', '1')->get();
-				foreach ($adminUser as $user) {
-					if ($user->telegram_id != null) {
-						try {
-							$bot->sendMessage($user->telegram_id, $messageText, null, null, null);
-						} catch (Exception $e) {
-						
+				$title=$ticket->title;
+				$content=$ticket->content;
+				if (Config::get('enable_telegram') == true) {
+					$messageText = 'Hi，管理员' . PHP_EOL . '工单已超过7天被关闭了' . PHP_EOL . PHP_EOL . $ticket->User()->user_name . ': ' . $title . PHP_EOL . $content;
+					$bot = new BotApi(Config::get('telegram_token'));
+					$adminUser = User::where('is_admin', '=', '1')->get();
+					foreach ($adminUser as $user) {
+						if ($user->telegram_id != null) {
+							try {
+								$bot->sendMessage($user->telegram_id, $messageText, null, null, null);
+							} catch (Exception $e) {
+							
+							}
 						}
 					}
 				}
+				if (Config::get('mail_ticket')) {
+					$ticket_url = Config::get('baseUrl') . '/admin/ticket/' . $ticket->id . '/view';
+					$ticket_user = Ticket::where('userid',$ticket->userid)->get();
+					foreach ($ticket_user as $user) {
+						$email_user=User::where('id',$ticket->userid)->first();
+						$subject = '工單超時關閉';
+						$to = $email_user->email;
+						$text = '您的工單已超時7天，被關閉了';
+						try {
+							Mail::send($to, $subject, 'ticket/new_ticket.tpl', [
+								'user' => $email_user,
+								'text' => $text,
+								'title' => $title,
+								'content' => $content,
+								'ticket_url' => $ticket_url
+							], [
+							]);
+						} catch (Exception $e) {
+						}
+					}
+					
+				}
 			}
 			
-			if (Config::get('mail_ticket')) {
-				$ticket_url = Config::get('baseUrl') . '/admin/ticket/' . $ticket->id . '/view';
-				$ticket_user = Ticket::where('userid',$ticket->userid)->get();
-				foreach ($ticket_user as $user) {
-					$email_user=User::where('id',$ticket->userid)->first();
-					$subject = '工單超時關閉';
-					$to = $email_user->email;
-					$text = '您的工單已超時7天，被關閉了';
-					try {
-						Mail::send($to, $subject, 'ticket/new_ticket.tpl', [
-							'user' => $email_user,
-							'text' => $text,
-							'title' => $title,
-							'content' => $content,
-							'ticket_url' => $ticket_url
-						], [
-						]);
-					} catch (Exception $e) {
-					}
-				}
-				
-			}
 			
 		}
 		
