@@ -297,6 +297,24 @@ class Job
 						}
 					}
 				}
+				if (Config::get('mail_ticket')) {
+						$email_user=User::where('id',$ticket->userid)->first();
+						$subject = '工單超時關閉';
+						$to = $email_user->email;
+						$text = '您的工單已超時7天，被關閉了';
+						try {
+							Mail::send($to, $subject, 'ticket/new_ticket.tpl', [
+								'user' => $email_user,
+								'text' => $text,
+								'title' => $title,
+								'content' => $content
+							], [
+							]);
+						} catch (Exception $e) {
+						}
+					
+					
+				}
 			}
 			
 			
