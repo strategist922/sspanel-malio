@@ -108,14 +108,15 @@ class TicketController extends AdminController
     public function show($request, $response, $args)
     {
         $id = $args['id'];
-
         $pageNum = $request->getQueryParams()['page'] ?? 1;
-
-
         $ticketset = Ticket::where('id', $id)->orWhere('rootid', '=', $id)->orderBy('datetime', 'desc')->paginate(5, ['*'], 'page', $pageNum);
         $ticketset->setPath('/admin/ticket/' . $id . '/view');
-
-        return $this->view()->assign('ticketset', $ticketset)->assign('id', $id)->display('admin/ticket/view.tpl');
+	    $userid=Ticket::where('id',$id)->first();
+        return $this->view()
+	        ->assign('ticketset', $ticketset)
+	        ->assign('id', $id)
+	        ->assign('userid',$userid)
+	        ->display('admin/ticket/view.tpl');
     }
 
     public function ajax($request, $response, $args)

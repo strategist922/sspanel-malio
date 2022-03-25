@@ -1584,7 +1584,6 @@ class UserController extends BaseController
 		$ticket->userid = $this->user->id;
 		$ticket->datetime = time();
 		$ticket_main->status = $status;
-		
 		$ticket_main->save();
 		$ticket->save();
 		
@@ -1613,7 +1612,11 @@ class UserController extends BaseController
 		$ticketset->setPath('/user/ticket/' . $id . '/view');
 		
 		
-		return $this->view()->assign('ticketset', $ticketset)->assign('ticket_status', $ticket_main->status)->assign('id', $id)->display('user/ticket_view.tpl');
+		return $this->view()
+			->assign('ticketset', $ticketset)
+			->assign('ticket_status', $ticket_main->status)
+			->assign('id', $id)
+			->display('user/ticket_view.tpl');
 	}
 	
 	

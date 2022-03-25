@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Models\Node;
+use App\Models\Ticket;
 use App\Models\User;
 use App\Models\RadiusBan;
 use App\Models\LoginIp;
@@ -37,9 +38,11 @@ use App\Models\UnblockIp;
 use Exception;
 use RuntimeException;
 use Ramsey\Uuid\Uuid;
+use TelegramBot\Api\BotApi;
 
 class Job
 {
+	
 	public static function syncnode()
 	{
 		$nodes = Node::all();
@@ -272,6 +275,31 @@ class Job
 	
 	public static function CheckJob()
 	{
+		//工单过期检测
+		$tickets = Ticket::where('status', '1')->where('userid', '!=', '1')->get();
+		foreach ($tickets as $ticket) {
+			if (($ticket->datetime + 86400) < time()) {
+				$ticket->status = 0;
+				$ticket->save();
+			}
+			$title=$ticket->title;
+			$content=$ticket->content;
+			if (Config::get('enable_telegram') == true) {
+				$messageText = 'Hi，管理员' . PHP_EOL . '工单已超过1天被关闭了' . PHP_EOL . PHP_EOL . $ticket->User()->user_name . ': ' . $title . PHP_EOL . $content;
+				$bot = new BotApi(Config::get('telegram_token'));
+				$adminUser = User::where('is_admin', '=', '1')->get();
+				foreach ($adminUser as $user) {
+					if ($user->telegram_id != null) {
+						try {
+							$bot->sendMessage($user->telegram_id, $messageText, null, null, null);
+						} catch (Exception $e) {
+						
+						}
+					}
+				}
+			}
+		}
+		
 		//在线人数检测
 		$users = User::where('node_connector', '>', 0)->get();
 		

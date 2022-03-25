@@ -38,8 +38,12 @@
                             </div>
                             <div class="modal-footer">
                                 <p class="text-right">
-                                    <button class="btn btn-flat btn-brand-accent waves-attach waves-effect" data-dismiss="modal" type="button">取消</button>
-                                    <button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal" id="changetouser_input" type="button">确定</button>
+                                    <button class="btn btn-flat btn-brand-accent waves-attach waves-effect"
+                                            data-dismiss="modal" type="button">取消
+                                    </button>
+                                    <button class="btn btn-flat btn-brand-accent waves-attach" data-dismiss="modal"
+                                            id="changetouser_input" type="button">确定
+                                    </button>
                                 </p>
                             </div>
                         </div>
@@ -53,10 +57,20 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-10">
-                                        <button id="submit" type="submit" class="btn btn-brand waves-attach waves-light">添加</button>
-                                        <button id="close" type="submit" class="btn btn-brand-accent waves-attach waves-light">添加并关闭</button>
-                                        <button id="close_directly" type="submit" class="btn btn-brand-accent waves-attach waves-light">直接关闭</button>
-                                        <button  id="changetouser" class="btn btn-brand waves-attach waves-light" onClick="changetouser_modal_show()">切换为该用户</button>
+                                        <button id="submit" type="submit"
+                                                class="btn btn-brand waves-attach waves-light">添加
+                                        </button>
+                                        <button id="close" type="submit"
+                                                class="btn btn-brand-accent waves-attach waves-light">添加并关闭
+                                        </button>
+                                        <button id="close_directly" type="submit"
+                                                class="btn btn-brand-accent waves-attach waves-light">直接关闭
+                                        </button>
+                                        <a class="btn btn-brand" href="/admin/user/{$userid->userid}/edit">编辑</a>
+                                        <a class="btn btn-brand" href="/admin/user/{$userid->userid}/bought">查套餐</a>
+                                        <button id="changetouser" class="btn btn-brand waves-attach waves-light"
+                                                onClick="changetouser_modal_show()">切换为该用户
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -123,8 +137,8 @@
                 error: jqXHR => {
                     $("#result").modal();
                     $$.getElementById('msg').innerHTML = `发生错误：${
-                            jqXHR.status
-                            }`;
+                        jqXHR.status
+                    }`;
                 }
             });
         }
@@ -164,8 +178,8 @@
                 error: jqXHR => {
                     $("#result").modal();
                     $$.getElementById('msg').innerHTML = `发生错误：${
-                            jqXHR.status
-                            }`;
+                        jqXHR.status
+                    }`;
                 }
             });
         });
@@ -178,7 +192,7 @@
                 data: {
                     userid: {$ticket->User()->id},
                     adminid: {$user->id},
-                    local: '/admin/ticket/' + {$ticket->id} +'/view'
+                    local: '/admin/ticket/' + {$ticket->id} + '/view'
                 },
                 success: data => {
                     if (data.ret) {
@@ -193,8 +207,8 @@
                 error: jqXHR => {
                     $("#result").modal();
                     $$.getElementById('msg').innerHTML = `发生错误：${
-                            jqXHR.status
-                            }`;
+                        jqXHR.status
+                    }`;
                 }
             });
         }

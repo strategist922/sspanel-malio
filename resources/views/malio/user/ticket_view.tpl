@@ -62,7 +62,7 @@
                           </div>
                           <div class="ticket-detail">
                             <div class="ticket-title">
-                              <h4>{$ticket->User()->user_name}</h4>
+                              <h4>{if $ticket->User()->is_admin==1}管理员{else}{$ticket->User()->user_name}{/if}</h4>
                             </div>
                             <div class="ticket-info">
                               <div class="text-muted font-weight-600">{$ticket->datetime()}</div>
