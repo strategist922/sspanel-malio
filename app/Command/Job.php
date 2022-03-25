@@ -303,12 +303,13 @@ class Job
 				$ticket_url = Config::get('baseUrl') . '/admin/ticket/' . $ticket->id . '/view';
 				$ticket_user = Ticket::where('userid',$ticket->userid)->get();
 				foreach ($ticket_user as $user) {
+					$email_user=User::where('id',$ticket->userid)->first();
 					$subject = '工單超時關閉';
-					$to = $user->email;
+					$to = $email_user->email;
 					$text = '您的工單已超時7天，被關閉了';
 					try {
 						Mail::send($to, $subject, 'ticket/new_ticket.tpl', [
-							'user' => $user,
+							'user' => $email_user,
 							'text' => $text,
 							'title' => $title,
 							'content' => $content,
