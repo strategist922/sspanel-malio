@@ -307,7 +307,7 @@ class Job
 								'user' => $email_user,
 								'text' => $text,
 								'title' => $title,
-								'content' => $content,
+								'content' => $content
 							], [
 							]);
 						} catch (Exception $e) {
