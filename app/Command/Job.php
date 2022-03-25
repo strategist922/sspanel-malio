@@ -276,7 +276,7 @@ class Job
 	public static function CheckJob()
 	{
 		//工单过期检测
-		$tickets = Ticket::where('status', '1')->where('userid', '=', '1')->get();
+		$tickets = Ticket::where('status', '1')->where('userid', '!=', '1')->get();
 		foreach ($tickets as $ticket) {
 			if (($ticket->datetime + 604800) < time()) {
 				$ticket->status = 0;
@@ -298,8 +298,6 @@ class Job
 					}
 				}
 				if (Config::get('mail_ticket')) {
-					$ticket_url = Config::get('baseUrl') . '/admin/ticket/' . $ticket->id . '/view';
-					$ticket_user = Ticket::where('userid',$ticket->userid)->get();
 						$email_user=User::where('id',$ticket->userid)->first();
 						$subject = '工單超時關閉';
 						$to = $email_user->email;
@@ -310,7 +308,6 @@ class Job
 								'text' => $text,
 								'title' => $title,
 								'content' => $content,
-								'ticket_url' => $ticket_url
 							], [
 							]);
 						} catch (Exception $e) {
