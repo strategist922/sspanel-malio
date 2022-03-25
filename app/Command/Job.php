@@ -300,7 +300,6 @@ class Job
 				if (Config::get('mail_ticket')) {
 					$ticket_url = Config::get('baseUrl') . '/admin/ticket/' . $ticket->id . '/view';
 					$ticket_user = Ticket::where('userid',$ticket->userid)->get();
-					foreach ($ticket_user as $user) {
 						$email_user=User::where('id',$ticket->userid)->first();
 						$subject = '工單超時關閉';
 						$to = $email_user->email;
@@ -316,7 +315,7 @@ class Job
 							]);
 						} catch (Exception $e) {
 						}
-					}
+					
 					
 				}
 			}
