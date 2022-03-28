@@ -433,6 +433,10 @@ class AuthController extends BaseController
         }
         $name = $request->getParam('name');
         $email = $request->getParam('email');
+	    if ($name==null){
+		    $name_list = explode('@', $email);
+		    $name = $name_list[0];
+	    }
         $email = trim($email);
         $email = strtolower($email);
         $passwd = $request->getParam('passwd');

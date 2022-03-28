@@ -45,7 +45,7 @@
                   <div class="row">
                     <div class="form-group col-lg-6 col-sm-12 col-xs-12">
                       <label for="name">{$i18n->get('nickname')}</label>
-                      <input id="name" type="text" class="form-control" name="name" required autofocus>
+                      <input id="name" type="text" class="form-control" name="name" placeholder="{$i18n->get('no_nickname')}" autofocus>
                       <div class="invalid-feedback">
                         {$i18n->get('please-fill-in-your-nickname')}
                       </div>
@@ -308,7 +308,7 @@
     function register() {
       // vaildation
       if (
-        !$("#name").val() ||
+       // !$("#name").val() ||
         !$("#email").val() ||
         !$("#passwd").val() ||
         !$("#repasswd").val()
