@@ -276,7 +276,10 @@ class Job
 	public static function CheckJob()
 	{
 		//工单过期检测
-		$tickets = Ticket::where('status', '1')->where('userid', '!=', '1')->get();
+		$tickets = Ticket::where('status', '1')
+			->where('userid', '!=', '1')
+			->where('rootid','0')
+			->get();
 		foreach ($tickets as $ticket) {
 			if (($ticket->datetime + 604800) < time()) {
 				$ticket->status = 0;
