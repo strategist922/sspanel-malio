@@ -542,7 +542,7 @@
                                                     <i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         {/if}
-                                        {if {$user->class}<1 && {$user->class}!={$shop->user_class()}}
+                                        {if {$user->class}<=1 && {$user->class}!={$shop->user_class()}}
                                             <div class="pricing-cta">
                                                 <a href="##" data-toggle="modal" data-target="#legacy-modal-1"
                                                    onclick="legacySelect({$shop->id})">
