@@ -535,7 +535,7 @@
                                                     <i class="fas fa-arrow-right"></i></a>
                                             </div>
                                         {/if}
-                                        {if {$user->class}!={$shop->user_class()} && {$user->class>0}}
+                                        {if {$user->class}!={$shop->user_class()} && {$user->class>1}}
                                             <div class="pricing-ban">
                                                 <a href="##" onclick="purchaseinfo()">
                                                     {$i18n->get('ban_purchase')}
