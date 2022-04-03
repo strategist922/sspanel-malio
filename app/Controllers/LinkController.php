@@ -118,6 +118,9 @@ class LinkController extends BaseController
                 case 4:
                     $opts['clash'] = 1;
                     break;
+	            case 5:
+		            $opts['sub'] = 5;
+		            break;
             }
         }
 
@@ -135,9 +138,9 @@ class LinkController extends BaseController
                 $query_value = $opts[$key];
                 if ($query_value != '0' && $query_value != '') {
                     // 兼容代码开始
-                    if ($key == 'sub' && $query_value > 3) {
-                        $query_value = 1;
-                    }
+//                    if ($key == 'sub' && $query_value > 3) {
+//                        $query_value = 1;
+//                    }
                     if ($key == 'surge' && $query_value == '1') {
                         $key = 'list';
                         $query_value = 'surge';
@@ -254,14 +257,16 @@ class LinkController extends BaseController
                 ];
                 break;
             case 'sub':
-                if ((int) $value == 3) {
-                    $return = self::getSubscribeExtend('v2rayn');
-                } elseif ((int) $value == 2) {
-                    $return = self::getSubscribeExtend('ss');
-                } else {
-                    $return = self::getSubscribeExtend('ssr');
-                }
-                break;
+	            $strArray = [
+		            1 => 'ssr',
+		            2 => 'ss',
+		            3 => 'v2rayn',
+		            4 => 'trojan',
+		            5 => 'v2rayn',
+	            ];
+	            $str = (!in_array($value, $strArray) ? $strArray[$value] : $strArray[1]);
+	            $return = self::getSubscribeExtend($str);
+	            break;
             case 'clash':
                 if ($value !== null) {
                     if ((int) $value == 2) {
@@ -512,6 +517,8 @@ class LinkController extends BaseController
             'ss'              => '?sub=2',
             'ssr'             => '?sub=1',
             'v2ray'           => '?sub=3',
+	        'trojan'          => '?sub=4',
+	        'v2ray_vless'     => '?sub=5',
             // apps
             'ssa'             => '?list=ssa',
             'ssd'             => '?ssd=1',
@@ -569,6 +576,12 @@ class LinkController extends BaseController
                 $item['type'] = $item['headerType'];
                 $return = 'vmess://' . base64_encode(json_encode($item, 320));
                 break;
+	        case 'vmess':
+		        $return = AppURI::getV2RayNURI($item);
+		        break;
+	        case 'trojan':
+		        $return = AppURI::getTrojanURI($item);
+		        break;
             case 'kitsunebi':
                 $return = AppURI::getKitsunebiURI($item);
                 break;
@@ -707,6 +720,9 @@ class LinkController extends BaseController
                 $out = self::getListItem($Extend_VMess, $list);
             } elseif ($list == 'ssr') {
                 $out = self::getListItem($Extend_ssr, $list);
+            } elseif ($list == 'trojan') {
+	            $Extend['type'] = 'trojan';
+	            $out = self::getListItem($Extend, $list);
             } else {
                 $out = self::getListItem($Extend_ss, $list);
             }
@@ -864,7 +880,6 @@ class LinkController extends BaseController
         switch ($quantumultx) {
             default:
                 return self::getLists($user, 'quantumultx', $opts, $Rule);
-                break;
         }
     }
 
@@ -1478,12 +1493,24 @@ class LinkController extends BaseController
         switch ($sub) {
             case 2: // SS
                 $Rule['type'] = 'ss';
-                $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'ss') : [];
+	            $return_url .= URL::get_NewAllUrl($user, $Rule);
+	            $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'ss') : [];
                 break;
             case 3: // V2
                 $Rule['type'] = 'vmess';
-                $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'v2rayn') : [];
+	            $return_url .= URL::get_NewAllUrl($user, $Rule);
+	            $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'v2rayn') : [];
                 break;
+	        case 4: // Trojan
+		        $Rule['type'] = 'trojan';
+		        $return_url .= URL::get_NewAllUrl($user, $Rule);
+		        $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'trojan') : [];
+		        break;
+	        case 5: // V2-VLESS
+		        $Rule['type'] = 'vless';
+		        $return_url .= URL::get_NewAllUrl($user, $Rule);
+		        $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'v2rayn') : [];
+		        break;
             default: // SSR
                 $Rule['type'] = 'ssr';
                 $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'ssr') : [];
@@ -1493,6 +1520,6 @@ class LinkController extends BaseController
             $return_url .= implode(PHP_EOL, $getListExtend) . PHP_EOL;
         }
         $return_url .= URL::get_NewAllUrl($user, $Rule);
-        return base64_encode($return_url);
+        return $return_url;
     }
 }

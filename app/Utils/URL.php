@@ -351,6 +351,7 @@ class URL
                     }
                     continue;
                 }
+				
                 if (in_array($node->sort, [11, 12]) && (($Rule['type'] == 'all' && $x == 0) || ($Rule['type'] != 'all'))) {
                     // V2Ray
                     $item = self::getV2Url($user, $node, 1, $emoji);
@@ -544,12 +545,8 @@ class URL
         }
         $items = URL::getNew_AllItems($user, $Rule);
         foreach ($items as $item) {
-            if ($item['type'] == 'vmess') {
-                $out = LinkController::getListItem($item, 'v2rayn');
-            } else {
-                $out = LinkController::getListItem($item, $Rule['type']);
-            }
-            if ($out !== null) {
+	        $out = LinkController::getListItem($item, $Rule['type']);
+	        if ($out !== null) {
                 $return_url .= $out . PHP_EOL;
             }
         }

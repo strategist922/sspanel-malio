@@ -6,6 +6,51 @@ use App\Services\Config;
 
 class AppURI
 {
+	public static function getItemUrl(array $item, int $is_ss)
+	{
+		$ss_obfs_list = Config::getSupportParam('ss_obfs');
+		if (!$is_ss) {
+			$ssurl = $item['address'] . ':' . $item['port'] . ':' . $item['protocol'] . ':' . $item['method'] . ':' . $item['obfs'] . ':' . Tools::base64_url_encode($item['passwd'])
+				. '/?obfsparam=' . Tools::base64_url_encode($item['obfs_param'])
+				. '&protoparam=' . Tools::base64_url_encode($item['protocol_param'])
+				. '&remarks=' . Tools::base64_url_encode($item['remark'])
+				. '&group=' . Tools::base64_url_encode($item['group']);
+			
+			return 'ssr://' . Tools::base64_url_encode($ssurl);
+		}
+		
+		if ($is_ss == 2) {
+			$personal_info = $item['method'] . ':' . $item['passwd'] . '@' . $item['address'] . ':' . $item['port'];
+			$ssurl = 'ss://' . Tools::base64_url_encode($personal_info);
+			$ssurl .= ($_ENV['add_appName_to_ss_uri'] === true
+				? '#' . rawurlencode($_ENV['appName'] . ' - ' . $item['remark'])
+				: '#' . rawurlencode($item['remark']));
+		} else {
+			$personal_info = $item['method'] . ':' . $item['passwd'];
+			$ssurl = 'ss://' . Tools::base64_url_encode($personal_info) . '@' . $item['address'] . ':' . $item['port'];
+			$plugin = '';
+			if ($item['obfs'] == 'v2ray' || in_array($item['obfs'], $ss_obfs_list)) {
+				if (strpos($item['obfs'], 'http') !== false) {
+					$plugin .= 'obfs-local;obfs=http';
+				} elseif (strpos($item['obfs'], 'tls') !== false) {
+					$plugin .= 'obfs-local;obfs=tls';
+				} else {
+					$plugin .= 'v2ray;' . $item['obfs_param'];
+				}
+				if ($item['obfs_param'] != '' && $item['obfs'] != 'v2ray') {
+					$plugin .= ';obfs-host=' . $item['obfs_param'];
+				}
+				$ssurl .= '/?plugin=' . rawurlencode($plugin) . '&group=' . Tools::base64_url_encode($_ENV['appName']);
+			} else {
+				$ssurl .= '/?group=' . Tools::base64_url_encode($_ENV['appName']);
+			}
+			$ssurl .= ($_ENV['add_appName_to_ss_uri'] === true
+				? '#' . rawurlencode($_ENV['appName'] . ' - ' . $item['remark'])
+				: '#' . rawurlencode($item['remark']));
+		}
+		return $ssurl;
+	}
+	
     public static function getSurgeURI($item, $version)
     {
         $return = null;
@@ -46,7 +91,80 @@ class AppURI
         }
         return $return;
     }
-
+	
+	public static function getV2RayNURI($item)
+	{
+		$return = null;
+		switch ($item['type']) {
+			case 'vmess':
+				if (isset($item['vtype']) && (string)$item['vtype'] == "vmess://") {
+					$node = [
+						'v' => "2",
+						'ps' => $item['remark'],
+						'add' => $item['add'],
+						'port' => (string)$item['port'],
+						'id' => $item['id'],
+						'aid' => (string)$item['aid'],
+						'net' => $item['net'],
+						'type' => $item['net'] == 'grpc' ? "multi" : $item['headerType'],
+						'host' => $item['net'] == 'grpc' ? '' : $item['host'],
+						'path' => $item['net'] == 'grpc' ? $item['servicename'] : $item['path'],
+						'tls' => $item['tls'],
+						'sni' => $item['sni']
+					];
+					$return = ('vmess://' . base64_encode(
+							json_encode($node, 320)
+						));
+				} else {
+					$return = 'vless://' . $item['id'] . "@" . (string)$item['add'] . ":" . $item['port'] . "?encryption=none";
+					$return .= "&type=" . $item['net'];
+					$return .= "&security=" . $item['tls'];
+					if ($item['tls'] == "xtls") {
+						$return .= "&flow=" . $item['flow'];
+					}
+					if ($item['host'] != "") $return = $return . "&host=" . rawurlencode($item['host']);
+					if ($item['host'] != "") $return = $return . "&sni=" . $item['host'];
+					if ($item['path'] != "") $return = $return . "&path=" . rawurlencode($item['path']);
+					if ($item['net'] == "grpc") {
+						if ($item['net'] == "grpc") $return = $return . "&mode=multi&serviceName=" . $item['servicename'];
+					} else {
+						if ($item['headerType'] != "") $return = $return . "&headerType=" . $item['headerType'];
+					}
+					if ($item['remark'] != "") $return = $return . "#" . rawurlencode($item['remark']);
+				}
+				break;
+			case 'vless':
+				$node = 'vless://' . $item['id'] . '@' . $item['add'] . ':' . $item['port']
+					. '?encryption=none&type=' . $item['net'] . '&headerType=none';
+				if (isset($item['host']) && $item['host']) {
+					$node .= '&host=' . $item['host'];
+				}
+				if (isset($item['path']) && $item['path']) {
+					$node .= '&path=' . $item['path'];
+				}
+				if (isset($item['security']) && $item['security']) {
+					$node .= '&security=' . $item['security'];
+				}
+				if (isset($item['flow']) && $item['flow']) {
+					$node .= '&flow=' . $item['flow'];
+				}
+				if ($item['net'] == "grpc") {
+					$node .= "&mode=multi&serviceName=" . $item['servicename'];
+				} else {
+					if ($item['headerType'] != "") $node .= "&headerType=" . $item['headerType'];
+				}
+				$return = $node . '#' . $item['remark'];
+				break;
+			case 'trojan':
+				$return = 'trojan://' . $item['passwd'] . '@' . $item['address'] . ':' . $item['port'].'?sni=' . $item['host'].'#'.$item['remark'];
+				break;
+			case 'ss':
+				$return = self::getItemUrl($item, 2);
+				break;
+		}
+		return $return;
+	}
+	
     public static function getQuantumultURI($item, $base64_encode = false)
     {
         $return = null;
@@ -509,13 +627,17 @@ class AppURI
 
     public static function getTrojanURI(array $item)
     {
-        $return = null;
-        switch ($item['type']) {
-            case 'trojan':
-                $return  = ('trojan://' . $item['passwd'] . '@' . $item['address'] . ':' . $item['port']);
-                $return .= ('?peer=' . $item['host'] . '#' .  rawurlencode($item['remark']));
-                break;
-        }
-        return $return;
+	    $return = null;
+	    switch ($item['type']) {
+		    case 'trojan':
+			    $return = ('trojan://' . $item['passwd'] . '@' . $item['address'] . ':' . $item['port']);
+			    $return .= ('?peer=' . $item['host'] . '&sni=' . $item['host']);
+			    if ($item['tls'] == "xtls") {
+				    $return .= ("&security=" . $item['tls'] . "&flow=" . $item['flow']);
+			    }
+			    $return .= ('#' . rawurlencode($item['remark']));
+			    break;
+	    }
+	    return $return;
     }
 }
