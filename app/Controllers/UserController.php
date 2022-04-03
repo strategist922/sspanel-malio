@@ -532,7 +532,7 @@ class UserController extends BaseController
 			if (isset($matches[0])) {
 				$array_node['flag'] = $matches[0] . '.png';
 			} else {
-				$array_node['flag'] = 'unknown.png';
+				$array_node['flag'] = 'un';
 			}
 			
 			$sort = $array_node['sort'];
