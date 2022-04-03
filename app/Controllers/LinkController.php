@@ -1493,22 +1493,18 @@ class LinkController extends BaseController
         switch ($sub) {
             case 2: // SS
                 $Rule['type'] = 'ss';
-	            $return_url .= URL::get_NewAllUrl($user, $Rule);
 	            $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'ss') : [];
                 break;
             case 3: // V2
                 $Rule['type'] = 'vmess';
-	            $return_url .= URL::get_NewAllUrl($user, $Rule);
 	            $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'v2rayn') : [];
                 break;
 	        case 4: // Trojan
 		        $Rule['type'] = 'trojan';
-		        $return_url .= URL::get_NewAllUrl($user, $Rule);
 		        $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'trojan') : [];
 		        break;
 	        case 5: // V2-VLESS
 		        $Rule['type'] = 'vless';
-		        $return_url .= URL::get_NewAllUrl($user, $Rule);
 		        $getListExtend = $Rule['extend'] ? self::getListExtend($user, 'v2rayn') : [];
 		        break;
             default: // SSR
