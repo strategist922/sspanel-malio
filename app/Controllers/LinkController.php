@@ -1520,6 +1520,6 @@ class LinkController extends BaseController
             $return_url .= implode(PHP_EOL, $getListExtend) . PHP_EOL;
         }
         $return_url .= URL::get_NewAllUrl($user, $Rule);
-        return $return_url;
+        return base64_encode($return_url);
     }
 }
