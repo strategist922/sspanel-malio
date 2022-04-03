@@ -279,10 +279,17 @@ class HomeController extends BaseController
                     $msg = [
                         '**订阅链接：**[[点击下载配置]](' . $subInfo['clash'] . ')',
                         '```',
-                        $subInfo['clash'],
-                        '```'
+	                    '**订阅链接：**[[Clash 点击此处一键添加]](clash://install-config?url=' . urlencode($subInfo['clash']) . ')',                        '```'
                     ];
                     break;
+	            case 'clashr':
+		            $msg = [
+			            '**订阅链接：**[[ClashXR 点击此处一键添加]](clash://install-config?url=' . urlencode($subInfo['clashr']) . ')',
+			            '```',
+			            $subInfo['clashr'],
+			            '```'
+		            ];
+		            break;
                 case 'surge':
                     $msg = [
                         '**Surge Version 2.x 托管配置链接：**[[iOS 点击此处一键添加]](surge:///install-config?url=' . urlencode($subInfo['surge2']) . ')',
