@@ -35,9 +35,9 @@
                   <div class="card-body">
                     <ul class="nav nav-pills flex-column" id="settings" role="tablist">
                       <li class="nav-item"><a class="nav-link active" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="true">{$i18n->get('server-password')}</a></li>
+                      <li class="nav-item"><a class="nav-link" id="resetlink-tab" data-toggle="tab" href="#resetlink" role="tab" aria-controls="resetlink" aria-selected="false">{$i18n->get('reset-config-url')}</a></li>
                       {if $malio_config['enable_method'] == true}<li class="nav-item"><a class="nav-link" id="method-tab" data-toggle="tab" href="#method" role="tab" aria-controls="method" aria-selected="false">{$i18n->get('encryption')}</a></li>{/if}
                       {if $malio_config['enable_protocol'] == true}<li class="nav-item"><a class="nav-link" id="protocol-tab" data-toggle="tab" href="#protocol" role="tab" aria-controls="protocol" aria-selected="false">{$i18n->get('protocol-and-obfs')}</a></li>{/if}
-                      <li class="nav-item"><a class="nav-link" id="resetlink-tab" data-toggle="tab" href="#resetlink" role="tab" aria-controls="resetlink" aria-selected="false">{$i18n->get('reset-config-url')}</a></li>
                       {if $malio_config['enable_reset_port'] == true && $config['port_price'] >= 0}<li class="nav-item"><a class="nav-link" id="resetport-tab" data-toggle="tab" href="#resetport" role="tab" aria-controls="resetport" aria-selected="false">{$i18n->get('reset-port')}</a></li>{/if}
                     </ul>
                   </div>
@@ -51,10 +51,11 @@
                         <h4>{$i18n->get('server-password')}</h4>
                       </div>
                       <div class="card-body">
-                        <p>{$i18n->get('server-password-desc')}<br>{$i18n->get('current-server-password')}: <code id="ss-current-password">{$user->passwd}</code></p>
+                        <p>{$i18n->get('server-password-desc')}<br>
+{*                          {$i18n->get('current-server-password')}: <code id="ss-current-password">{$user->passwd}</code></p>*}
                         <div class="form-group">
                           <div class="input-group mb-3">
-                            <input id="ss-password" type="text" class="form-control" placeholder="{$i18n->get('enter-new-server-password')}" aria-label="">
+{*                            <input id="ss-password" type="text" class="form-control" placeholder="{$i18n->get('enter-new-server-password')}" aria-label="">*}
                             <div class="input-group-append">
                               <button id="ss-random-password" class="btn btn-warning" type="button">{$i18n->get('ramdom-password')}</button>
                             </div>

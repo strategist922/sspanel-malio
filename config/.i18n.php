@@ -1772,7 +1772,7 @@ $I18N['ticket-support'] = array(
 );
 $I18N['new-ticket'] = array(
 	'en' => 'New Ticket',
-	'zh-cn' => '新建工單'
+	'zh-cn' => '提交工單'
 );
 $I18N['notice'] = array(
 	'en' => 'Notice',
@@ -1841,8 +1841,8 @@ $I18N['view-ticket'] = array(
 
 ## Server Settings 節點設置 ##
 $I18N['server-settings'] = array(
-	'en' => 'Server Settings',
-	'zh-cn' => '連接修改'
+	'en' => 'Nodes Settings',
+	'zh-cn' => '節點鏈接'
 );
 $I18N['server-settings-notice'] = array(
 	'en' => 'You may need to update your configuration on your devices after you change any configurations',
@@ -1854,7 +1854,7 @@ $I18N['server-password'] = array(
 );
 $I18N['server-password-desc'] = array(
 	'en' => 'When you change your password, your V2Ray UUID will also change. Please update your remote configuration after changing your password.',
-	'zh-cn' => '您需要了解的是，修改此密碼同時也會變更您 V2Ray 節點的 UUID，請註意及時更新托管訂閱。'
+	'zh-cn' => '您需要了解的是，此密碼只與節點密碼有關不會更改您的賬戶登錄密碼，修改後請註意及時更新托管訂閱。'
 );
 $I18N['current-server-password'] = array(
 	'en' => 'Current Server Password',
@@ -1874,7 +1874,7 @@ $I18N['ramdom-password'] = array(
 );
 $I18N['encryption'] = array(
 	'en' => 'Encryption',
-	'zh-cn' => '加密方式'
+	'zh-cn' => '加密方式（已廢棄的功能）'
 );
 $I18N['encryption-desc'] = array(
 	'en' => 'Be reminded that SS/SSD/SSR may vary in support of different protocols & obfs',
@@ -1886,7 +1886,7 @@ $I18N['current-encryption'] = array(
 );
 $I18N['protocol-and-obfs'] = array(
 	'en' => 'Protocol & Obfs',
-	'zh-cn' => '協議和混淆'
+	'zh-cn' => '協議和混淆（已廢棄的功能）'
 );
 $I18N['protocol-desc'] = array(
 	'en' => 'To make your settings compatible to SS/SSD, please choose "origin" or protocols with "_compatible"<br>
@@ -1935,7 +1935,7 @@ $I18N['reset'] = array(
 );
 $I18N['reset-port'] = array(
 	'en' => 'Reset Port',
-	'zh-cn' => '重置端口'
+	'zh-cn' => '重置端口(已廢棄的功能)'
 );
 $I18N['reset-port-desc'] = array(
 	'en' => 'Reset to a random port: <code>$1</code> CNY/Time.<br>Change will be effective in 1 min',

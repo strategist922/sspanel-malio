@@ -97,35 +97,35 @@
               </div>
               {/if}
               <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>{$i18n->get('5-mins-used-ip')}</h4>
-                  </div>
-                  <div class="card-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th scope="col">IP</th>
-                          <th scope="col">{$i18n->get('location')}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {if empty($userip)}
-                        <tr>
-                          <td colspan="2"><strong>{$i18n->get('not-use-service-in-5-mins')}</strong></td>
-                        </tr>
-                        {else}
-                        {foreach $userip as $single=>$location}
-                        <tr>
-                          <td>{$single}</td>
-                          <td>{$location}</td>
-                        </tr>
-                        {/foreach}
-                        {/if}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+{*                <div class="card">*}
+{*                  <div class="card-header">*}
+{*                    <h4>{$i18n->get('5-mins-used-ip')}</h4>*}
+{*                  </div>*}
+{*                  <div class="card-body">*}
+{*                    <table class="table table-striped">*}
+{*                      <thead>*}
+{*                        <tr>*}
+{*                          <th scope="col">IP</th>*}
+{*                          <th scope="col">{$i18n->get('location')}</th>*}
+{*                        </tr>*}
+{*                      </thead>*}
+{*                      <tbody>*}
+{*                        {if empty($userip)}*}
+{*                        <tr>*}
+{*                          <td colspan="2"><strong>{$i18n->get('not-use-service-in-5-mins')}</strong></td>*}
+{*                        </tr>*}
+{*                        {else}*}
+{*                        {foreach $userip as $single=>$location}*}
+{*                        <tr>*}
+{*                          <td>{$single}</td>*}
+{*                          <td>{$location}</td>*}
+{*                        </tr>*}
+{*                        {/foreach}*}
+{*                        {/if}*}
+{*                      </tbody>*}
+{*                    </table>*}
+{*                  </div>*}
+{*                </div>*}
                 <div class="card">
                   <div class="card-header">
                     <h4>{$i18n->get('10-login-ip')}</h4>
