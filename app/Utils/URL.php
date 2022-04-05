@@ -503,6 +503,15 @@ class URL
         $item['port']     = (isset($opt['port']) ? (int) $opt['port'] : 443);
         $item['passwd']   = $user->uuid;
         $item['host']     = $item['address'];
+	    $item['net']	  = (isset($opt['grpc']) ? "grpc" :'');
+	    $item['servicename'] = (isset($opt['serviceName']) ? $opt['serviceName'] :'');
+	    $item['flow']	  = (isset($opt['flow']) ? $opt['flow'] :'');
+	    $xtls			= (isset($opt['enable_xtls']) ? $opt['enable_xtls'] :'');
+	    if($xtls == 'true'){
+		    $item['tls'] =  'xtls';
+	    }else {
+		    $item['tls'] =  'tls';
+	    }
         if (isset($opt['host'])) {
             $item['host'] = $opt['host'];
         }
