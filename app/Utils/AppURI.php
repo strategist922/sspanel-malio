@@ -551,7 +551,9 @@ class AppURI
 					if ($item['verify_cert'] == false) {
 						$tls .= '&allowInsecure=1';
 					}
-					$tls .= '&peer=' . $item['host'];
+					$tls .= ($item['sni']
+						? ('&peer=' . $item['sni'])
+						: ('&peer=' . $item['host']));
 				}
 				$return = ('vmess://' . Tools::base64_url_encode('aes-128-gcm:' . $item['id'] . '@' . $item['add'] . ':' . $item['port']) . '?remarks=' . rawurlencode($item['remark']) . $obfs . $tls . '&alterID=' . $item['aid']);
 				break;
