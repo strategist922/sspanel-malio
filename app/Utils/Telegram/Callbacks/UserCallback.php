@@ -450,7 +450,7 @@ class UserCallback
                 break;
             case 'update_passwd':
                 // 重置链接密码
-                $user->passwd = Tools::genRandomChar(8);
+                $user->passwd = Tools::genRandomChar(16);
                 if ($user->save()) {
                     $answerCallbackQuery = '连接密码更新成功，请在下方重新更新订阅.';
                     $temp = self::getUserSubscribeKeyboard($user);
