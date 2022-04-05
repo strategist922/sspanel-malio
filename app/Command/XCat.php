@@ -228,7 +228,7 @@ class XCat
             $user->email = $email;
             $user->pass = Hash::passwordHash($passwd);
 	        $user->uuid = Uuid::uuid3(Uuid::NAMESPACE_DNS, $email . '|' . time());
-	        $user->passwd = Tools::genRandomChar(6);
+	        $user->passwd = Tools::genRandomChar(16);
             $user->port = Tools::getLastPort() + 1;
             $user->t = 0;
             $user->u = 0;

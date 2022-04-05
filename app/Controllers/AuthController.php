@@ -596,14 +596,11 @@ class AuthController extends BaseController
 
         // do reg user
         $user = new User();
-
         $antiXss = new AntiXSS();
-
-
         $user->user_name = $antiXss->xss_clean($name);
         $user->email = $email;
         $user->pass = Hash::passwordHash($passwd);
-        $user->passwd = Tools::genRandomChar(6);
+        $user->passwd = Tools::genRandomChar(16);
         $user->port = Tools::getAvPort();
         $user->t = 0;
         $user->u = 0;
