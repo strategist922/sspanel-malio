@@ -500,7 +500,7 @@ class AppURI
 				$return = (URL::getItemUrl($item, 0));
 				break;
 			case 'vmess':
-				if (!in_array($item['net'], ['tcp', 'ws', 'http', 'h2'])) {
+				if (!in_array($item['net'], ['tcp', 'ws', 'http', 'h2', 'grpc'])) {
 					break;
 				}
 				$obfs = '';
@@ -520,6 +520,11 @@ class AppURI
 						$obfs .= ($item['host'] != ''
 							? ('&obfsParam=' . $item['host'] . '&path=' . $item['path'] . '&obfs=h2')
 							: ('&obfsParam=' . $item['add'] . '&path=' . $item['path'] . '&obfs=h2'));
+						break;
+					case 'grpc':
+						$obfs .= ($item['host'] != ''
+							? ('&obfsParam=' . '&path=' . $item['servicename'] . '&obfs=grpc')
+							: ('&obfsParam=' . $item['add'] . '&path=' . $item['servicename'] . '&obfs=grpc'));
 						break;
 					default:
 						$obfs .= '&obfs=none';
