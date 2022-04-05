@@ -1044,7 +1044,7 @@ class URL
         if ($mu_port != 0) {
             $mu_user = User::where('port', '=', $mu_port)->where('is_multi_user', '<>', 0)->first();
             if ($mu_user == null) {
-                return;
+                return null;
             }
 	        // 如果混淆和协议均为SS原生且为单端口的，即判断为AEAD单端口类型，密码配置为用户自身密码
 	        if ($mu_user->obfs == "plain" && $mu_user->protocol == "origin"){
@@ -1060,13 +1060,13 @@ class URL
         }
         if ($is_ss) {
             if (!self::SSCanConnect($user)) {
-                return;
+                return null;
             }
             $user = self::getSSConnectInfo($user);
             $return_array['type'] = 'ss';
         } else {
             if (!self::SSRCanConnect($user)) {
-                return;
+                return null;
             }
             $user = self::getSSRConnectInfo($user);
             $return_array['type'] = 'ssr';

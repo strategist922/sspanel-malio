@@ -31,14 +31,16 @@ class StripePay extends AbstractPayment
         if ($price < $stripe_minimum_amount) {
             return json_encode(['errcode' => -1, 'errmsg' => '充值最低金额为'.$stripe_minimum_amount.'元']);
         }
-
-        $ch = curl_init();
-        $url = 'https://api.exchangeratesapi.io/latest?symbols=CNY&base='.strtoupper(MalioConfig::get('stripe_currency'));
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $currency = json_decode(curl_exec($ch));
-        curl_close($ch);
+	
+	    $url = 'https://api.exchangerate-api.com/v4/latest/'.strtoupper($_ENV['stripe_currency']);
+	    $stream_opts = [
+		    "ssl" => [
+			    "verify_peer"=>false,
+			    "verify_peer_name"=>false,
+		    ]
+	    ];
+	    $response = file_get_contents($url,false, stream_context_create($stream_opts));
+	    $currency = json_decode($response);
 
         $price_exchanged = ((double)$price) / ($currency->rates->CNY);
 
@@ -74,14 +76,16 @@ class StripePay extends AbstractPayment
         if ($price < $stripe_minimum_amount) {
             return json_encode(['errcode' => -1, 'errmsg' => '充值最低金额为'.$stripe_minimum_amount.'元']);
         }
-
-        $ch = curl_init();
-        $url = 'https://api.exchangeratesapi.io/latest?symbols=CNY&base='.strtoupper(MalioConfig::get('stripe_currency'));
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $currency = json_decode(curl_exec($ch));
-        curl_close($ch);
+	
+	    $url = 'https://api.exchangerate-api.com/v4/latest/'.strtoupper($_ENV['stripe_currency']);
+	    $stream_opts = [
+		    "ssl" => [
+			    "verify_peer"=>false,
+			    "verify_peer_name"=>false,
+		    ]
+	    ];
+	    $response = file_get_contents($url,false, stream_context_create($stream_opts));
+	    $currency = json_decode($response);
 
         $price_exchanged = ((double)$price) / ($currency->rates->CNY);
 
