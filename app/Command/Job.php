@@ -843,6 +843,8 @@ class Job
 				}
 				
 				$user->class = 0;
+				$user->node_connector = Config::get('user_conn');
+				$user->node_speedlimit = Config::get('user_speedlimit');
 			}
 			
 			// 审计封禁解封
