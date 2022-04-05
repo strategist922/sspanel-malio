@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use App\Models\InviteCode;
 use App\Models\User;
 use App\Models\Node;
 use App\Models\Relay;
@@ -140,6 +141,20 @@ class Tools
 			$char .= $chars[random_int(0, strlen($chars) - 1)];
 		}
 		return $char;
+	}
+	
+	/**
+	 * 生成邀请码
+	 *
+	 * @return string
+	 */
+	public static function generateInviteCode()
+	{
+		$temp_code = self::genRandomChar(4);
+		if(InviteCode::where('code', $temp_code)->first()){
+			self::generateInviteCode();
+		}
+		return $temp_code;
 	}
 	
 	public static function genToken()
@@ -929,4 +944,6 @@ class Tools
 		}
 		return true;
 	}
+	
+
 }
