@@ -594,6 +594,9 @@ class LinkController extends BaseController
 			case 'vmess':
 				$return = AppURI::getV2RayNURI($item);
 				break;
+			case 'vless':
+				$return = AppURI::getV2RayNURI($item);
+				break;
 			case 'trojan':
 				$return = AppURI::getTrojanURI($item);
 				break;

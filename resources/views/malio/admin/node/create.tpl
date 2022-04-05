@@ -113,6 +113,7 @@
                                             <option value="12">V2Ray 中转</option>
                                             <option value="13">Shadowsocks V2Ray-Plugin</option>
                                             <option value="14">Trojan</option>
+                                            <option value="15">V2Ray-VLESS</option>
                                         </select>
                                     </div>
                                 </div>

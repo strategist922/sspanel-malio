@@ -268,9 +268,12 @@ class URL
             case 'trojan':
                 $sort = [14];
                 break;
+	        case 'vless':
+		        $sort = [15];
+		        break;
             default:
                 $Rule['type'] = 'all';
-                $sort = [0, 10, 11, 12, 13, 14];
+                $sort = [0, 10, 11, 12, 13, 14, 15];
                 break;
         }
         if ($user->is_admin) {
@@ -374,6 +377,17 @@ class URL
                     }
                     continue;
                 }
+	            if (in_array($node->sort, [15]) && (($Rule['type'] == 'all' && $x == 0) || ($Rule['type'] == 'vless'))) {
+		            // Vless
+		            $item = self::getV2RayItem($user, $node, $emoji);
+		            if ($item != null) {
+			            $find = (isset($Rule['content']['regex']) && $Rule['content']['regex'] != '' ? ConfController::getMatchProxy($item, ['content' => ['regex' => $Rule['content']['regex']]]) : true);
+			            if ($find) {
+				            $return_array[] = $item;
+			            }
+		            }
+		            continue;
+	            }
                 if (in_array($node->sort, [0, 10]) && $node->mu_only != 1 && ($is_mu == 0 || ($is_mu != 0 && Config::get('mergeSub') === true))) {
                     // 节点非只启用单端口 && 只获取普通端口
                     if ($node->sort == 10) {
@@ -456,9 +470,27 @@ class URL
         }
         return $return_array;
     }
-
-     
-    /**
+	
+	/**
+	 * 获取 V2Ray 节点
+	 *
+	 * @param User $user
+	 * @param int  $mu_port
+	 * @param int  $relay_rule_id
+	 * @param int  $is_ss
+	 * @param bool $emoji
+	 */
+	public static function getV2RayItem($user, $node, $emoji = false)
+	{
+		$item           = Tools::v2Array($node->server);
+		$item['type']   = $node->sort == 15 ? 'vless' : 'vmess';
+		$item['remark'] = ($emoji ? Tools::addEmoji($node->name) : $node->name);
+		$item['id']     = $user->getUuid();
+		$item['class']  = $node->node_class;
+		return $item;
+	}
+	
+	/**
      * 获取 Trojan 全部节点
      *
      * @param User $user 用户

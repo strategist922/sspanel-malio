@@ -898,7 +898,7 @@ class Job
 				$file_interval = fopen(BASE_PATH . '/storage/last_detect_gfw_time', 'wb');
 				fwrite($file_interval, time());
 				fclose($file_interval);
-				$nodes = Node::all();
+				$nodes = Node::where('type',1)->get();
 				$adminUser = User::where('is_admin', '=', '1')->get();
 				foreach ($nodes as $node) {
 					if ($node->node_ip == '' ||

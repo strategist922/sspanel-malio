@@ -250,8 +250,6 @@ class NodeController extends AdminController
 	public function ajax($request, $response, $args)
 	{
 		$datatables = new Datatables(new DatatablesHelper());
-		
-		
 		$total_column = array('op' => '操作', 'id' => 'ID', 'name' => '节点名称',
 			'type' => '显示与隐藏', 'sort' => '类型',
 			'server' => '节点地址', 'outaddress' => '出口地址', 'node_ip' => '节点IP',
@@ -326,6 +324,9 @@ class NodeController extends AdminController
 					break;
 				case 14:
 					$sort = 'Trojan';
+					break;
+				case 15:
+					$sort = 'V2Ray-VLESS';
 					break;
 				default:
 					$sort = '系统保留';

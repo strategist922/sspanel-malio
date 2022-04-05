@@ -116,10 +116,9 @@
                                             <option value="10" {if $node->sort==10}selected{/if}>Shadowsocks 中转</option>
                                             <option value="11" {if $node->sort==11}selected{/if}>V2Ray</option>
                                             <option value="12" {if $node->sort==12}selected{/if}>V2Ray 中转</option>
-                                            <option value="13" {if $node->sort==13}selected{/if}>Shadowsocks
-                                                V2Ray-Plugin
-                                            </option>
+                                            <option value="13" {if $node->sort==13}selected{/if}>ShadowsocksV2Ray-Plugin</option>
                                             <option value="14" {if $node->sort==14}selected{/if}>Trojan</option>
+                                            <option value="15" {if $node->sort==15}selected{/if}>V2Ray-VLESS</option>
                                         </select>
                                     </div>
                                 </div>
