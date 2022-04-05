@@ -18,6 +18,7 @@ use App\Utils\GA;
 use App\Models\Node;
 use App\Utils\DNSoverHTTPS;
 use Exception;
+use Ramsey\Uuid\Uuid;
 use TelegramBot\Api\BotApi;
 
 class XCat
@@ -222,11 +223,12 @@ class XCat
             echo 'start create admin account';
             // create admin user
             // do reg user
-            $user = new User();
+	        $user = new User();
             $user->user_name = 'admin';
             $user->email = $email;
             $user->pass = Hash::passwordHash($passwd);
-            $user->passwd = Tools::genRandomChar(6);
+	        $user->uuid = Uuid::uuid3(Uuid::NAMESPACE_DNS, $email . '|' . time());
+	        $user->passwd = Tools::genRandomChar(6);
             $user->port = Tools::getLastPort() + 1;
             $user->t = 0;
             $user->u = 0;
