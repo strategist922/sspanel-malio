@@ -263,7 +263,7 @@ class URL
                 $sort = [0, 10];
                 break;
             case 'vmess':
-                $sort = [11, 12];
+                $sort = [11, 12,14];
                 break;
             case 'trojan':
                 $sort = [14];
