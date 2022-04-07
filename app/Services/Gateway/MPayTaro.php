@@ -83,8 +83,8 @@ class MPayTaro extends AbstractPayment
 		$data['app_id'] = Config::get('paytaro_app_id');
 		$data['out_trade_no'] = $pl->tradeno;
 		$data['total_amount'] = (int)($pl->total * 100);
-		$data['notify_url'] = Config::get('baseUrl') . '/payment/notify/paytaro';
-		$data['return_url'] = Config::get('baseUrl') . '/user/payment/return?tradeno='.$pl->tradeno;
+		$data['notify_url'] = 'https://'. $_SERVER['HTTP_HOST'] . '/payment/notify/paytaro';
+		$data['return_url'] = 'https://'. $_SERVER['HTTP_HOST'] . '/user/payment/return?tradeno='.$pl->tradeno;
 		$params = $this->prepareSign($data);
 		$data['sign'] = $this->sign($params);
 		$result = json_decode($this->post($data), true);
