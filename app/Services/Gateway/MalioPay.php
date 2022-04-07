@@ -21,15 +21,12 @@ class MalioPay extends AbstractPayment
         if ($type != 'alipay' and $type != 'wechat') {
             return json_encode(['ret' => 0, 'msg' => 'wrong type']);
         }
-
         if ($price < MalioConfig::get('mups_minimum_amount')) {
             return json_encode(['ret' => 0, 'errmsg' => '充值最低金额为' . MalioConfig::get('mups_minimum_amount') . '元']);
         }
-
         if ($price <= 0) {
             return json_encode(['ret' => 0, 'msg' => "金额必须大于0元"]);
         }
-
         if ($type == 'alipay') {
             $payment_system = MalioConfig::get('mups_alipay');
             switch ($payment_system) {
@@ -138,6 +135,23 @@ class MalioPay extends AbstractPayment
                 case ('theadpay'):
                     $theadpay = new THeadPay();
                     return $theadpay->purchase_maliopay($type, $price);
+	            case ('paytaro'):
+		            $paytaro = new MPayTaro(Config::get('paytaro_app_secret'));
+		            $result = $paytaro->Maliopay($type, $price);
+		            if ($result['errcode'] === 0) {
+			            $return = array(
+				            'ret' => 1,
+				            'type' => 'url',
+				            'tradeno' => $result['pid'],
+				            'url' => $result['url']
+			            );
+		            } else {
+			            $return = array(
+				            'ret' => 0,
+				            'msg' => $result['errmsg']
+			            );
+		            }
+		            return json_encode($return);
             }
         } else if ($type == 'wechat') {
             $payment_system = MalioConfig::get('mups_wechat');
@@ -213,6 +227,14 @@ class MalioPay extends AbstractPayment
                 case ('theadpay'):
                     $theadpay = new THeadPay();
                     return $theadpay->purchase_maliopay($type, $price);
+	            case ('paytaro'):
+		            $paytaro = new MPayTaro(Config::get('paytaro_app_secret'));
+		            if (!$paytaro->verify($request->getParams(), $request->getParam('sign'))) {
+			            die('FAIL');
+		            }
+		            $done = $this->postPayment($request->getParam('out_trade_no'), 'PayTaro');
+		            die('SUCCESS');
+		            return;
             }
         }
         return json_encode([
