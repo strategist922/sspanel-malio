@@ -291,59 +291,62 @@
                                                         </label>
                                                     {/if}
                                                 {else}
-                                                    {if $malio_config['mups_alipay_0'] != 'none' && $malio_config['mups_alipay_0']!=''}
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="payment" value="alipay_0"
-                                                                   class="selectgroup-input alipay" checked="">
-                                                            <span class="selectgroup-button selectgroup-button-icon"><i
-                                                                        class="fab fa-alipay mr-1"></i>{$i18n->get('alipay')}</span>
-                                                        </label>
-                                                    {/if}
-                                                    {if $malio_config['mups_alipay_1'] != 'none' && $malio_config['mups_alipay_1']!=''}
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="payment" value="alipay_1"
-                                                                   class="selectgroup-input alipay" checked="">
-                                                            <span class="selectgroup-button selectgroup-button-icon"><i
-                                                                        class="fab fa-alipay mr-1"></i>{$i18n->get('alipay')}</span>
-                                                        </label>
-                                                    {/if}
-                                                    {if $malio_config['mups_alipay_2'] != 'none' && $malio_config['mups_alipay_2']!=''}
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="payment" value="alipay_2"
-                                                                   class="selectgroup-input alipay" checked="">
-                                                            <span class="selectgroup-button selectgroup-button-icon"><i
-                                                                        class="fab fa-alipay mr-1"></i>{$i18n->get('alipay')}</span>
-                                                        </label>
-                                                    {/if}
+                                                    <div>
+                                                        {if $malio_config['mups_alipay_0'] != 'none' && $malio_config['mups_alipay_0']!=''}
+                                                            <label class="selectgroup-item">
+                                                                <input type="radio" name="payment" value="alipay_0"
+                                                                       class="selectgroup-input alipay" checked="">
+                                                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                                                            class="fab fa-alipay mr-1"></i>{$i18n->get('alipay')}</span>
+                                                            </label>
+                                                        {/if}
+                                                        {if $malio_config['mups_alipay_1'] != 'none' && $malio_config['mups_alipay_1']!=''}
+                                                            <label class="selectgroup-item">
+                                                                <input type="radio" name="payment" value="alipay_1"
+                                                                       class="selectgroup-input alipay">
+                                                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                                                            class="fab fa-alipay mr-1"></i>{$i18n->get('alipay_1')}</span>
+                                                            </label>
+                                                        {/if}
+                                                        {if $malio_config['mups_alipay_2'] != 'none' && $malio_config['mups_alipay_2']!=''}
+                                                            <label class="selectgroup-item">
+                                                                <input type="radio" name="payment" value="alipay_2"
+                                                                       class="selectgroup-input alipay">
+                                                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                                                            class="fab fa-alipay mr-1"></i>{$i18n->get('alipay_2')}</span>
+                                                            </label>
+                                                        {/if}
+                                                    </div>
                                                     {*                                                    微信支付*}
-                                                    {if $malio_config['mups_wechat_0'] != 'none' && $malio_config['mups_wechat_0'] != ''}
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="payment" value="wechat_0"
-                                                                   class="selectgroup-input wechat-pay">
-                                                            <span class="selectgroup-button selectgroup-button-icon"><i
-                                                                        class="malio-wechat-pay mr-1"
-                                                                        style="vertical-align: -1px"></i>{$i18n->get('wechat-pay')}</span>
-                                                        </label>
-                                                    {/if}
-                                                    {if $malio_config['mups_wechat_1'] != 'none' && $malio_config['mups_wechat_1'] != ''}
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="payment" value="wechat_1"
-                                                                   class="selectgroup-input wechat-pay">
-                                                            <span class="selectgroup-button selectgroup-button-icon"><i
-                                                                        class="malio-wechat-pay mr-1"
-                                                                        style="vertical-align: -1px"></i>{$i18n->get('wechat-pay')}</span>
-                                                        </label>
-                                                    {/if}
-                                                    {if $malio_config['mups_wechat_2'] != 'none' && $malio_config['mups_wechat_2'] != ''}
-                                                        <label class="selectgroup-item">
-                                                            <input type="radio" name="payment" value="wechat_2"
-                                                                   class="selectgroup-input wechat-pay">
-                                                            <span class="selectgroup-button selectgroup-button-icon"><i
-                                                                        class="malio-wechat-pay mr-1"
-                                                                        style="vertical-align: -1px"></i>{$i18n->get('wechat-pay')}</span>
-                                                        </label>
-                                                    {/if}
-
+                                                    <div>
+                                                        {if $malio_config['mups_wechat_0'] != 'none' && $malio_config['mups_wechat_0'] != ''}
+                                                            <label class="selectgroup-item">
+                                                                <input type="radio" name="payment" value="wechat_0"
+                                                                       class="selectgroup-input wechat-pay">
+                                                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                                                            class="malio-wechat-pay mr-1"
+                                                                            style="vertical-align: -1px"></i>{$i18n->get('wechat-pay')}</span>
+                                                            </label>
+                                                        {/if}
+                                                        {if $malio_config['mups_wechat_1'] != 'none' && $malio_config['mups_wechat_1'] != ''}
+                                                            <label class="selectgroup-item">
+                                                                <input type="radio" name="payment" value="wechat_1"
+                                                                       class="selectgroup-input wechat-pay">
+                                                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                                                            class="malio-wechat-pay mr-1"
+                                                                            style="vertical-align: -1px"></i>{$i18n->get('wechat-pay_1')}</span>
+                                                            </label>
+                                                        {/if}
+                                                        {if $malio_config['mups_wechat_2'] != 'none' && $malio_config['mups_wechat_2'] != ''}
+                                                            <label class="selectgroup-item">
+                                                                <input type="radio" name="payment" value="wechat_2"
+                                                                       class="selectgroup-input wechat-pay">
+                                                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                                                            class="malio-wechat-pay mr-1"
+                                                                            style="vertical-align: -1px"></i>{$i18n->get('wechat-pay_2')}</span>
+                                                            </label>
+                                                        {/if}
+                                                    </div>
                                                 {/if}
                                             </div>
                                         </div>

@@ -383,9 +383,25 @@ $I18N['alipay'] = array(
 	'en' => 'Alipay',
 	'zh-cn' => '支付寶'
 );
+$I18N['alipay_1'] = array(
+	'en' => 'Alipay',
+	'zh-cn' => '支付寶_1'
+);
+$I18N['alipay_2'] = array(
+	'en' => 'Alipay',
+	'zh-cn' => '支付寶_2'
+);
 $I18N['wechat-pay'] = array(
 	'en' => 'Wechat Pay',
 	'zh-cn' => '微信支付'
+);
+$I18N['wechat-pay_1'] = array(
+	'en' => 'Wechat Pay',
+	'zh-cn' => '微信支付_1'
+);
+$I18N['wechat-pay_2'] = array(
+	'en' => 'Wechat Pay',
+	'zh-cn' => '微信支付_2'
 );
 $I18N['cryptocurrency'] = array(
 	'en' => 'Cryptocurrency',
