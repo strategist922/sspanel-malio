@@ -227,14 +227,7 @@ class MalioPay extends AbstractPayment
                 case ('theadpay'):
                     $theadpay = new THeadPay();
                     return $theadpay->purchase_maliopay($type, $price);
-	            case ('paytaro'):
-		            $paytaro = new MPayTaro(Config::get('paytaro_app_secret'));
-		            if (!$paytaro->verify($request->getParams(), $request->getParam('sign'))) {
-			            die('FAIL');
-		            }
-		            $done = $this->postPayment($request->getParam('out_trade_no'), 'PayTaro');
-		            die('SUCCESS');
-		            return;
+	           
             }
         }
         return json_encode([
@@ -456,6 +449,14 @@ class MalioPay extends AbstractPayment
                 $pid = $theadpay->verifyAndGetPid();
                 $this->postPaymentMaliopay($pid,'THeadPay ' . $pid);
                 die('success'); //The response should be 'success' only
+	        case ('paytaro'):
+		        $paytaro = new MPayTaro(Config::get('paytaro_app_secret'));
+		        if (!$paytaro->verify($request->getParams(), $request->getParam('sign'))) {
+			        die('FAIL');
+		        }
+		        $done = $this->postPayment($request->getParam('out_trade_no'), 'PayTaro');
+		        die('SUCCESS');
+		        return;
             default:
                 return 'failed';
         }
