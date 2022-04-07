@@ -16,8 +16,8 @@ class MalioPay extends AbstractPayment
     public function purchase($request, $response, $args)
     {
         $price = $request->getParam('price');
-	    $pay_type = $request->getParam('type');
-	    $type = explode('_', $pay_type)[0];
+	    $pay_type = 'mups_'.$request->getParam('type');
+	    $type = explode('_', $pay_type)[1];
         $user = Auth::getUser();
         if ($type != 'alipay' and $type != 'wechat') {
             return json_encode(['ret' => 0, 'msg' => 'wrong type']);
@@ -137,7 +137,7 @@ class MalioPay extends AbstractPayment
                     $theadpay = new THeadPay();
                     return $theadpay->purchase_maliopay($type, $price);
 	            case ('paytaro'):
-		            $paytaro = new MPayTaro(Config::get($pay_type));
+		            $paytaro = new MPayTaro(Config::get('paytaro_app_secret'));
 		            $result = $paytaro->Maliopay($type, $price);
 		            if ($result['errcode'] === 0) {
 			            $return = array(
@@ -155,7 +155,7 @@ class MalioPay extends AbstractPayment
 		            return json_encode($return);
             }
         } else if ($type == 'wechat') {
-            $payment_system = MalioConfig::get('mups_wechat');
+            $payment_system = MalioConfig::get($pay_type);
             switch ($payment_system) {
                 case ('bitpayx'):
                     $bitpayx = new BitPayX(Config::get('bitpay_secret'));
