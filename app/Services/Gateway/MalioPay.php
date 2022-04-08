@@ -470,7 +470,7 @@ class MalioPay extends AbstractPayment
 
     public function getReturnHTML($request, $response, $args)
     {
-        $tradeno = $_GET['tradeno'];
+	    $tradeno = $_GET['tradeno'];
         if ($tradeno == '' || $tradeno == null) {
             $tradeno = $_GET['source'];
         }

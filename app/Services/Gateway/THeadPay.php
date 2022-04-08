@@ -86,7 +86,7 @@ class THeadPay extends AbstractPayment
                 'trade_no'      => $pl->tradeno,
                 'total_fee'     => $pl->total*100,
                 'notify_url'    => 'https://'.$_SERVER['HTTP_HOST'].'/payment/notify/theadpay',
-                'return_url'    => 'https://'.$_SERVER['HTTP_HOST'].'/user/payment/return?out_trade_no=' . $pl->tradeno,
+                'return_url'    => 'https://'.$_SERVER['HTTP_HOST'].'/user/payment/return?trade_no=' . $pl->tradeno,
             ]);
 
             return json_encode([
