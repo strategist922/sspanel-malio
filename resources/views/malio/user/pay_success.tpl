@@ -38,25 +38,24 @@
               <div class="col-12 col-md-12 col-sm-12">
                 <div class="card">
                   <div class="card-body">
-                    <div class="empty-state" data-height="600" style="height: 600px;">
-                      <img class="img-fluid" src="/theme/malio/img/card_payment_online_1.svg" alt="image">
+                    <div class="empty-state">
+                      <img class="img-fluid" src="/theme/malio/img/card_payment_online_1.svg" style="height: 350px" alt="image">
+                      {$tradeno}
                       {if $success == 1}
-                        <h2 class="mt-4">支付结果已确认</h2>
-                        <p class="lead">
-                          您充值的 {$money} 元已到账，可以随意关闭此页面
-                        </p>
+                      <h2 class="mt-4">支付结果已确认</h2>
+                      <p class="lead">
+                        您充值的 {$money} 元已到账，可以随意关闭此页面
+                      </p>
                       {else}
-                        <h2 class="mt-4">支付结果确认中，请稍等</h2>
-                        <p class="lead">
-                          您也可以选择关闭此页面，充值的金额将自动到账
-                        </p>
-                        <script>
-                          setTimeout('window.location.reload()', 5000);
-                        </script>
+                      <h2 class="mt-4">支付结果确认中，请稍等</h2>
+                      <p class="lead">
+                        您也可以选择关闭此页面，充值的金额将自动到账
+                      </p>
+                      <script>
+                        setTimeout('window.location.reload()', 5000);
+                      </script>
                       {/if}
-                      <a href="/user/code" class="mt-4 bb">前往我的钱包
-                        👉
-                      </a>
+                      <a href="/user/code" class="mt-4 bb">前往我的钱包 👉</a>
                     </div>
                   </div>
                 </div>

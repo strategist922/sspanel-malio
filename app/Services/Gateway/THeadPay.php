@@ -50,7 +50,7 @@ class THeadPay extends AbstractPayment
                 'trade_no'      => $pl->tradeno,
                 'total_fee'     => $pl->total*100,
                 'notify_url'    => 'https://'.$_SERVER['HTTP_HOST'].'/payment/notify',
-                'return_url'    => 'https://'.$_SERVER['HTTP_HOST'].'/user/payment/return?tradeno=' . $pl->tradeno,
+                'return_url'    => 'https://'.$_SERVER['HTTP_HOST'].'/user/payment/return',
             ]);
 
             return $response->withJson([

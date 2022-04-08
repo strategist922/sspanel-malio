@@ -484,7 +484,11 @@ class MalioPay extends AbstractPayment
         } else {
             $success = 0;
         }
-        return View::getSmarty()->assign('money', $money)->assign('success', $success)->fetch('user/pay_success.tpl');
+        return View::getSmarty()
+	        ->assign('money', $money)
+	        ->assign('success', $success)
+	        ->assign('tradeno',$tradeno)
+	        ->fetch('user/pay_success.tpl');
     }
 
     public function getStatus($request, $response, $args)
