@@ -9,6 +9,7 @@ namespace App\Command;
 
 use App\Models\User;
 use App\Models\Relay;
+use App\Services\Analytics;
 use App\Services\Gateway\ChenPay;
 use App\Utils\Hash;
 use App\Utils\Tools;
@@ -75,16 +76,16 @@ class XCat
                 return Job::syncnasnode();
             case ('detectGFW'):
                 return Job::detectGFW();
-            case ('syncnas'):
-                return SyncRadius::syncnas();
-            case ('dailyjob'):
-                return Job::DailyJob();
-	    case ('DetectBan'):
-                return Job::DetectBan();
-	    case ('checkjob'):
-                return Job::CheckJob();
-            case ('userga'):
-                return Job::UserGa();
+	        case ('syncnas'):
+		        return SyncRadius::syncnas();
+	        case ('dailyjob'):
+		        return Job::DailyJob();
+	        case ('DetectBan'):
+		        return Job::DetectBan();
+	        case ('checkjob'):
+		        return Job::CheckJob();
+	        case ('userga'):
+		        return Job::UserGa();
             case ('backup'):
                 return Job::backup(false);
             case ('backupfull'):
@@ -103,6 +104,8 @@ class XCat
                 return $this->resetAllPort();
             case ('update'):
                 return Update::update($this);
+	        case ('sendincome'):
+				return $this->sendIncome();
             case ('sendDailyUsageByTG'):
                 return $this->sendDailyUsageByTG();
             case ('npmbuild'):
@@ -199,7 +202,7 @@ class XCat
         system('git clone https://github.com/GeekQu/PANEL_DOC.git ' . BASE_PATH . "/public/docs/", $ret);
         echo $ret;
     }
-
+	
     public function createAdmin()
     {
         if (count($this->argv) === 2) {
@@ -318,7 +321,26 @@ class XCat
             echo ('下载失败！请重试，或在 https://github.com/SukkaW/qqwry-mirror/issues/new 反馈！');
         }
     }
-
+	
+	public function sendIncome()
+	{
+		$stats = new Analytics();
+		$date = strtotime('today');
+		$today_income = $stats->getIncome($date, $date + 86400);
+		$bot = new BotApi(Config::get('telegram_token'));
+		$users = User::where('is_admin', '1')->get();
+		foreach ($users as $user) {
+			$msg = '今日进账' . $today_income . '￥';
+			$bot->sendMessage(
+				$user->get_user_attributes('telegram_id'),
+				$msg,
+				$parseMode = null,
+				$disablePreview = false,
+				$replyToMessageId = null
+			);
+		}
+	}
+	
     public function sendDailyUsageByTG()
     {
         $bot = new BotApi(Config::get('telegram_token'));
