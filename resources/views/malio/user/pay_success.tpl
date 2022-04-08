@@ -40,7 +40,6 @@
                   <div class="card-body">
                     <div class="empty-state">
                       <img class="img-fluid" src="/theme/malio/img/card_payment_online_1.svg" style="height: 350px" alt="image">
-                      {$tradeno}
                       {if $success == 1}
                       <h2 class="mt-4">支付结果已确认</h2>
                       <p class="lead">
