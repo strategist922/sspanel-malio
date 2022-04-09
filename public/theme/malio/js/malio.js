@@ -353,13 +353,9 @@ function buyCode() {
 
 
 function buyInvite() {
-    if (!csKdOsOtLF.includes(location.host)) {
-        return false;
-    }
-    ;
-    if (!$('#money').val()) {
-        $('#invite-times-warn').show();
-        return false;
+    if (!$("#buy-invite-num")["val"]()) {
+        $("#invite-times-warn")["show"]();
+        return ![];
     } else {
         $.ajax({
             'type': 'POST',
