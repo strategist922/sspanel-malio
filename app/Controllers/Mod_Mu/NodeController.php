@@ -146,6 +146,13 @@ class NodeController extends BaseController
 	{
 		// $request_ip = $_SERVER["REMOTE_ADDR"];
 		$node_id = $request->getParam('node_id');
+		//删除过期记录
+		$nodes=StreamMedia::where('node_id',$node_id)->get();
+		foreach ($nodes as $node){
+			if($node->created_at<time()-43200){
+				$node->delete();
+			}
+		}
 		$content = $request->getParam('content');
 		$result = json_decode(base64_decode($content), true);
 		
