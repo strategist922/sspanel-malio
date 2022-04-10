@@ -55,15 +55,15 @@
 {*                          {$i18n->get('current-server-password')}: <code id="ss-current-password">{$user->passwd}</code></p>*}
                         <div class="form-group">
                           <div class="input-group mb-3">
-{*                            <input id="ss-password" type="text" class="form-control" placeholder="{$i18n->get('enter-new-server-password')}" aria-label="">*}
-                            <div class="input-group-append">
-                              <button id="ss-random-password" class="btn btn-warning" type="button">{$i18n->get('ramdom-password')}</button>
-                            </div>
+                            <input id="ss-password" type="text" class="form-control" value="{mt_rand()}" aria-label="" hidden>
+{*                            <div class="input-group-append">*}
+{*                              <button id="ss-random-password" class="btn btn-warning" type="button">{$i18n->get('ramdom-password')}</button>*}
+{*                            </div>*}
                           </div>
                         </div>
                       </div>
                       <div class="card-footer bg-whitesmoke text-md-right">
-                        <button id="ss-password-confirm" class="btn btn-primary">{$i18n->get('apply-changes')}</button>
+                        <button id="ss-password-confirm" class="btn btn-warning">{$i18n->get('apply-changes')}</button>
                       </div>
                     </div>
                   </div>
