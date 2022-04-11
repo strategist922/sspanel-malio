@@ -175,7 +175,7 @@
                         </div>
                     {/if}
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="card card-statistic-2">
                                 <div class="card-icon shadow-primary bg-primary">
                                     <i class="fas fa-crown"></i>
@@ -219,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="card card-statistic-2">
                                 <div class="card-icon shadow-success bg-success">
                                     <i class="fas fa-tint"></i>
@@ -245,35 +245,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12">
-                            <div class="card card-statistic-2">
-                                <div class="card-icon shadow-info bg-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="card-wrap">
-                                    <div class="card-header">
-                                        <h4>{$i18n->get('online-devices')}</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <span class="counter">{$user->online_ip_count()}</span>
-                                        / {if $user->node_connector == 0}∞{else}<span
-                                                class="counterup">{$user->node_connector}</span>{/if}
-                                    </div>
-                                    <div class="card-stats">
-                                        <div class="card-stats-title" style="padding-top: 0;padding-bottom: 4px;">
-                                            <nav aria-label="breadcrumb">
-                                                <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item active"
-                                                        aria-current="page">{$i18n->get('last-used-time')}
-                                                        : {if $user->lastSsTime() == '从未使用喵'}{$i18n->get('never-used')}{else}{substr($user->lastSsTime(), 5)}{/if}</li>
-                                                </ol>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12">
+{*                        <div class="col-lg-3 col-md-3 col-sm-12">*}
+{*                            <div class="card card-statistic-2">*}
+{*                                <div class="card-icon shadow-info bg-info">*}
+{*                                    <i class="fas fa-map-marker-alt"></i>*}
+{*                                </div>*}
+{*                                <div class="card-wrap">*}
+{*                                    <div class="card-header">*}
+{*                                        <h4>{$i18n->get('online-devices')}</h4>*}
+{*                                    </div>*}
+{*                                    <div class="card-body">*}
+{*                                        <span class="counter">{$user->online_ip_count()}</span>*}
+{*                                        / {if $user->node_connector == 0}∞{else}<span*}
+{*                                                class="counterup">{$user->node_connector}</span>{/if}*}
+{*                                    </div>*}
+{*                                    <div class="card-stats">*}
+{*                                        <div class="card-stats-title" style="padding-top: 0;padding-bottom: 4px;">*}
+{*                                            <nav aria-label="breadcrumb">*}
+{*                                                <ol class="breadcrumb">*}
+{*                                                    <li class="breadcrumb-item active"*}
+{*                                                        aria-current="page">{$i18n->get('last-used-time')}*}
+{*                                                        : {if $user->lastSsTime() == '从未使用喵'}{$i18n->get('never-used')}{else}{substr($user->lastSsTime(), 5)}{/if}</li>*}
+{*                                                </ol>*}
+{*                                            </nav>*}
+{*                                        </div>*}
+{*                                    </div>*}
+{*                                </div>*}
+{*                            </div>*}
+{*                        </div>*}
+                        <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="card card-statistic-2">
                                 <div class="card-icon shadow-warning bg-warning">
                                     <i class="fas fa-wallet"></i>
