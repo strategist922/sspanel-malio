@@ -2027,7 +2027,7 @@ tr:first-child > td > .fc-day-grid-event {
 }
 
 .pricing.pricing-highlight .pricing-ban a {
-    background-color: #808089;
+    background-color: #6dbaca;
     color: #fff;
 }
 
@@ -2035,7 +2035,7 @@ tr:first-child > td > .fc-day-grid-event {
     background-color: #394eea !important;
 }
 .pricing.pricing-highlight .pricing-ban  a:hover {
-  background-color: #dadbe0 !important;
+  background-color: #808089 !important;
 }
 
 .pricing .pricing-padding {

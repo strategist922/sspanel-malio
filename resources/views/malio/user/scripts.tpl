@@ -79,17 +79,19 @@
     })
   });
 
-  function purchaseinfo() {
+  function purchaseinfo(_0x2cc941) {
     Swal.fire({
       title: "{$i18n->get('notice')}",
       html: '{$i18n->get("purchase_info")}',
       type: 'warning',
       showCancelButton: true,
-      confirmButtonText: "{$i18n->get('access-faqs')}",
-      cancelButtonText: "{$i18n->get('confirm')}"
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "{$i18n->get('confirm-buy')}",
+      cancelButtonText: "{$i18n->get('cancel')}"
     }).then((result) => {
       if (result.value) {
-        window.open("/user/tutorial?os=faq")
+        $('#legacy-modal-1').modal();
+        confirmShop.id = _0x2cc941;
       }
     })
   }

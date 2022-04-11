@@ -31,10 +31,12 @@
                                     <ol>
                                         <li>
                                             <p><strong>Q：套餐疊加購買規則是什麽？</strong><br>
-                                                A：付費一個訂閱後商店界面不可疊加訂閱會變成「無法購買」灰色按鈕，可疊加訂閱變為「訂閱（可疊加）」按鈕，按需購買即可；<br>
+                                                A：付費一個訂閱後商店界面不可疊加的訂閱會變成「訂閱（不可叠加）」青綠色按鈕，可疊加的訂閱變為「訂閱（可疊加）」按鈕，按需購買即可；<br>
                                                 疊加規則為疊加等級時間與當月流量後續流量重置按照您最後一個購買的訂閲爲準進行重置；<br>
-                                                例：某用戶某月<strong>1日</strong>購買了<strong>A1</strong>訂閲，同月5日購買了<strong>B1</strong>訂閲，則該用戶當月流量為<strong>120+200=320GB</strong>，有效期為<strong>90+30=120天</strong>，從<strong>5日</strong>起幾時<strong>30</strong>天的<strong>00：15</strong>時重置流量為<strong>B1</strong>訂閲的<strong>200GB</strong>；<br>
-                                                如需升級訂閱（不支持降級訂閱）可<a href="/ticket/create">提交工單</a>會由專屬客服給出升級所需補充的差價，充值後即可升級訂閱。
+                                                訂閲叠加示例：某用戶某月<strong>1日</strong>購買了<strong>A1</strong>訂閲，同月5日購買了<strong>B1</strong>訂閲，則該用戶當月流量為<strong>120+200=320GB</strong>，有效期為<strong>90+30=120天</strong>，從<strong>5日</strong>起幾時<strong>30</strong>天的<strong>00：15</strong>時重置流量為<strong>B1</strong>訂閲的<strong>200GB</strong>；<br>
+                                                訂閲覆蓋示例：某用戶某月<strong>1日</strong>購買了<strong>A1</strong>訂閲，同月5日購買了<strong>A2*2</strong>個訂閲，則該用戶<strong>A1</strong>訂閲的流量與可用時長都會被<strong>A2</strong>訂閲覆蓋，該用戶當月流量為<strong>348*2=696GB</strong>，有效期為<strong>30*2=60天</strong>，從<strong>5日</strong>起幾時<strong>30</strong>天的<strong>00：15</strong>時重置流量為<strong>B1</strong>訂閲的<strong>348GB</strong>；<br>
+                                                如需補差價升級訂閱（不支持降級訂閱）可<a href="/ticket/create">提交工單</a>會由專屬客服給出升級所需補充的差價，充值後即可升級訂閱。<br>
+
                                             </p>
                                         </li>
                                         <li>

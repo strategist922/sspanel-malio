@@ -359,6 +359,10 @@ $I18N['confirm'] = array(
 	'en' => 'Confirm',
 	'zh-cn' => '確定'
 );
+$I18N['confirm-buy'] = array(
+	'en' => 'Confirm buy',
+	'zh-cn' => '確定購買'
+);
 $I18N['cancel'] = array(
 	'en' => 'Cancel',
 	'zh-cn' => '取消'
@@ -1099,7 +1103,7 @@ $I18N['purchase-data-add-on'] = array(
 );
 $I18N['ban_purchase'] = array(
 	'en' => 'Prohibit Purchase',
-	'zh-cn' => '訂閱(無法購買)'
+	'zh-cn' => '訂閱(不可叠加)'
 );
 $I18N['Repurchase'] = array(
 	'en' => 'Overlay Purchase',
@@ -2111,8 +2115,8 @@ $I18N['audit-logs-notice'] = array(
 
 ## Other Modals ##
 $I18N['purchase_info'] = array(
-	'en' => '您當前等級無法購買此訂閱，詳情查看<a href="/user/tutorial?os=faq" target="_blank">常見問題</a>',
-	'zh-cn' => '您當前等級無法購買此訂閱，詳情查看<a href="/user/tutorial?os=faq" target="_blank">常見問題</a>'
+	'en' => '',
+	'zh-cn' => '您當前等級購買此訂閲會被覆蓋，詳情查看<a href="/user/tutorial?os=faq" target="_blank">常見問題</a>'
 );
 $I18N['failed'] = array(
 	'en' => 'Failed',

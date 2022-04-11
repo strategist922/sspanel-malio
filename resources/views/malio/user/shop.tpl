@@ -537,7 +537,7 @@
                                         {/if}
                                         {if {$user->class}!={$shop->user_class()} && {$user->class>1}}
                                             <div class="pricing-ban">
-                                                <a href="##" onclick="purchaseinfo()">
+                                                <a href="##" onclick="purchaseinfo({$shop->id})" >
                                                     {$i18n->get('ban_purchase')}
                                                     <i class="fas fa-arrow-right"></i></a>
                                             </div>
