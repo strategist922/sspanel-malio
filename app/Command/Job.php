@@ -278,14 +278,14 @@ class Job
 		//工单过期检测
 		$tickets = Ticket::where('status', '1')
 			->where('userid', '!=', '1')
-			->where('rootid','0')
+			->where('rootid', '0')
 			->get();
 		foreach ($tickets as $ticket) {
 			if (($ticket->datetime + 604800) < time()) {
 				$ticket->status = 0;
 				$ticket->save();
-				$title=$ticket->title;
-				$content=$ticket->content;
+				$title = $ticket->title;
+				$content = $ticket->content;
 				if (Config::get('enable_telegram') == true) {
 					$messageText = 'Hi，管理员' . PHP_EOL . '工单已超过7天被关闭了' . PHP_EOL . PHP_EOL . $ticket->User()->user_name . ': ' . $title . PHP_EOL . $content;
 					$bot = new BotApi(Config::get('telegram_token'));
@@ -301,20 +301,20 @@ class Job
 					}
 				}
 				if (Config::get('mail_ticket')) {
-						$email_user=User::where('id',$ticket->userid)->first();
-						$subject = '工單超時關閉';
-						$to = $email_user->email;
-						$text = '您的工單已超時7天，被關閉了';
-						try {
-							Mail::send($to, $subject, 'ticket/new_ticket.tpl', [
-								'user' => $email_user,
-								'text' => $text,
-								'title' => $title,
-								'content' => $content
-							], [
-							]);
-						} catch (Exception $e) {
-						}
+					$email_user = User::where('id', $ticket->userid)->first();
+					$subject = '工單超時關閉';
+					$to = $email_user->email;
+					$text = '您的工單已超時7天，被關閉了';
+					try {
+						Mail::send($to, $subject, 'ticket/new_ticket.tpl', [
+							'user' => $email_user,
+							'text' => $text,
+							'title' => $title,
+							'content' => $content
+						], [
+						]);
+					} catch (Exception $e) {
+					}
 					
 					
 				}
@@ -900,7 +900,7 @@ class Job
 				$file_interval = fopen(BASE_PATH . '/storage/last_detect_gfw_time', 'wb');
 				fwrite($file_interval, time());
 				fclose($file_interval);
-				$nodes = Node::where('type',1)->get();
+				$nodes = Node::where('type', 1)->get();
 				$adminUser = User::where('is_admin', '=', '1')->get();
 				foreach ($nodes as $node) {
 					if ($node->node_ip == '' ||
