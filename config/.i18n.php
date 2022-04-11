@@ -379,6 +379,10 @@ $I18N['join-telegram-group'] = array(
 	'en' => 'Join Telegram Group',
 	'zh-cn' => '加入 Telegram 群組'
 );
+$I18N['bind-telegram-id'] = array(
+	'en' => 'Go to bind',
+	'zh-cn' => '前往綁定'
+);
 $I18N['access-faqs'] = array(
 	'en' => 'access faq',
 	'zh-cn' => '查看常見問題'

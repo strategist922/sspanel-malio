@@ -102,11 +102,11 @@
       html: '{$i18n->get("join-telegram-group-modal-text")}',
       type: 'warning',
       showCancelButton: true,
-      confirmButtonText: "{$i18n->get('join-telegram-group')}",
+      confirmButtonText: "{$i18n->get('bind-telegram-id')}",
       cancelButtonText: "{$i18n->get('cancel')}"
     }).then((result) => {
       if (result.value) {
-        window.open("{$malio_config['telegram_group']}")
+        window.open("/user/profile")
       }
     })
     {else}
