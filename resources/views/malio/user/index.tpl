@@ -686,7 +686,7 @@
 
     appName = "{$config['appName']}";
 
-    setTimeout(loadTrafficChart(), 10000);
+    // setTimeout(loadTrafficChart(), 10000);
 </script>
 
 <script>
