@@ -312,19 +312,21 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="card">
-                    <div class="card-header">
-                      <h4><i class="fas fa-chart-bar" style="vertical-align: -1px;"></i> {$i18n->get('data-usage-72-hours')}</h4>
-                      <div class="card-header-action" id="loadTrafficChart-div">
-                        <a href="##" onclick="loadTrafficChart()" class="btn btn-primary" style="display: inline-block">
-                          {$i18n->get('load-data')}
-                        </a>
-                      </div>
-                    </div>
-                    <div id="chartCardbox" class="card-body">
-                      <div id="scatter-plot"></div>
-                    </div>
-                  </div>-->
+{*                            <div class="card">*}
+{*                                <div class="card-header">*}
+{*                                    <h4><i class="fas fa-chart-bar"*}
+{*                                           style="vertical-align: -1px;"></i> {$i18n->get('data-usage-72-hours')}</h4>*}
+{*                                    <div class="card-header-action" id="loadTrafficChart-div">*}
+{*                                        <a href="##" onclick="loadTrafficChart()" class="btn btn-primary"*}
+{*                                           style="display: inline-block">*}
+{*                                            {$i18n->get('load-data')}*}
+{*                                        </a>*}
+{*                                    </div>*}
+{*                                </div>*}
+{*                                <div id="chartCardbox" class="card-body">*}
+{*                                    <div id="scatter-plot"></div>*}
+{*                                </div>*}
+{*                            </div>*}
                         </div>
 
                         <div class="col-12 col-md-5 col-lg-5">
@@ -684,7 +686,7 @@
 
     appName = "{$config['appName']}";
 
-    setTimeout(loadTrafficChart(), 3000);
+    setTimeout(loadTrafficChart(), 10000);
 </script>
 
 <script>

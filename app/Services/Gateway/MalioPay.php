@@ -452,7 +452,7 @@ class MalioPay extends AbstractPayment
 				die('success'); //The response should be 'success' only
 			case ('paytaro'):
 				$paytaro = new MPayTaro(Config::get('paytaro_app_secret'));
-				if (!$request->getParam('sign') || $request->getParam('app_id') != 'nLMPF9SXHE' || $request->getParam('status') != '1' || $request->getParam('total_amount') <= '0' || $request->getParam('out_trade_no') == '') {
+				if (!$paytaro->verify($request->getParams(), $request->getParam('sign'))) {
 					die('FAIL');
 				}
 				$done = $this->postPayment($request->getParam('out_trade_no'), 'PayTaro');

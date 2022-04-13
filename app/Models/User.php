@@ -45,7 +45,7 @@ class User extends Model
 	    return "https://q4.qlogo.cn/g?b=qq&nk=".$this->attributes['email']."&s=3";
 	}
         $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "https://secure.gravatar.com/avatar/".$hash;
+        return "https://gravatar.loli.net/avatar/".$hash;
     }
 
     public function isAdmin()
