@@ -20,14 +20,12 @@ use App\Services\Gateway\ChenPay;
 use App\Services\BitPayment;
 use App\Services\Payment;
 use App\Utils;
-use App\Utils\AliPay;
+//use App\Utils\AliPay;
 use App\Utils\Hash;
 use App\Utils\Tools;
 use App\Utils\Radius;
 use App\Models\DetectLog;
 use App\Models\DetectRule;
-use App\Models\NodeOnlineLog;
-use App\Models\NodeInfoLog;
 
 use Exception;
 use Ozdemir\Datatables\Datatables;
@@ -50,7 +48,7 @@ use App\Utils\GA;
 use App\Utils\Geetest;
 use App\Utils\Telegram;
 use App\Utils\TelegramSessionManager;
-use App\Utils\Pay;
+//use App\Utils\Pay;
 use App\Utils\URL;
 use App\Utils\DatatablesHelper;
 use App\Services\Mail;
@@ -105,8 +103,19 @@ class UserController extends BaseController
 		} else {
 			$token = '';
 		}
-		
+		$bought=Bought::where('userid',$this->user->id)->orderby('id','desc')->first();
+		$shop = $bought->shop();
+		if (!empty($bought) && strtotime($this->user->expire_in)>time() && $this->user->class>0){
+		$nowtime=time();
+		do{
+		$nowtime=$nowtime+86400;
+		}while((int)(($nowtime - $bought->datetime) / 86400) % $shop->reset() == 0);
+		$reset_time=(int)(($nowtime-$bought->datetime)/86400);
+		}else{
+			$reset_time='Na';
+		}
 		return $this->view()
+			->assign('reset_time',$reset_time)
 			->assign('class_left_days', $class_left_days)
 			->assign('paybacks_sum', $paybacks_sum)
 			->assign('subInfo', LinkController::getSubinfo($this->user, 0))

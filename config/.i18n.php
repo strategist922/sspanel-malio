@@ -959,6 +959,14 @@ $I18N['last-used-time'] = array(
 	'en' => 'Last used time',
 	'zh-cn' => '上次使用時間'
 );
+$I18N['not-activated-reset'] = array(
+	'en' => 'not-activated-reset',
+	'zh-cn' => '未啓用'
+);
+$I18N['reset-countdown'] = array(
+	'en' => 'reset-countdown',
+	'zh-cn' => '流量重置倒數'
+);
 $I18N['never-used'] = array(
 	'en' => 'Never used',
 	'zh-cn' => '從未使用過'
