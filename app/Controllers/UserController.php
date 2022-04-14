@@ -110,7 +110,7 @@ class UserController extends BaseController
 		do{
 		$nowtime=$nowtime+86400;
 		}while((int)(($nowtime - $bought->datetime) / 86400) % $shop->reset() == 0);
-		$reset_time=(int)(($nowtime-$bought->datetime)/86400);
+		$reset_time=(int)(($nowtime-$bought->datetime)/86400) % $shop->reset();
 		}else{
 			$reset_time='Na';
 		}
