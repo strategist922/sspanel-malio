@@ -115,12 +115,14 @@ class UserController extends BaseController
 		if (!empty($bought)){
 		$shop = $bought->shop();
 		if (strtotime($this->user->expire_in)>time() && $this->user->class>0){
-		$nowtime=time();
-		while((int)(($nowtime - $bought->datetime) / 86400) % $shop->reset() == 0){
-		$nowtime=$nowtime+86400;
+		$nowtime=(int)time()/86400;
+
+                
+		while(($nowtime - $bought->datetime/ 86400) % $shop->reset() == 0){
+		$nowtime=$nowtime+1;
 		}
 		$reset_time=(int)(($nowtime-$bought->datetime)/86400) % $shop->reset();
-                if ($reset_time==0){
+               if ($reset_time==1){
                 $reset_time=$shop->reset();
                 }
 		}else{
