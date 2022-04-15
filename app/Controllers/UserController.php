@@ -104,6 +104,7 @@ class UserController extends BaseController
 			$token = '';
 		}
 		$bought=Bought::where('userid',$this->user->id)->orderby('id','desc')->first();
+		if (!empty($bought)){
 		$shop = $bought->shop();
 		if (!empty($bought) && strtotime($this->user->expire_in)>time() && $this->user->class>0){
 		$nowtime=time();
@@ -111,6 +112,9 @@ class UserController extends BaseController
 		$nowtime=$nowtime+86400;
 		}while((int)(($nowtime - $bought->datetime) / 86400) % $shop->reset() == 0);
 		$reset_time=(int)(($nowtime-$bought->datetime)/86400) % $shop->reset();
+		}else{
+			$reset_time='Na';
+		}
 		}else{
 			$reset_time='Na';
 		}
