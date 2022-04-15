@@ -106,7 +106,7 @@ class UserController extends BaseController
 		$bought=Bought::where('userid',$this->user->id)->orderby('id','desc')->first();
 		if (!empty($bought)){
 		$shop = $bought->shop();
-		if (!empty($bought) && strtotime($this->user->expire_in)>time() && $this->user->class>0){
+		if (strtotime($this->user->expire_in)>time() && $this->user->class>0){
 		$nowtime=time();
 		do{
 		$nowtime=$nowtime+86400;
