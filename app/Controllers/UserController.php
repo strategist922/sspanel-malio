@@ -112,11 +112,11 @@ class UserController extends BaseController
 		//筛选用户购买自动重置的订阅
 		$bought=Bought::whereIn('shopid', $shopid)
 		->where('userid',$this->user->id)->orderby('id','desc')->first();
-		if (!empty($bought)){
+		if (time()=0){
 		$shop = $bought->shop();
 		if (strtotime($this->user->expire_in)>time() && $this->user->class>0){
 		$nowtime=(int)time()/86400;
-                $bought_time=(int)$bought->datetime/ 86400
+                $bought_time=(int)$bought->datetime/86400
                 
 		while(($nowtime - $bought_time) % $shop->reset() == 0){
 		$nowtime=$nowtime+1;
