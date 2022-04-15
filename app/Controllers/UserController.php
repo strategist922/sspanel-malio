@@ -103,7 +103,15 @@ class UserController extends BaseController
 		} else {
 			$token = '';
 		}
-		$bought=Bought::where('userid',$this->user->id)->orderby('id','desc')->first();
+		//分组筛选商品中带自动重置的
+		$shopid = Shop::where('content->reset', '<>', 0)
+			->where('content->reset_value', '<>', 0)
+			->where('content->reset_exp', '<>', 0)
+			->pluck('id')
+			->toArray();
+		//筛选用户购买自动重置的订阅
+		$bought=Bought::whereIn('shopid', $shopid)
+		->where('userid',$this->user->id)->orderby('id','desc')->first();
 		if (!empty($bought)){
 		$shop = $bought->shop();
 		if (strtotime($this->user->expire_in)>time() && $this->user->class>0){
