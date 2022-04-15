@@ -55,7 +55,7 @@
                       <div class="form-group col-lg-6 col-sm-12 col-xs-12">
                         <label for="email">{$i18n->get('email')}</label>
                         <div class="input-group">
-                          <input type="text" id="email" class="form-control col-7" required>
+                          <input type="text" id="email" class="form-control col-7"  placeholder="{$i18n->get('check-email')}" required>
                           <select class="custom-select input-group-append col-5" id="email_postfix" required style="border-top-right-radius: .25rem;
                           border-bottom-right-radius: .25rem;">
                             {$email_first = true}
@@ -103,7 +103,7 @@
                     <div class="form-group col-lg-6 col-sm-12 col-xs-12">
                       <label for="email">{$i18n->get('email')}</label>
                       <div class="input-group">
-                        <input type="text" id="email" class="form-control col-7" required>
+                        <input type="text" id="email" class="form-control col-7"  required>
                         <select class="custom-select input-group-append col-5" id="email_postfix" required style="border-top-right-radius: .25rem;
                           border-bottom-right-radius: .25rem;">
                           {$email_first = true}
@@ -148,7 +148,7 @@
                   <div class="row">
                     <div class="form-group col-lg-6 col-sm-12 col-xs-12">
                       <label for="passwd" class="d-block">{$i18n->get('password')}</label>
-                      <input id="passwd" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="passwd" required>
+                      <input id="passwd" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="passwd"   placeholder="{$i18n->get('check-password-length')}" required>
                       <div id="pwindicator" class="pwindicator">
                         <div class="bar"></div>
                         <div class="label"></div>

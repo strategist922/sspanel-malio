@@ -773,6 +773,14 @@ $I18N['no_nickname'] = array(
 	'en' => 'If you do not fill in, use email as a nickname',
 	'zh-cn' => '不填寫時用email前缀做昵稱'
 );
+$I18N['check-password-length'] = array(
+	'en' => 'The minimum password length is 8',
+	'zh-cn' => '密碼最小長度8位'
+);
+$I18N['check-email'] = array(
+	'en' => 'Fill in correctly to take over notification',
+	'zh-cn' => '正確填寫以接收通知'
+);
 $I18N['please-fill-in-your-nickname'] = array(
 	'en' => 'Please fill in your nickname',
 	'zh-cn' => '請填寫昵稱'
