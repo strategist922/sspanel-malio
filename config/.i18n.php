@@ -960,12 +960,20 @@ $I18N['last-used-time'] = array(
 	'zh-cn' => '上次使用時間'
 );
 $I18N['not-activated-reset'] = array(
-	'en' => 'not-activated-reset',
-	'zh-cn' => '未啓用'
+	'en' => 'Disposable',
+	'zh-cn' => '一次性'
 );
 $I18N['reset-countdown'] = array(
 	'en' => 'reset-countdown',
 	'zh-cn' => '流量重置倒數'
+);
+$I18N['check-reset'] = array(
+	'en' => 'reset done today',
+	'zh-cn' => '今日已重置流量'
+);
+$I18N['is-reset-day'] = array(
+	'en' => 'reset-day',
+	'zh-cn' => '重置日'
 );
 $I18N['never-used'] = array(
 	'en' => 'Never used',

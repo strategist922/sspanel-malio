@@ -281,13 +281,17 @@
                                 </div>
                                 <div class="card-wrap">
                                     <div class="card-header">
-                                        <h4>{$i18n->get('reset-countdown')}</h4>
+                                        <h4>{if $reset_time!=='Na' && $reset_time==0}{$i18n->get('check-reset')}{else}{$i18n->get('reset-countdown')}{/if}</h4>
                                     </div>
                                     <div class="card-body">
-                                        {if $reset_time!='Na'}
+                                        {if $reset_time!=='Na' && $reset_time!==0}
                                             <span class="counter">{$reset_time}</span>
                                             <span class="counterup">天</span>
-                                        {else}
+                                        {/if}
+                                        {if $reset_time!=='Na' && $reset_time==0 }
+                                            <span class="counterup">{$i18n->get('is-reset-day')}</span>
+                                        {/if}
+                                           {if $reset_time==='Na'}
                                             <span class="counterup"> {$i18n->get('not-activated-reset')}</span>
                                         {/if}
                                     </div>
