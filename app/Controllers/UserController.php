@@ -121,8 +121,9 @@ class UserController extends BaseController
 		while(($nowtime - $bought->datetime/ 86400) % $shop->reset() == 0){
 		$nowtime=$nowtime+1;
 		}
-		$reset_time=(int)(($nowtime-$bought->datetime)/86400) % $shop->reset();
-               if ($reset_time==1){
+                $reset_time=$nowtime;
+		//$reset_time=(($nowtime-$bought->datetime)/86400) % $shop->reset();
+               if ($reset_time==0){
                 $reset_time=$shop->reset();
                 }
 		}else{
