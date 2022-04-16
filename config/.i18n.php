@@ -1032,7 +1032,11 @@ $I18N['import-quantumult-config'] = array(
 	'zh-cn' => '壹鍵導入 Quantumult 配置'
 );
 $I18N['import-quantumultx-config'] = array(
-	'en' => 'Copy QuantumultX Config URL',
+	'en' => 'Copy QuantumultX Config conf',
+	'zh-cn' => '複製 QuantumultX 配置'
+);
+$I18N['import-quantumultx-url'] = array(
+	'en' => 'Copy QuantumultX Config url',
 	'zh-cn' => '複製 QuantumultX 訂閲'
 );
 $I18N['import-shadowrocket-config'] = array(

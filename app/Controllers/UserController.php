@@ -2029,7 +2029,7 @@ class UserController extends BaseController
 		$traffic = TrafficLog::where('user_id', $this->user->id)
 			->where('log_time', '>', time() - 3 * 86400)
 			->orderBy('id', 'desc')
-			->paginate(50, ['*'], 'page', $pageNum);
+			->paginate(15, ['*'], 'page', $pageNum);
 		$traffic->setPath('/user/trafficlog');
 		$nodes = Node::all();
 		$user_name = User::where('id', $this->user->id)->first();
