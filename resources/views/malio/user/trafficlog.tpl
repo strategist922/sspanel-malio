@@ -58,11 +58,14 @@
                                                     </tr>
                                                 {/foreach}
                                             {/if}
+
                                             </tbody>
+
                                         </table>
-                                    </div>
-                                    <div class="pagination-render float-right">
-                                        {$logs->render()}
+
+                                        <div class="pagination-render">
+                                            {$logs->render()}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

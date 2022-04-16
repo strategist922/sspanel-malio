@@ -119,10 +119,11 @@
                                                 {/foreach}
                                             {/if}
                                         </table>
+                                        <div class="pagination-render">
+                                            {$codes->render()}
+                                        </div>
                                     </div>
-                                    <div class="pagination-render float-right">
-                                        {$codes->render()}
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="card">
