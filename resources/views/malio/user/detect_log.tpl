@@ -59,12 +59,12 @@
                         {/if}
                         {/foreach}
                       </table>
+                      {if $rules != null}
+                        <div class="pagination-render">
+                          {$rules->render()}
+                        </div>
+                      {/if}
                     </div>
-                    {if $rules != null}
-                    <div class="pagination-render float-right">
-                      {$rules->render()}
-                    </div>
-                    {/if}
                   </div>
                 </div>
               </div>

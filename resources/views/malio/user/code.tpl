@@ -124,9 +124,9 @@
                                                 {/foreach}
                                             {/if}
                                         </table>
-                                    </div>
-                                    <div class="pagination-render float-right">
-                                        {$codes->render()}
+                                        <div class="pagination-render">
+                                            {$codes->render()}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -184,9 +184,10 @@
                                                 {/foreach}
                                             {/if}
                                         </table>
-                                    </div>
-                                    <div class="pagination-render float-right">
-                                        {$shops->render()}
+
+                                        <div class="pagination-render">
+                                            {$shops->render()}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -86,7 +86,9 @@
                                 {/foreach}
                                 {/if}
                               </table>
-                              {$rules->render()}
+                              <div class="pagination-render">
+                                {$rules->render()}
+                              </div>
                             </div>
                           </div>
                           <div class="tab-pane fade" id="profile4" role="tabpanel" aria-labelledby="profile-tab4">
