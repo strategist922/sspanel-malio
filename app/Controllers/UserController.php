@@ -982,7 +982,7 @@ class UserController extends BaseController
 		}
 		$pageNum = $request->getQueryParams()['page'] ?? 1;
 		$codes = Code::where('userid', $this->user->id)
-			->where('code', 'like', '114514%')
+			->where('code', 'like', 'catcode%')
 			->orderby('id', 'desc')
 			->paginate(20, ['*'], 'page', $pageNum);
 		$paybacks = Payback::where('ref_by', $this->user->id)->orderBy('id', 'desc')->take(10)->get();
@@ -1012,10 +1012,11 @@ class UserController extends BaseController
 			$rs['msg'] = '輸入錯誤或餘額不足';
 			return $response->getBody()->write(json_encode($rs));
 		}
+		
 		for ($i = 0; $i < $n; $i++) {
-			$char = Tools::genRandomChar(12);
+			$char = Tools::genRandomChar(12).$user->id;
 			$code = new Code();
-			$code->code = '114514' . time() . $char;
+			$code->code = 'catcode' . $char;
 			$code->type = -1;
 			$code->number = $num;
 			$code->userid = $userid;
