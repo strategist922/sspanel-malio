@@ -486,7 +486,7 @@
                                                     {else}
                                                         <div class="pricing-item-icon"><i class="fas fa-check"></i>
                                                         </div>
-                                                        <div class="pricing-item">限速{$shop->speedlimit()} Mbps</div>
+                                                        <div class="pricing-item-label">限速{$shop->speedlimit()} Mbps</div>
                                                     {/if}
                                                 </div>
                                                 <div class="pricing-item">
