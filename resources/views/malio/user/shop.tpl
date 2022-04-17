@@ -492,7 +492,7 @@
                                                 <div class="pricing-item">
                                                     <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
                                                     <div class="pricing-item-label">{$shop->bandwidth()}
-                                                        GB {$i18n->get('data')}</div>
+                                                        GB {$i18n->get('data')} {if {$shop->reset()} != '0' }/ {$shop->reset()}天{/if}</div>
                                                 </div>
 
                                                 {if {$shop->connector()} != '0' }
@@ -508,15 +508,6 @@
                                                         </div>
                                                         <div class="pricing-item-label">{$shop->speedlimit()}
                                                             Mbps {$i18n->get('speedlimit')}</div>
-                                                    </div>
-                                                {/if}
-                                                {if {$shop->reset()} != '0' }
-                                                    <div class="pricing-item">
-                                                        <div class="pricing-item-icon"><i class="fas fa-check"></i>
-                                                        </div>
-                                                        <div class="pricing-item-label">每 {$shop->reset()}
-                                                            天重置流量為 {$shop->reset_value()}GB
-                                                        </div>
                                                     </div>
                                                 {/if}
                                                 {foreach $shop->content_extra() as $service}
