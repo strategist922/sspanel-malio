@@ -472,7 +472,7 @@
                                         </div>
                                         <div class="pricing-padding">
                                             <div class="pricing-price">
-                                                <div>¥{$shop->price}</div>
+                                                <div>¥{$shop->price|number_format:0}</div>
                                                 <div>{$shop->expire()} {$i18n->get('days')}</div>
                                             </div>
 
