@@ -502,14 +502,6 @@
                                                         <div class="pricing-item-label">{$shop->connector()} {$i18n->get('online-devices')}</div>
                                                     </div>
                                                 {/if}
-                                                {if {$shop->speedlimit()} != '0' }
-                                                    <div class="pricing-item">
-                                                        <div class="pricing-item-icon"><i class="fas fa-check"></i>
-                                                        </div>
-                                                        <div class="pricing-item-label">{$shop->speedlimit()}
-                                                            Mbps {$i18n->get('speedlimit')}</div>
-                                                    </div>
-                                                {/if}
                                                 {foreach $shop->content_extra() as $service}
                                                     <div class="pricing-item">
                                                         {if $service[0]==='clear'}
