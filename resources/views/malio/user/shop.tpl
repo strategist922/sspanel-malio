@@ -478,15 +478,17 @@
 
 
                                             <div class="pricing-details">
-                                                <!--<div class="pricing-item">
-                      {if {$shop->speedlimit()} == '0' }
-                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item-label">不限制的速率</div>
-                                {else}
-                                    <<div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                    <div class="pricing-item">限速{$shop->speedlimit()} Mbps</div>
-                                {/if}
-                                 </div>-->
+                                                <div class="pricing-item">
+                                                    {if {$shop->speedlimit()} == '0' }
+                                                        <div class="pricing-item-icon"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <div class="pricing-item-label">不限制的速率</div>
+                                                    {else}
+                                                        <div class="pricing-item-icon"><i class="fas fa-check"></i>
+                                                        </div>
+                                                        <div class="pricing-item">限速{$shop->speedlimit()} Mbps</div>
+                                                    {/if}
+                                                </div>
                                                 <div class="pricing-item">
                                                     <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
                                                     <div class="pricing-item-label">{$shop->bandwidth()}
@@ -513,14 +515,19 @@
                                                         <div class="pricing-item-icon"><i class="fas fa-check"></i>
                                                         </div>
                                                         <div class="pricing-item-label">每 {$shop->reset()}
-                                                            天重置流量为 {$shop->reset_value()}GB
+                                                            天重置流量為 {$shop->reset_value()}GB
                                                         </div>
                                                     </div>
                                                 {/if}
                                                 {foreach $shop->content_extra() as $service}
                                                     <div class="pricing-item">
+                                                        {if $service[0]==='clear'}
+                                                        <div class="pricing-item-icon bg-danger text-white"><i
+                                                                    class="fas fa-times"></i></div>
+                                                        {else}
                                                         <div class="pricing-item-icon"><i class="fas fa-check"></i>
                                                         </div>
+                                                        {/if}
                                                         <div class="pricing-item-label">{$service[1]}</div>
                                                     </div>
                                                 {/foreach}
@@ -537,7 +544,7 @@
                                         {/if}
                                         {if {$user->class}!={$shop->user_class()} && {$user->class>1}}
                                             <div class="pricing-ban">
-                                                <a href="##" onclick="purchaseinfo({$shop->id})" >
+                                                <a href="##" onclick="purchaseinfo({$shop->id})">
                                                     {$i18n->get('ban_purchase')}
                                                     <i class="fas fa-arrow-right"></i></a>
                                             </div>
