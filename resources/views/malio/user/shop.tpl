@@ -462,7 +462,7 @@
 
                         <div class="row">
                             {foreach $shops as $shop}
-                                {if $malio_config['shop_trail_plan_shopid'] == $shop->id && $user->class > 0}
+                                {if $malio_config['shop_trail_plan_shopid'] == $shop->id && $user->class >= 0}
                                     {continue}
                                 {/if}
                                 <div class="col-12 col-md-4 col-lg-4">
