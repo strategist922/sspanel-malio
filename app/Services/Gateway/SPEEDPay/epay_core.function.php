@@ -23,7 +23,11 @@ function createLinkstring($para) {
 	$arg = rtrim($arg,'&');
 	
 	//如果存在转义字符，那么去掉转义
+<<<<<<< HEAD
 	if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
+=======
+// 	if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
+>>>>>>> 898f686 (bug fixed)
 	
 	return $arg;
 }

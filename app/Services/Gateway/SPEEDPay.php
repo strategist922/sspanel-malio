@@ -69,7 +69,11 @@ class SPEEDPay extends AbstractPayment
             'transport' => $settings['transport'],
             'apiurl' => 'https://cyberpay.me/'
         );
+<<<<<<< HEAD
 		$url_notify = 'http://'.$_SERVER['HTTP_HOST'].'/payment/notify/SPEEDPay';
+=======
+		$url_notify = 'https://'.$_SERVER['HTTP_HOST'].'/payment/notify/SPEEDPay';
+>>>>>>> 898f686 (bug fixed)
         $url_return = (self::isHTTPS() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'];
 		
         /**************************请求参数**************************/

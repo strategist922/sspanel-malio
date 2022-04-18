@@ -18,6 +18,10 @@
 /storage/qqwry.dat
 /storage/framework/smarty/compile/*.php
 /vendor/
+/.user.ini
+/404.html
+/delchache.sh
+/storage/qqwry.dat.bak
 /.htaccess
 /cron.sh
 /csm.sh
