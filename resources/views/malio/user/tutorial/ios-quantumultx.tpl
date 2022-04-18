@@ -165,7 +165,7 @@
                                                                 ID</strong>使用信用卡购买才能使用，或者使用下述方法购买一个属于自己的ID不用担心共享问题；<br>
                                                             你可以在万能的某宝购买美区Apple ID，使用<strong>credit
                                                                 card</strong>或继续购买<strong>美区充值卡</strong>充值后购买APP。</p>
-                                                        <p>你也可以在我们的合作伙伴网站购买:<a href='https://card.cafecat.club/'
+                                                        <p>你也可以在我们的合作伙伴网站购买:<a href={$malio_config['card_shop_url']}
                                                                                target='_blank'>点击跳转</a></p>
                                                     {/if}
                                                     <a href="https://itunes.apple.com/us/app/quantumult-x/id1443988620?ls=1&mt=8"

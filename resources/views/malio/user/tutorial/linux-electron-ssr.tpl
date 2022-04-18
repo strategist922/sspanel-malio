@@ -29,7 +29,7 @@
                   <div class="card-body">
                   这是一个上手难度较高的ios软件但配置成功后您除了可以访问网站外，还可以进行淘宝京东比价、Netflix评分查看和去广告等功能。<br>使用教程：<a target ="_blank" href="https://nervous-xylocarp-c5b.notion.site/Quantumult-X-a0c3db5bb61b46cdaa6702f0ca775322">点击跳转</a>。
 <br>订阅链接以及规则转换：<a href="https://dove.589669.xyz/web" target="_blank">点击跳转</a>(客户端选择Quantumultx，配置选择任一完整配置即可，复制后在设置中的下载进行链接导入)。
-<br>该软件和Shadowrocket一样需要外区账号登陆并付费购买，您可以在我们合作伙伴购买一个属于您自己的账号和软件。<br>购买地址:<a href='https://card.cafecat.club' target='_blank'>点击跳转</a>
+<br>该软件和Shadowrocket一样需要外区账号登陆并付费购买，您可以在我们合作伙伴购买一个属于您自己的账号和软件。<br>购买地址:<a href='https://{$malio_config['card_shop_url']}' target='_blank'>点击跳转</a>
 </div>
                 </div>
               </div>

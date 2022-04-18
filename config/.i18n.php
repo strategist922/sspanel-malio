@@ -339,6 +339,22 @@ $I18N['email'] = array(
 	'en' => 'Email',
 	'zh-cn' => '郵箱'
 );
+$I18N['send-mail-change'] = array(
+	'en' => 'Edit Daily Traffic Report',
+	'zh-cn' => '修改每日報表'
+);
+$I18N['send-mail-info'] = array(
+	'en' => 'After enabling, your mailbox will receive a daily usage report every morning',
+	'zh-cn' => '啓用后您的郵箱每日凌晨將收到一封當日用量報表'
+);
+$I18N['enable-send-mail'] = array(
+	'en' => 'Enable send mail',
+	'zh-cn' => '啓用每日流量報表'
+);
+$I18N['disable-send-mail'] = array(
+	'en' => 'Disable send mail',
+	'zh-cn' => '關閉每日流量報表'
+);
 $I18N['password'] = array(
 	'en' => 'Password',
 	'zh-cn' => '密碼'
@@ -1876,7 +1892,7 @@ $I18N['ticket-closed'] = array(
 );
 $I18N['ticket-open'] = array(
 	'en' => 'Open',
-	'zh-cn' => '處理中'
+	'zh-cn' => '已開啓'
 );
 $I18N['reply-ticket'] = array(
 	'en' => 'Reply',
