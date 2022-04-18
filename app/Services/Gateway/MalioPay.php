@@ -153,6 +153,23 @@ class MalioPay extends AbstractPayment
 						);
 					}
 					return json_encode($return);
+				case ('SPEEDPay'):
+					$SPEEDPay = new SPEEDPay();
+					$result = json_decode($SPEEDPay->purchase($request, $response, $args),true);
+					if ($result['ret']) {
+						$return = array(
+							'ret' => 1,
+							'type' => 'url',
+							'tradeno' => $result['pid'],
+							'url' => $result['url']
+						);
+					} else {
+						$return = array(
+							'ret' => 0,
+							'msg' => $result['msg']
+						);
+					}
+					return json_encode($return);
 			}
 		} else if ($type == 'wechat') {
 			$payment_system = MalioConfig::get($pay_type);
@@ -228,7 +245,23 @@ class MalioPay extends AbstractPayment
 				case ('theadpay'):
 					$theadpay = new THeadPay();
 					return $theadpay->purchase_maliopay($type, $price);
-				
+				case ('SPEEDPay'):
+					$SPEEDPay = new SPEEDPay();
+					$result = json_decode($SPEEDPay->purchase($request, $response, $args),true);
+					if ($result['ret']) {
+						$return = array(
+							'ret' => 1,
+							'type' => 'url',
+							'tradeno' => $result['pid'],
+							'url' => $result['url']
+						);
+					} else {
+						$return = array(
+							'ret' => 0,
+							'msg' => $result['msg']
+						);
+					}
+					return json_encode($return);
 			}
 		}
 		return json_encode([
@@ -458,6 +491,25 @@ class MalioPay extends AbstractPayment
 				$done = $this->postPayment($request->getParam('out_trade_no'), 'PayTaro');
 				die('SUCCESS');
 				return;
+			case ('SPEEDPay'):
+				$order_data = $_REQUEST;
+				$pid = $order_data['out_trade_no'];     //订单号
+				unset($order_data['s']);
+				$type    = $order_data['type'];
+				$status    = $order_data['trade_status']; //获取传递过来的交易状态
+				$signs    = $order_data['sign'];
+				$pl = Paylist::where('tradeno',$pid)->first();
+				if ($pl->status == 1) {
+					echo 'success';
+					return;
+				}
+				$SPEEDPay = new SPEEDPay();
+				$result = json_decode($SPEEDPay->notify($request, $response, $args),true);
+				if ($result=='success'){
+					echo "success";
+				}else{
+					echo "fail";
+				}
 			default:
 				return 'failed';
 		}
