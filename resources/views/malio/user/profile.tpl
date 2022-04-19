@@ -112,7 +112,7 @@
                         <div class="col-lg-6">
                             <div class="card card-large-icons">
                                 <div class="card-icon bg-primary text-white">
-                                    <i class="fas fa-lock"></i>
+                                    <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="card-body">
 

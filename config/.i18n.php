@@ -1780,6 +1780,14 @@ $I18N['linux-minimal-version'] = array(
 	'en' => 'Works with probably all distributions',
 	'zh-cn' => '適用於……所有版本？'
 );
+$I18N['soft-routing'] = array(
+	'en' => 'Soft routing',
+	'zh-cn' => '软路由'
+);
+$I18N['soft-routing-version'] = array(
+	'en' => '',
+	'zh-cn' => '老毛子/梅林/Openwrt'
+);
 $I18N['faq-desc'] = array(
 	'en' => 'Frequently Asked Questions',
 	'zh-cn' => '常見問題'

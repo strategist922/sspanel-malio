@@ -157,7 +157,7 @@
                                                                 {/if}
                                                                 <div class="card-header os-card mac-card">
                                                                     <div class="card-icon">
-                                                                        <i class="fas malio-finder"></i>
+                                                                      <i class="fas fa-laptop"></i>
                                                                     </div>
                                                                     <h4>Mac</h4>
                                                                     <div class="card-description">{$i18n->get('mac-minimal-version')}</div>
@@ -175,28 +175,29 @@
                                                                     {/if}
                                                                     <div class="card-header os-card linux-card">
                                                                         <div class="card-icon">
-                                                                            <i class="fab fa-apple"></i>
+                                                                          <i class="fab fa-linux"></i>
                                                                         </div>
                                                                         <h4>Linux</h4>
                                                                         <div class="card-description">{$i18n->get('linux-minimal-version')}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            {if $malio_config['enable_faq'] == true}
+
                                                                 <div class="col-lg-6">
-                                                                    <div class="card card-hero"
-                                                                         onclick="location='/user/tutorial?os=faq'">
+                                                                  <a href="{$malio_config['docs_url']}" target="_blank">
+                                                                    <div class="card card-hero">
                                                                         <div class="card-header os-card os-faq"
                                                                              style="box-shadow: 0 2px 6px #acb5f6;">
                                                                             <div class="card-icon">
-                                                                                <i class="fas fa-surprise"></i>
+                                                                              <i class="fal fa-map"></i>
                                                                             </div>
-                                                                            <h4>FAQ</h4>
-                                                                            <div class="card-description">{$i18n->get('faq-desc')}</div>
+                                                                            <h4>{$i18n->get('soft-routing')}</h4>
+                                                                            <div class="card-description">{$i18n->get('soft-routing-version')}</div>
                                                                         </div>
                                                                     </div>
+                                                                  </a>
                                                                 </div>
-                                                            {/if}
+
                                                         </div>
 
                                                     </div>
